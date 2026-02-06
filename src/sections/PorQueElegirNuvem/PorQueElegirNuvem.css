@@ -1,0 +1,103 @@
+/* =========================
+   NUVEM — ¿Por qué elegirnos?
+   Estilo editorial, alineado a la derecha
+   Fondo negro, texto blanco
+   ========================= */
+
+.porque{
+  scroll-margin-top: 130px;
+  width: 100%;
+  background: #000;
+  padding-top: clamp(48px, 8vw, 72px);
+  padding-bottom: clamp(48px, 8vw, 72px);
+}
+
+.porque__container{
+  width: min(var(--container-max), 100%);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+/* Bloque de texto alineado a la derecha */
+.porque__head{
+  max-width: 920px;
+  margin-left: auto;      /* 🔑 lo empuja a la derecha */
+  text-align: right;
+}
+
+/* Título gigante, mismo ADN que IntroCTA / Portafolio */
+.porque__title{
+  margin: 0 0 28px;
+
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+
+  font-size: clamp(40px, 5.5vw, 64px);
+  color: rgba(255,255,255,.95);
+}
+
+/* Texto editorial */
+.porque__text{
+  margin: 0;
+
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.8;
+  color: rgba(255,255,255,.78);
+
+  max-width: 760px;
+  margin-left: auto; /* mantiene el texto contenido y alineado */
+}
+
+/* ------------------------------------------------------------------- RESPONSIVO AQUI ------------------------------------------------------*/
+/* =========================================================
+   NUVEM — Porque Responsive (NO toca desktop)
+   ========================================================= */
+
+/* ===== Tablet y abajo ===== */
+@media (max-width: 1024px){
+  .porque{
+    padding-top: clamp(44px, 7vw, 64px);
+    padding-bottom: clamp(44px, 7vw, 64px);
+  }
+
+  .porque__head{
+    max-width: 860px;
+  }
+
+  .porque__title{
+    font-size: clamp(34px, 4.8vw, 52px);
+    margin-bottom: 22px;
+  }
+
+  .porque__text{
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 700px;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px){
+  /* En móvil: mejor centrado (más premium y legible) */
+  .porque__head{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .porque__title{
+    font-size: clamp(28px, 8vw, 42px);
+    margin-bottom: 16px;
+    line-height: 1.08;
+  }
+
+  .porque__text{
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15.5px;
+    line-height: 1.7;
+  }
+}

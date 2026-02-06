@@ -1,0 +1,236 @@
+/* =========================
+   WhatsApp QR — Clean iOS Sheet (SIN ModalGlass)
+   ========================= */
+
+.waSheet{
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+
+  display: grid;
+  place-items: center;
+
+  padding: 24px var(--container-pad);
+
+  /* Fondo oscuro + blur iOS */
+  background: rgba(0,0,0,0.38);
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+
+  animation: waSheetFade 160ms var(--ease) both;
+}
+
+.waSheet__panel{
+  width: min(430px, 100%);
+  border-radius: 28px;
+  padding: 22px 22px 20px;
+
+  position: relative;
+  text-align: center;
+
+  /* Tarjeta blanca limpia */
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(0,0,0,0.06);
+
+  box-shadow:
+    0 26px 70px rgba(0,0,0,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+
+  animation: waSheetPop 190ms var(--ease) both;
+}
+
+/* Close */
+.waSheet__close{
+  appearance: none;
+  border: 0;
+
+  width: 42px;
+  height: 42px;
+
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 14px;
+  cursor: pointer;
+
+  background: rgba(240,242,246,0.9);
+  border: 1px solid rgba(0,0,0,0.08);
+
+  color: rgba(10,10,10,0.74);
+  font-size: 22px;
+  line-height: 1;
+
+  transition:
+    transform .18s var(--ease),
+    background .18s var(--ease),
+    border-color .18s var(--ease);
+}
+
+.waSheet__close:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.28);
+  outline-offset: 3px;
+}
+
+/* QR box */
+.waSheet__qr{
+  width: fit-content;
+  margin: 8px auto 16px;
+
+  padding: 14px;
+  border-radius: 18px;
+
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+
+  box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+}
+
+.waSheet__qr canvas{
+  display: block;
+  border-radius: 12px;
+}
+
+/* Title + text */
+.waSheet__title{
+  margin: 0 0 10px;
+
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+
+  font-size: 24px;
+  color: rgba(10,10,10,0.88);
+}
+
+.waSheet__desc{
+  margin: 0 auto 14px;
+  max-width: 44ch;
+
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+
+  color: rgba(10,10,10,0.62);
+}
+
+/* Link usando tu btn-text */
+.waSheet__link{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin-top: 2px;
+  text-decoration: none;
+
+  color: rgba(10,10,10,0.70);
+}
+
+.waSheet__arrow{
+  font-size: 14px;
+  transform: translateY(-1px);
+  opacity: 0.85;
+}
+
+@keyframes waSheetFade{
+  from{ opacity: 0; }
+  to{ opacity: 1; }
+}
+
+@keyframes waSheetPop{
+  from{
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ------------------------------------------------------------------- RESPONSIVO AQUI ------------------------------------------------------*/
+/* =========================================================
+   PUEDE SER QUE NO, EH XD
+   ========================================================= */
+
+/* ===== Mobile ===== */
+@media (max-width: 768px){
+  .waSheet{
+    padding: 16px var(--container-pad);
+  }
+
+  .waSheet__panel{
+    border-radius: 24px;
+    padding: 18px 18px 16px;
+  }
+
+  .waSheet__close{
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+  }
+
+  .waSheet__qr{
+    padding: 12px;
+    border-radius: 16px;
+    margin: 6px auto 14px;
+  }
+
+  /* Baja el QR un poco (sin tocar el size en JSX) */
+  .waSheet__qr canvas{
+    width: 220px !important;
+    height: 220px !important;
+  }
+
+  .waSheet__title{
+    font-size: 22px;
+  }
+
+  .waSheet__desc{
+    font-size: 13.25px;
+  }
+}
+
+/* ===== Landscape / poca altura (evita corte) ===== */
+@media (max-height: 560px){
+  .waSheet{
+    place-items: start;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    overflow: auto;
+  }
+
+  .waSheet__panel{
+    margin: 0 auto;
+  }
+
+  .waSheet__qr canvas{
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+/* =========================================================
+   WhatsApp QR — reducir tamaño del panel en responsive
+   ========================================================= */
+@media (max-width: 768px){
+  .waSheet__qr canvas{
+    width: 180px !important;
+    height: 180px !important;
+  }
+}
+
+@media (max-width: 768px){
+  .waSheet__panel{
+    width: min(320px, 100%);   /* ⬅️ más estrecho */
+    padding: 14px 14px 12px;   /* ⬅️ menos aire interno */
+    border-radius: 20px;       /* ⬅️ más compacto visualmente */
+  }
+}

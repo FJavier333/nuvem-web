@@ -1,0 +1,98 @@
+/* =========================
+   ¿Cómo trabajamos? — Nuvem
+   Editorial / Institucional
+   (mismo vibe que Legal pages, sin índice)
+   ========================= */
+
+.comoTrabajamos{
+  background: #000;
+  color: rgba(255,255,255,.9);
+  overflow: visible;
+}
+
+.comoTrabajamos__container{
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(120px, 10vw, 160px) var(--container-pad) 120px;
+}
+
+.comoTrabajamos__content{
+  width: min(860px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* =========================
+   Header
+   ========================= */
+
+.comoTrabajamos__head{
+  margin-bottom: 44px;
+}
+
+.comoTrabajamos__title{
+  font-size: clamp(36px, 4.5vw, 54px);
+  font-weight: 900;
+  margin: 0;
+}
+
+.comoTrabajamos__subtitle{
+  margin-top: 12px;
+  font-size: 16px;
+  opacity: .8;
+}
+
+.comoTrabajamos__meta{
+  font-size: 14px;
+  opacity: .65;
+}
+
+/* Intro (texto normal, no headline) */
+.comoTrabajamos__intro{
+  margin: 34px auto 0;
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: .82;
+}
+
+/* Divider */
+.comoTrabajamos__divider{
+  width: 100%;
+  height: 1px;
+  margin: 34px 0;
+  background: rgba(255,255,255,.08);
+}
+
+/* =========================
+   Secciones
+   ========================= */
+
+.comoTrabajamos__section{
+  padding: 0;
+}
+
+.comoTrabajamos__section h2{
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+
+.comoTrabajamos__section p{
+  font-size: 16px;
+  line-height: 1.9;
+  opacity: .82;
+  margin: 0 auto 18px;
+}
+
+/* cierre */
+.comoTrabajamos__section--closing{
+  padding-bottom: 6px;
+}
+
+/* - = - = - = - = - = - = - = - = - - = - = - = - = -  - = - - = - = - = - = - = - = - = - = - - = - = - - = - = -TEMA RESPONSIVOxd = - = - = - - = - - - = - = - = - == - = - =- = - = - = - = - = - = - = - = - = - = - = - = - = - = - = */
+@media (max-width: 768px){
+  .comoTrabajamos__container{
+    padding-top: 140px; /* sentre 130 y 140 */
+  }
+}

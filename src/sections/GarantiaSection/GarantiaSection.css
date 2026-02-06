@@ -1,0 +1,75 @@
+/* =========================
+   NUVEM — Garantía (Section)
+   Sin inline styles
+   ========================= */
+
+.garantia{
+  padding-top: clamp(80px, 8vw, 80px);
+  width: 100%;
+}
+
+/* Parte superior */
+.garantia__top{
+  background: transparent;
+  color: var(--text);
+}
+
+/* (Se mantiene por si la usas después, pero ya no controla el carrusel) */
+.garantia__band{
+  background: transparent;
+  color: var(--text);
+  padding: 56px 0;
+  border-top: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
+}
+
+.garantia__container{
+  max-width: var(--container-max);
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+  margin: 0 auto;
+}
+
+.garantia__top .garantia__container{
+  padding-top: 72px;
+  padding-bottom: 20px;
+}
+
+/* ✅ Carrusel: bleed SOLO a la derecha, izquierda alineada al container */
+.garantia__bleedRight{
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+
+  /* ✅ el carrusel manejará el inset dinámico */
+  padding-left: 0;
+
+  padding-bottom: 56px;
+  margin-top: 14px;
+}
+
+/* Título gigante limpio */
+.garantia__title{
+  margin: 0;
+  max-width: 980px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(34px, 4.2vw, 64px);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+/* Contenido dentro de la banda (pilares luego) */
+.garantia__bandInner{
+  min-height: 180px;
+}
+
+@media (max-width: 520px){
+  .garantia__top .garantia__container{
+    padding-top: 56px;
+    padding-bottom: 44px;
+  }
+
+  .garantia__band{
+    padding: 44px 0;
+  }
+}

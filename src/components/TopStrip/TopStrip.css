@@ -1,0 +1,48 @@
+.topStrip {
+  width: 100%;
+  background: #000;
+  color: rgba(255, 255, 255, 0.92);
+  border-bottom: 0;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000; /* por encima del header */
+}
+
+.topStrip__viewport {
+  position: relative;
+  overflow: hidden;
+  height: 48px; /* ya lo dejaste bien */
+  display: flex;
+  align-items: center;
+}
+
+.topStrip__track {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 56px;               /* ✅ espacio REAL entre cada item */
+  padding-left: 28px;      /* aire al inicio (opcional pero queda pro) */
+  padding-right: 28px;     /* aire al final */
+
+  width: max-content;
+  will-change: transform;
+  animation: topStripMarquee 28s linear infinite;
+}
+
+.topStrip__item {
+  display: inline-block;
+  white-space: nowrap;
+
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes topStripMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

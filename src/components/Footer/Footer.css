@@ -1,0 +1,374 @@
+/* =========================
+   NUVEM — Footer
+   ========================= */
+
+.footer{
+  position: relative; /* ⬅️ necesario para ::before */
+  background: #000000;
+  color: #fff;
+  padding: clamp(38px, 6vw, 20px) 0;
+}
+
+/* =========================
+   Footer — Divider superior (accent)
+   ========================= */
+
+.footer::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(68, 39, 148, 0.45),
+    transparent
+  );
+}
+
+.footer .container{
+  width: min(1175px, 100%);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+.footer__inner{
+  display: grid;
+
+  /* ✅ Centro REAL: columna del medio siempre centrada */
+  grid-template-columns: 1fr auto 1fr;
+
+  /* ✅ espacio igual y controlado entre columnas */
+  column-gap: clamp(32px, 6vw, 96px);
+
+  align-items: start;
+}
+
+/* ✅ Bloques: alineación y límites */
+.footer__brand{
+  justify-self: start;
+  max-width: 520px;
+}
+
+.footer__mid{
+  justify-self: center;
+}
+
+.footer__right{
+  justify-self: end;
+  max-width: 360px;
+}
+
+/* ✅ FIX: quitar margin-top default de títulos en centro/derecha */
+.footer__mid .footer__brandTitle,
+.footer__right .footer__brandTitle{
+  margin-top: 0;
+}
+
+.footer__brandTitle{
+  margin: 0 0 14px;
+
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.833);
+}
+
+/* ✅ Texto editorial base (y el Contacto ya usa esto en JSX) */
+.footer__desc{
+  margin: 0 0 28px;
+  line-height: 1.6;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.575);
+}
+
+/* ✅ Si por error se usa <p> dentro, que no meta márgenes raros */
+.footer__desc p{
+  margin: 0;
+}
+
+/* ✅ Logo */
+.footer__logo{
+  width: 120px;
+  opacity: 0.9;
+}
+
+/* ✅ Navegación / links */
+.footer__nav{
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.footer .btn-text.footer__link{
+  line-height: 1.2;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* =========================
+   Footer — underline editorial
+   ========================= */
+
+.footer__link-underline{
+  display: inline-block;
+
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(255, 255, 255, 0.55);
+  text-underline-offset: 1px;
+
+  color: rgba(255,255,255,0.60);
+  cursor: pointer;
+
+  transition: color .18s ease, text-decoration-color .25s ease;
+}
+
+.footer__link-underline:hover{
+  color: rgba(255,255,255,0.95);
+  text-decoration-color: currentColor;
+}
+
+.footer__link-underline:focus-visible{
+  outline: none;
+  color: rgba(255,255,255,0.95);
+}
+
+/* =========================
+   Social icons
+   ========================= */
+
+.footer__social{
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.footer__icon{
+  width: 32px;
+  height: 32px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.603);
+
+  background: transparent;
+  color: rgba(255, 255, 255, 0.603);
+
+  transition:
+    color .25s ease,
+    background-color .25s ease,
+    border-color .25s ease;
+}
+
+.footer__icon svg{
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.footer__icon--ig:hover{
+  color: #E1306C;
+  background-color: rgba(225, 48, 108, 0.12);
+  border-color: rgba(225, 48, 108, 0.35);
+}
+
+.footer__icon--wa:hover{
+  color: #2DD36F;
+  background-color: rgba(45, 211, 111, 0.10);
+  border-color: rgba(45, 211, 111, 0.32);
+}
+
+/* =========================
+   Footer — Back to top
+   ========================= */
+
+.footer__toTop{
+  margin-top: 12px;
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  line-height: 1;
+
+  color: rgba(255,255,255,0.45);
+  cursor: pointer;
+
+  transition:
+    color .2s ease,
+    transform .2s ease,
+    opacity .2s ease;
+}
+
+.footer__toTop:hover{
+  color: rgba(255,255,255,0.95);
+  transform: translateY(-2px);
+}
+
+.footer__toTop:active{
+  transform: translateY(-1px);
+}
+
+.footer__toTop:focus-visible{
+  outline: none;
+  color: rgba(255,255,255,0.95);
+}
+
+/* =========================
+   Footer — Copyright
+   ========================= */
+
+.footer__copyright{
+  margin-top: 48px;
+  padding-top: 18px;
+
+  border-top: 1px solid rgba(255,255,255,.08);
+
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.6;
+
+  color: rgba(255,255,255,.55);
+}
+
+/* ============================================================================ RESPONSIVO ============================================================================= */
+/* ============================================================================ RESPONSIVO ============================================================================= */
+
+/* ===== Tablet & abajo ===== */
+@media (max-width: 1024px){
+
+  /* layout en 1 columna */
+  .footer__inner{
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 0;
+  }
+
+  .footer__brand,
+  .footer__mid,
+  .footer__right{
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  /* ✅ “Qué es Nuvem” se queda normal arriba */
+  .footer__brandTitle{
+    margin: 0 0 14px;
+  }
+
+  /* =========================
+     Acordeón SOLO responsive
+     - Contacto
+     - Navegación
+     - About
+     ========================= */
+
+  /* 1) convierte los títulos de esas secciones en “header” tipo menú */
+  /* (Necesitas que esos H3 sean botones en JSX, pero aquí va el estilo) */
+  .footer__accBtn{
+    width: 100%;
+    margin: 0;
+    padding: 18px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    appearance: none;
+    background: none;
+    border: 0;
+
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+
+    font-size: 16px;
+    color: rgba(255,255,255,0.92);
+
+    cursor: pointer;
+
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+
+  /* primera raya del acordeón: arriba de Contacto */
+  .footer__accBtn--first{
+    border-top: 1px solid rgba(255,255,255,0.10);
+    margin-top: 10px;
+  }
+
+  /* 2) chevron */
+  .footer__accChevron{
+    width: 10px;
+    height: 10px;
+    flex: 0 0 10px;
+
+    border-right: 2px solid rgba(255,255,255,0.55);
+    border-bottom: 2px solid rgba(255,255,255,0.55);
+
+    transform: rotate(45deg);
+    transition: transform .22s ease, opacity .22s ease;
+    opacity: .9;
+  }
+
+  /* abierto */
+  .footer__accBtn[aria-expanded="true"] .footer__accChevron{
+    transform: rotate(-135deg);
+  }
+
+  /* 3) panel colapsable */
+  .footer__accPanel{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .28s ease;
+  }
+
+  /* abierto (pon esta clase desde JSX cuando esté abierto) */
+  .footer__accPanel.is-open{
+    max-height: 520px; /* suficiente para tu contenido */
+  }
+
+  /* contenido interno del panel */
+  .footer__accInner{
+    padding: 0 0 18px;
+  }
+
+  /* links alineados como OKX */
+  .footer__nav{
+    gap: 14px;
+  }
+
+  /* toTop dentro de Navegación, con aire */
+  .footer__toTop{
+    margin-top: 16px;
+  }
+
+  /* copyright con más aire */
+  .footer__copyright{
+    margin-top: 34px;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px){
+  .footer__accBtn{
+    padding: 16px 0;
+    font-size: 15px;
+  }
+}

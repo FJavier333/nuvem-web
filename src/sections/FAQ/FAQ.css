@@ -1,0 +1,300 @@
+/* =========================
+   NUVEM — FAQ (Accordion)
+   Fondo negro + texto blanco
+   Reglas: sin inline styles, tipografía global, sin responsive todavía
+   ========================= */
+
+.faq{
+  scroll-margin-top: 130px;
+  width: 100%;
+  background: #000;
+  color: rgba(255,255,255,.92);
+  padding-top: clamp(90px, 10vw, 140px);
+  padding-bottom: clamp(74px, 8vw, 112px); /* ⬅️ reduce el espacio final */
+}
+
+.faq__container{
+  width: min(var(--container-max), 100%);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+/* Headline estilo Nuvem (mismo ADN que IntroCTA / Portafolio) */
+.faq__head{
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 0 34px;
+}
+
+.faq__title{
+  margin: 0;
+
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+
+  font-size: clamp(40px, 5.5vw, 64px);
+  color: rgba(255,255,255,.95);
+}
+
+.faq__list{
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* Item */
+.faq__item{
+  position: relative;
+}
+
+.faq__question{
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 26px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq__qText{
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-size: clamp(15px, 2.2vw, 25px);
+  color: rgba(255,255,255,.94);
+}
+
+/* Icono + / − */
+.faq__icon{
+  position: relative;
+
+  width: 28px;
+  height: 28px;
+
+  border: 1.5px solid rgba(255,255,255,.28);
+  border-radius: 50%;
+
+  transition: border-color .25s ease;
+}
+
+/* Hover sutil en + / − */
+.faq__question:hover .faq__icon{
+  border-color: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.06);
+}
+
+/* líneas del + */
+.faq__icon::before,
+.faq__icon::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 12px;
+  height: 1.5px;
+
+  background: rgba(255,255,255,.9);
+
+  transform-origin: center;
+  transition: transform .25s ease;
+}
+
+/* línea horizontal */
+.faq__icon::before{
+  transform: translate(-50%, -50%);
+}
+
+/* línea vertical */
+.faq__icon::after{
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq__icon.is-open{
+  border-color: rgba(255,255,255,.55);
+}
+
+/* se convierte en "−" */
+.faq__icon.is-open::after{
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faq__button:hover .faq__icon{
+  border-color: rgba(255,255,255,.7);
+}
+
+/* Answer wrapper (colapsable) */
+.faq__answerWrap{
+  overflow: hidden;
+  max-height: 0px;
+  transition: max-height 320ms var(--ease);
+}
+
+/* Cuando está abierto */
+.faq__item.is-open .faq__answerWrap{
+  max-height: 420px; /* ✅ suficiente para tus textos (sin responsive) */
+}
+
+.faq__item.is-open .faq__icon{
+  transform: rotate(0deg);
+  border-color: rgba(255,255,255,.75);
+}
+
+/* Texto de respuesta */
+.faq__answer{
+  padding: 0 0 24px;
+  max-width: 900px;
+}
+
+.faq__answer p{
+  margin: 0 0 14px;
+
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: -0.01em;
+
+  color: rgba(255,255,255,.70);
+}
+
+.faq__answer p:last-child{
+  margin-bottom: 0;
+}
+
+/* Divider */
+.faq__divider{
+  height: 1px;
+  width: 100%;
+  background: rgba(255,255,255,.14);
+}
+
+.faq__cta{
+  margin-top: 56px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ------------------------------------------------------------------- RESPONSIVO AQUI ------------------------------------------------------*/
+@media (max-width: 900px){
+
+  .faq{
+    padding-top: 84px;
+    padding-bottom: 84px;
+  }
+
+  /* Título grande y con aire */
+  .faq__head{
+    padding-bottom: 28px;
+  }
+
+  .faq__title{
+    font-size: clamp(34px, 7.5vw, 52px);
+    line-height: 1.08;
+    max-width: 20ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Lista angosta y centrada (clave del look OKX) */
+  .faq__list{
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Pregunta: alineación perfecta texto + icono */
+  .faq__question{
+    padding: 22px 0;
+    gap: 18px;
+    align-items: center;
+  }
+
+  .faq__qText{
+    font-size: 18px;        /* legible y pro */
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .faq__icon{
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;         /* NO se encoge */
+    margin-left: auto;      /* lo pega a la derecha siempre */
+  }
+
+  /* Respuestas más angostas, con aire */
+  .faq__answer{
+    padding: 0 0 22px;
+    max-width: 560px;       /* más “editorial” */
+  }
+
+  .faq__answer p{
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* Evitar cortes de contenido */
+  .faq__item.is-open .faq__answerWrap{
+    max-height: 900px;
+  }
+
+  /* CTA abajo con aire */
+  .faq__cta{
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 420px){
+
+  .faq{
+    padding-top: 76px;
+    padding-bottom: 76px;
+  }
+
+  .faq__list{
+    max-width: 520px;
+  }
+
+  .faq__qText{
+    font-size: 16.5px;
+  }
+
+  .faq__icon{
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+
+  .faq__answer{
+    max-width: 520px;
+  }
+
+  .faq__answer p{
+    font-size: 15.5px;
+  }
+}
+
+/* Mas separadas de las orillas las preguntas */
+
+@media (max-width: 900px){
+  .faq__list{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 420px){
+  .faq__list{
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}

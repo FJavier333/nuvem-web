@@ -1,0 +1,293 @@
+/* =========================
+   ModalGlass — Nuvem (iOS Liquid Glass REAL)
+   Reglas: sin inline styles
+   ========================= */
+
+.modalGlass{
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: grid;
+  place-items: center;
+
+  padding: 28px var(--container-pad);
+
+  /* iOS background dim + blur */
+  background: rgba(0,0,0,0.22);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+
+  animation: modalGlassFade 180ms var(--ease) both;
+}
+
+/* =========================
+   PANEL: iOS Liquid Glass (folder-like)
+   ========================= */
+.modalGlass__panel{
+  width: min(740px, 100%);
+  padding: clamp(22px, 3vw, 34px);
+
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+
+  /* Frosted glass base */
+  background: rgba(20,20,24,.78);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+
+  /* Inner light + depth */
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.35);
+
+  /* subtle outer stroke (iOS) */
+  border: 1px solid rgba(255,255,255,0.34);
+
+  /* text on glass */
+  color: rgba(255,255,255,0.92);
+
+  animation: modalGlassPop 220ms var(--ease) both;
+
+  transition:
+    transform 220ms var(--ease),
+    box-shadow 220ms var(--ease),
+    border-color 220ms var(--ease);
+}
+
+/* Edge highlight (the crisp iOS rim) */
+.modalGlass__panel::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  /* rim gradient */
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.55),
+    rgba(255,255,255,0.16) 38%,
+    rgba(255,255,255,0.10) 62%,
+    rgba(255,255,255,0.46)
+  );
+
+  /* make it a 1px-ish stroke */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  padding: 1px;
+  opacity: 0.95;
+}
+
+/* iOS glow corners + soft sheen + micro grain */
+.modalGlass__panel::after{
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background:
+    /* top sheen */
+    radial-gradient(120% 70% at 50% -10%,
+      rgba(255,255,255,0.55),
+      rgba(255,255,255,0.10) 55%,
+      transparent 72%
+    ),
+
+    /* corner bloom */
+    radial-gradient(60% 60% at 10% 12%,
+      rgba(255,255,255,0.26),
+      transparent 60%
+    ),
+    radial-gradient(60% 60% at 90% 88%,
+      rgba(255,255,255,0.18),
+      transparent 60%
+    ),
+
+    /* subtle iOS frosted grain */
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.012),
+      rgba(255,255,255,0.012) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+
+  opacity: 0.9;
+}
+
+/* =========================
+   CLOSE BUTTON (iOS)
+   ========================= */
+.modalGlass__close{
+  appearance: none;
+  border: 0;
+
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  display: grid;
+  place-items: center;
+
+  font-family: var(--font-sans);
+  font-size: 26px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  /* glass pill */
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.86);
+
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  transition:
+    transform 220ms var(--ease),
+    background 220ms var(--ease),
+    border-color 220ms var(--ease);
+}
+
+.modalGlass__close:focus-visible{
+  outline: 2px solid rgba(255,255,255,0.40);
+  outline-offset: 2px;
+}
+
+/* =========================
+   TYPO
+   ========================= */
+.modalGlass__title{
+  margin: 0;
+  padding-right: 54px;
+
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+
+  font-size: clamp(22px, 2.6vw, 34px);
+  color: rgba(255,255,255,0.92);
+}
+
+.modalGlass__body{
+  margin-top: 14px;
+
+  font-family: var(--font-sans);
+  font-size: 1.02rem;
+  line-height: 1.75;
+
+  color: rgba(255,255,255,0.82);
+}
+
+.modalGlass__body p{
+  margin: 0 0 14px;
+}
+
+.modalGlass__body p:last-child{
+  margin-bottom: 0;
+}
+
+/* =========================
+   ANIMATIONS
+   ========================= */
+@keyframes modalGlassFade{
+  from{ opacity: 0; }
+  to{ opacity: 1; }
+}
+
+@keyframes modalGlassPop{
+  from{
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ------------------------------------------------------------------- RESPONSIVO AQUI ------------------------------------------------------*/
+/* =========================================================
+   NUVEM — ModalGlass Responsive
+   Panel compacto + scroll SOLO del contenido (sin scrollbar)
+   ========================================================= */
+
+@media (max-width: 768px){
+
+  .modalGlass{
+    padding: 14px var(--container-pad);
+  }
+
+  .modalGlass__panel{
+    /* tamaño visual más pequeño */
+    width: min(92vw, 420px);
+    max-height: 78svh;
+
+    padding: 16px 16px 18px;
+    border-radius: 22px;
+
+    /* 🔑 el panel NO scrollea */
+    overflow: hidden;
+  }
+
+  /* 🔑 SOLO el contenido scrollea */
+  .modalGlass__body{
+    margin-top: 12px;
+
+    max-height: calc(78svh - 16px - 18px - 12px - 34px);
+    overflow: auto;
+    overscroll-behavior: contain;
+
+    /* sin scrollbar */
+    scrollbar-width: none; /* Firefox */
+  }
+  .modalGlass__body::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+  }
+
+  .modalGlass__close{
+    width: 34px;
+    height: 34px;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+  }
+
+  .modalGlass__title{
+    padding-right: 46px;
+    font-size: 21px;
+    line-height: 1.15;
+  }
+
+  .modalGlass__body{
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+}
+
+/* Mobile pequeño */
+@media (max-width: 420px){
+  .modalGlass__panel{
+    width: 94vw;
+    max-height: 74svh;
+    padding: 14px 14px 16px;
+    border-radius: 20px;
+  }
+
+  .modalGlass__body{
+    max-height: calc(74svh - 14px - 16px - 12px - 34px);
+  }
+}

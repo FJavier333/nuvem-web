@@ -1,0 +1,222 @@
+/* =========================
+   NUVEM — Portafolio (Squarespace-like)
+   Reglas: sin inline styles, hereda tipografía global, sin responsive todavía
+   + Hover slideshow con fade (1 loop por hover)
+   ========================= */
+
+.portafolio{
+  width: 100%;
+  padding-top: clamp(72px, 10vw, 120px);
+  padding-bottom: clamp(48px, 8vw, 96px);
+}
+
+/* el ancla real */
+#portafolio{
+  scroll-margin-top: 130px;
+}
+
+/* Header (mismo estilo que IntroCTA) */
+.portafolio__head{
+  padding: 10px 0 12px;
+
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.portafolio__kicker{
+  display: inline-block;
+  margin-bottom: 22px;
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
+
+.portafolio__title{
+  margin: 0 0 5px;
+
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+
+  font-size: clamp(36px, 6vw, 78px);
+  color: var(--text);
+}
+
+.portafolio__desc{
+  margin-top: 20px;
+  max-width: 720px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: 1.05rem;
+  line-height: 1.6;
+
+  color: var(--text);
+  text-align: center;
+}
+
+/* Grid de previews */
+.portafolio__grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+  align-items: start;
+
+  margin-top: 12px;
+}
+
+/* Card */
+.portafolio__item{
+  overflow: visible;
+}
+
+/* “Browser frame” sutil arriba (si lo usas en JSX) */
+.portafolio__frame{
+  height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+
+  background: rgba(0,0,0,0.30);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.portafolio__dots{
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.portafolio__dot{
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+}
+
+.portafolio__url{
+  height: 12px;
+  flex: 1;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Media (hover slideshow target) */
+.portafolio__media{
+  width: 100%;
+  overflow: hidden;
+
+  /* tu separación de arriba (antes estaba en la img) */
+  padding-top: clamp(22px, 10vw, 22px);
+
+  cursor: pointer;
+
+  /* permite levantar el contenedor en hover sin “temblor” */
+  will-change: transform;
+}
+
+/* Imagen (swap + fade) */
+.portafolio__img{
+  display: block;
+  width: 100%;
+
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 0;
+
+  /* fade */
+  opacity: 1;
+
+  /* anti-parpadeo / anti-jitter */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+
+  transition:
+    opacity 650ms cubic-bezier(.4,0,.2,1),
+    transform 600ms var(--ease),
+    filter 400ms var(--ease);
+}
+
+.portafolio__img.is-fading{
+  opacity: 0.25; /* 🔑 evita el flash */
+}
+
+/* Hover feel */
+.portafolio__action{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+/* ------------------------------------------------------------------- RESPONSIVO AQUI ------------------------------------------------------*/
+@media (max-width: 900px){
+
+  /* Grid a 1 columna */
+  .portafolio__grid{
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  /* Quita el “hueco” que en móvil se ve enorme */
+  .portafolio__media{
+    padding-top: 0;
+  }
+
+  /* Imagen: mantiene proporción y se ve “card pro” */
+  .portafolio__img{
+    aspect-ratio: 16 / 11;   /* un pelín más alto en móvil */
+    /*
+    object-fit: contain;
+    background: transparent;
+    */
+  }
+
+  /* Botón: NO lo estiro, solo lo reposiciono */
+  .portafolio__action{
+    justify-content: center;
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 420px){
+
+  .portafolio{
+    padding-top: clamp(56px, 10vw, 92px);
+    padding-bottom: clamp(40px, 8vw, 72px);
+  }
+
+  .portafolio__desc{
+    font-size: 1rem;
+  }
+
+  .portafolio__grid{
+    gap: 18px;
+  }
+
+  .portafolio__img{
+    aspect-ratio: 16 / 12;
+  }
+}
+
+/* =========================================================
+   NUVEM — Comebtario: reducir aire vertical en responsive
+   ========================================================= */
+
+@media (max-width: 768px){
+  .portafolio{
+    padding-top: clamp(46px, 8vw, 74px);
+    padding-bottom: clamp(46px, 8vw, 74px);
+  }
+}

@@ -1,0 +1,403 @@
+/* =========================
+   Política — Nuvem
+   Legal / Editorial
+   ========================= */
+
+.politica{
+  background: #000;
+  color: rgba(255,255,255,.9);
+  overflow: visible;
+}
+
+.politica__container{
+  display: grid;
+  grid-template-columns: minmax(0, 860px) 220px;
+  justify-content: center;
+  align-items: start;
+  gap: 44px;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(120px, 10vw, 160px) var(--container-pad) 120px;
+  overflow: visible;
+}
+
+/* =========================
+   ÍNDICE (STICKY)
+   ========================= */
+
+.politica__index{
+  position: sticky;
+  top: 180px;
+  align-self: start;
+  padding-top: 0;
+}
+
+/* =========================
+   CONTENIDO
+   ========================= */
+
+.politica__head{
+  margin-bottom: 64px;
+}
+
+.politica__title{
+  font-size: clamp(36px, 4.5vw, 54px);
+  font-weight: 900;
+}
+
+.politica__subtitle{
+  margin-top: 12px;
+  font-size: 16px;
+  opacity: .8;
+}
+
+.politica__meta{
+  font-size: 14px;
+  opacity: .65;
+}
+
+/* =========================
+   SECCIONES
+   ========================= */
+
+.politica__section{
+  /*espacio entre politicas/antes:80*/
+  margin-top: 56px;
+  /*espacio entre politicas/antes:80*/
+  scroll-margin-top: 180px;
+}
+
+.politica__section h2{
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.politica__section p{
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: .82;
+}
+
+/* =========================
+   ÍNDICE DERECHO (SCROLL INTERNO)
+   ========================= */
+
+.politica__nav{
+  position: relative;
+  padding-left: 18px;
+
+  max-height: calc(100vh - 170px - 40px);
+  overflow: auto;
+  overscroll-behavior: contain;
+
+  /* Sin scrollbar visible */
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* Edge viejo */
+
+  /* (opcional, se siente pro al usar rueda/trackpad) */
+  scroll-behavior: smooth;
+
+  /* ✅ Línea vertical que scrollea con el índice */
+  background-image: linear-gradient(rgba(255,255,255,.15), rgba(255,255,255,.15));
+  background-repeat: no-repeat;
+
+  /* Ajuste fino (ya lo traías): */
+  background-position: 4px 10px;
+  background-size: 2px calc(100% - 20px);
+
+  /* 🔑 para que el background se mueva con el scroll interno */
+  background-attachment: local;
+}
+
+.politica__nav::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+}
+
+/* Links del índice */
+.politica__index nav{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.politica__nav a{
+  position: relative;
+  display: block;
+  padding: 6px 0 6px 14px;
+
+  font-size: 13px;
+  text-decoration: none;
+  color: rgba(255,255,255,.45);
+  line-height: 1.4;
+
+  transition: color .2s ease;
+}
+
+.politica__nav a:hover{
+  color: #fff;
+}
+
+.politica__nav a.active{
+  color: #fff;
+  font-weight: 600;
+}
+
+/* =========================
+   Listas (look legal)
+   ========================= */
+
+.politica__list{
+  margin: 10px auto 0;
+}
+
+.politica__list li{
+  margin: 6px 0;
+}
+
+.politica__sublist{
+  margin-top: 8px;
+}
+
+.politica__sublist li{
+  margin: 6px 0;
+}
+
+/* - = - = - = - = - = - = - = - = - - = - = - = - = -  - = - - = - = - = - = - = - = - = - = - - = - = - - = - = -TEMA RESPONSIVOxd = - = - = - - = - - - = - = - = - == - = - =- = - = - = - = - = - = - = - = - = - = - = - = - = - = - = */
+/* =========================================================
+   NUVEM — Política (Legal) TOC Responsive (OKX-like)
+   SOLO responsive — Desktop intacto
+   Usa el mismo modal que Terminos: .terminos__toc*
+   ========================================================= */
+
+@media (max-width: 1024px){
+
+  /* 0) Layout: 1 columna en responsive */
+  .politica__container{
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+    gap: 28px;
+
+    /* ✅ sin empujar de más: igual que Privacidad final */
+    padding: clamp(109px, 10vw, 120px) var(--container-pad) 84px;
+  }
+
+  /* 1) Oculta sidebar índice en pantallas no-desktop */
+  .politica__index{
+    display: none;
+  }
+
+  /* 2) Compacta spacing entre secciones en mobile + offset de ancla */
+  .politica__section{
+    margin-top: 36px;
+    scroll-margin-top: 130px; /* ✅ el que te quedó perfecto */
+  }
+
+  .politica__section h2{
+    margin-bottom: 12px;
+  }
+
+  /* =========================================================
+     TOC Button + Modal (reutiliza clases de Terminos)
+     ========================================================= */
+
+  .terminos__tocBtn{
+    display: grid;
+    place-items: center;
+
+    position: fixed;
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    z-index: 999999;
+
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+
+    background: rgba(16, 16, 16, 0.72);
+    border: 1px solid rgba(255,255,255,0.10);
+
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(0,0,0,0.35) inset;
+
+    cursor: pointer;
+    transition: transform .18s var(--ease), border-color .18s var(--ease);
+  }
+
+  .terminos__tocBtn:active{
+    transform: scale(0.98);
+  }
+
+  .terminos__tocBtn:focus-visible{
+    outline: none;
+    border-color: rgba(255,255,255,0.26);
+  }
+
+  .terminos__tocDots{
+    width: 18px;
+    height: 4px;
+    position: relative;
+
+    background: rgba(255,255,255,0.82);
+    border-radius: 999px;
+  }
+
+  .terminos__tocDots::before,
+  .terminos__tocDots::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.82);
+    transform: translateY(-50%);
+  }
+
+  .terminos__tocDots::before{ left: -7px; }
+  .terminos__tocDots::after{ right: -7px; }
+
+  .terminos__tocModal{
+    position: fixed;
+    inset: 0;
+    z-index: 999998;
+
+    display: grid;
+    place-items: center;
+
+    padding:
+      calc(18px + env(safe-area-inset-top))
+      var(--container-pad)
+      calc(18px + env(safe-area-inset-bottom));
+
+    background: rgba(0,0,0,0.42);
+    backdrop-filter: blur(10px) saturate(130%);
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
+
+    animation: politicaTocFade .16s var(--ease) both;
+  }
+
+  @keyframes politicaTocFade{
+    from{ opacity: 0; }
+    to{ opacity: 1; }
+  }
+
+  .terminos__tocPanel{
+    width: min(560px, 100%);
+    max-height: min(78svh, 640px);
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    background: rgba(10,10,10,0.78);
+    border: 1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+
+    box-shadow:
+      0 22px 60px rgba(0,0,0,0.65),
+      0 0 0 1px rgba(0,0,0,0.35) inset;
+
+    transform-origin: center;
+    animation: politicaTocPop .18s var(--ease) both;
+  }
+
+  @keyframes politicaTocPop{
+    from{ transform: translateY(10px) scale(0.98); opacity: 0; }
+    to{ transform: translateY(0) scale(1); opacity: 1; }
+  }
+
+  .terminos__tocTop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .terminos__tocTitle{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .terminos__tocClose{
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+
+    display: grid;
+    place-items: center;
+
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+
+    color: rgba(255,255,255,0.86);
+    font-size: 22px;
+    line-height: 1;
+
+    cursor: pointer;
+    transition: border-color .18s var(--ease), transform .18s var(--ease);
+  }
+
+  .terminos__tocClose:active{
+    transform: scale(0.98);
+  }
+
+  .terminos__tocClose:focus-visible{
+    outline: none;
+    border-color: rgba(255,255,255,0.22);
+  }
+
+  .terminos__tocNav{
+    max-height: calc(min(78svh, 640px) - 56px);
+    overflow: auto;
+
+    padding: 10px 10px 14px;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+
+  .terminos__tocNav a{
+    display: block;
+    padding: 12px 12px;
+    border-radius: 14px;
+
+    text-decoration: none;
+    color: rgba(255,255,255,0.62);
+
+    transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease);
+    border: 1px solid transparent;
+  }
+
+  .terminos__tocNav a.active{
+    color: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.10);
+  }
+
+  @media (hover: hover){
+    .terminos__tocNav a:hover{
+      color: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.045);
+    }
+  }
+}
+
+/* Desktop: por si acaso, el botón nunca aparece */
+@media (min-width: 1025px){
+  .terminos__tocBtn{
+    display: none;
+  }
+}

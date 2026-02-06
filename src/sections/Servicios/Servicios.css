@@ -1,0 +1,284 @@
+/* =========================
+   Servicios — Nuvem (Compacto / Ordenado / Sin colisiones)
+   Fondo negro + texto blanco
+   ========================= */
+
+.services{
+  /*
+  background: #151111;
+  */
+  scroll-margin-top: 130px;
+  background: #000000;
+  color: rgba(255,255,255,.92);
+  padding: clamp(44px, 5vw, 70px) 0;
+}
+
+.services__container{
+  width: min(var(--container-max), 100%);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+/* Header */
+.services__header{
+  max-width: 860px;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+.services__title{
+  margin: 0 0 5px 0;
+
+  font-size: clamp(42px, 7vw, 84px); /* 👈 grande como los demás */
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+
+  font-weight: 800; /* 👈 fuerte, profesional */
+  color: rgba(255,255,255,.95);
+}
+
+.services__subtitle{
+  margin: 0;
+  color: rgba(255,255,255,.72);
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* Lista más compacta pero SIN que se crucen */
+.services__list{
+  display: flex;
+  flex-direction: column;
+
+  /* ✅ separación suficiente para que NUNCA colinden verticalmente */
+  gap: clamp(26px, 3.2vw, 40px);
+}
+
+/* Item */
+.serviceItem{
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+
+  /* ✅ más ordenado y compacto */
+  gap: clamp(18px, 2.2vw, 32px);
+
+  /* ✅ asegura “bloque” independiente sin cruces */
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+/* Alternado (texto/imagen) */
+.serviceItem--reverse{
+  grid-template-columns: 0.95fr 1.05fr;
+}
+
+.serviceItem--reverse .serviceItem__media{
+  order: 2;
+}
+.serviceItem--reverse .serviceItem__content{
+  order: 1;
+}
+
+/* Media (imagen) */
+.serviceItem__media{
+  position: relative;
+
+  /* ✅ bordes más cuadrados (menos redondo) */
+  border-radius: 12px;
+
+  /* ✅ evita colisiones: nada de “bloques” gigantes */
+  overflow: hidden;
+
+  /* ✅ bloque más discreto como LevelUp */
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.10);
+
+  /* ✅ imagen más pequeña / bloque menos alto */
+  height: clamp(190px, 18vw, 250px);
+
+  /* ✅ NO permitir que algo “salga” y se cruce */
+  contain: paint;
+}
+
+/* Glow MUY sutil (y controlado para que no invada a otros items) */
+.serviceItem__glow{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: radial-gradient(
+    60% 60% at 55% 45%,
+    rgba(58,70,237,.16),
+    rgba(0,0,0,0) 62%
+  );
+
+  filter: blur(18px);
+  opacity: .65;
+
+  /* ✅ clave: no “se derrama” hacia fuera */
+  transform: translateZ(0);
+}
+
+/* Imagen */
+.serviceItem__img{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+
+  /* ✅ ligera limpieza visual, sin exagerar */
+  transition: transform .6s var(--ease);
+}
+
+.serviceItem__media:hover .serviceItem__img{
+  transform: scale(1.025); /* 👈 extremadamente sutil */
+}
+
+/* Contenido */
+.serviceItem__content{
+  max-width: 560px;
+}
+
+/* ✅ títulos más legibles y un poco más grandes */
+.serviceItem__title{
+  margin: 0 0 10px 0;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.16;
+
+  font-weight: 800; 
+  letter-spacing: -0.015em;
+
+  color: rgba(255,255,255,.95);
+}
+
+/* ✅ texto más grande y claro (pero no “pesado”) */
+.serviceItem__text{
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: rgba(255,255,255,.78);
+}
+
+/* =========================
+   Services — Aviso legal
+   ========================= */
+
+.services__notice{
+  margin: 64px auto 0;
+  max-width: 420px;
+
+  text-align: center;
+
+  font-size: 0.9rem;
+  line-height: 1.6;
+
+  color: rgba(255,255,255,.6);
+}
+
+/* =========================
+   Services — Aviso legal links
+   ========================= */
+
+.services__noticeLink{
+  color: #456bbed7;          /* azul limpio y moderno */
+  text-decoration: none;  /* ❌ quita la línea */
+  
+  transition: color .2s ease;
+}
+
+.services__noticeLink:hover{
+  color: #456bbe;
+}
+
+/* ------------------------------------------------------------------- RESPONSIVO AQUI ------------------------------------------------------*/
+@media (max-width: 900px){
+
+  /* Header centrado en móvil/tablet */
+  .services__header{
+    max-width: 980px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .services__subtitle{
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+  }
+
+  /* Cada item: de grid a stack */
+  .serviceItem{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Reverse ya no importa en stack */
+  .serviceItem--reverse{
+    grid-template-columns: 1fr;
+  }
+
+  .serviceItem--reverse .serviceItem__media,
+  .serviceItem--reverse .serviceItem__content{
+    order: initial;
+  }
+
+  /* Media arriba, ancho completo */
+  .serviceItem__media{
+    height: auto;                 /* quitamos altura fija del clamp de desktop */
+    aspect-ratio: 16 / 10;        /* ✅ card horizontal pro */
+    border-radius: 14px;          /* un pelín más suave en móvil */
+  }
+
+  /* La imagen sigue llenando el contenedor */
+  .serviceItem__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Texto abajo: sin max-width para que no quede “chiquito” */
+  .serviceItem__content{
+    max-width: none;
+  }
+
+  .serviceItem__title{
+    font-size: clamp(20px, 4.2vw, 26px);
+  }
+
+  .serviceItem__text{
+    font-size: 15.5px;
+  }
+}
+
+@media (max-width: 420px){
+
+  .services{
+    padding: clamp(40px, 6vw, 56px) 0;
+  }
+
+  .services__subtitle{
+    font-size: 16.5px;
+  }
+
+  .serviceItem{
+    gap: 14px;
+  }
+
+  .serviceItem__media{
+    aspect-ratio: 16 / 11;        /* un poquito más alto en pantallas chicas */
+    border-radius: 12px;
+  }
+
+  .serviceItem__text{
+    font-size: 15px;
+  }
+
+  .services__notice{
+    margin-top: 52px;
+  }
+}

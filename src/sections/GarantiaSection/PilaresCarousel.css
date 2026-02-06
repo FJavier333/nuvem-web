@@ -1,0 +1,234 @@
+/* =========================
+   NUVEM — Pilares Carousel
+   Scroll 100% libre + inset inicial natural (sin brincos)
+   ========================= */
+
+.pilares{
+  width: 100%;
+  background: #000; /* ✅ fondo negro */
+  padding-top: clamp(16px, 1vw, 20px); /* ⬅️ reduce el gap */
+  padding-bottom: 1px;
+}
+
+/* Intro arriba del carrusel */
+.pilares__intro{
+  width: min(var(--container-max), 100%);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  padding-top: 0px;
+  padding-bottom: 6px;
+}
+
+.pilares__introTitle{
+  margin: 0 0 5px 0;
+
+  font-size: clamp(40px, 5vw, 60px); /* 👈 grande como los demás */
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+
+  font-weight: 800; /* 👈 fuerte, profesional */
+  color: rgba(255,255,255,.95);
+}
+
+/* Track horizontal con scroll libre */
+.pilares__track{
+  /* Variables */
+  --gap: 14px;
+  --card-w: 360px;
+  --radius-card: 8px;
+
+  /* Aire mínimo al final (ya lo tienes bien) */
+  --end-gap: 18px;
+
+  /* Inset inicial alineado al título/container */
+  --start-inset: max(
+    var(--container-pad),
+    calc((100 - var(--container-max)) / 2 + var(--container-pad) - 17px)
+  );
+
+  display: grid;
+  grid-auto-flow: column;
+
+  /* ✅ Importante: que el ::before pueda medir su width real */
+  grid-auto-columns: max-content;
+
+  gap: var(--gap);
+
+  overflow-x: auto;
+  overflow-y: visible;
+
+  /* ✅ Scroll libre */
+  scroll-snap-type: none;
+
+  padding-top: 5px;
+  padding-bottom: 8px;
+
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+
+  /* ✅ Nada de padding-left dinámico (cero brincos) */
+  padding-left: 0;
+  padding-right: var(--end-gap);
+
+  scrollbar-width: none;
+}
+
+/* ✅ El inset inicial ahora es un “spacer” que se desplaza naturalmente */
+.pilares__track::before{
+  content: "";
+  display: block;
+  width: var(--start-inset);
+}
+
+/* Ocultar scrollbar (sin romper scroll) */
+.pilares__track::-webkit-scrollbar{
+  height: 0px;
+}
+
+/* Cada card controla su ancho */
+.pilares__item{
+  width: var(--card-w);
+}
+
+/* Card */
+.pilares__card{
+  border-radius: var(--radius-card);
+  background: #0b0b0e; /* ✅ oscuro premium */
+  border: 1px solid rgba(255,255,255,.08); /* ✅ borde sutil claro */
+  overflow: hidden;
+
+  transition:
+    transform 220ms var(--ease),
+    box-shadow 220ms var(--ease),
+    border-color 220ms var(--ease);
+  will-change: transform;
+}
+
+/* Imagen */
+.pilares__media{
+  /*Aquí es para ajustar el tamaño vertical de las cards. Antes 350px*/
+  height: 400px;
+  background: #000; /* ✅ negro real */
+  overflow: hidden;
+}
+
+.pilares__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition: transform 320ms var(--ease), filter 320ms var(--ease);
+  /*ANTES
+  transition: transform 320ms var(--ease);
+  ANTES*/
+
+  will-change: transform;
+}
+
+/* Hover sutil SOLO a la imagen (PUEDE SER QUE LO QUITE) */
+.pilares__item:hover .pilares__img{
+  transform: scale(1.03);
+  filter: saturate(1.05) contrast(1.04);
+}
+/* Hover sutil SOLO a la imagen (PUEDE SER QUE LO QUITE) */
+
+
+/* Texto */
+.pilares__meta{
+  padding-top: 16px;            /* ✅ un poco más de aire */
+  padding-right: 6px;           /* ✅ micro respiro visual */
+}
+
+.pilares__title{
+  margin: 0 0 10px;
+
+  font-family: var(--font-sans);
+  font-size: 18px;              /* ✅ más editorial sin ser “headline” */
+  font-weight: 800;             /* ✅ más cercano al sistema */
+  letter-spacing: -0.03em;      /* ✅ mismo ADN que tus títulos */
+  line-height: 1.15;
+
+  color: rgba(255,255,255,.94);
+}
+
+.pilares__desc{
+  margin: 0;
+
+  font-family: var(--font-sans);
+  font-size: 14px;              /* ✅ mantiene tamaño correcto */
+  line-height: 1.7;             /* ✅ lectura editorial */
+  letter-spacing: -0.01em;
+
+  color: rgba(255,255,255,.70); /* ✅ mejor contraste en negro */
+}
+
+/* ✅ Fuerza fondo negro en este componente (aunque .garantia tenga fondo claro) */
+.garantia.pilares{
+  background: #000;
+}
+
+/* ------------------------------------------------------------------- RESPONSIVO AQUI ------------------------------------------------------*/
+/* =========================================================
+   NUVEM — PilaresCarousel Responsive (solo ajustes de variables)
+   No toca desktop
+   ========================================================= */
+
+/* ===== Tablet y abajo ===== */
+@media (max-width: 1024px){
+  .pilares__track{
+    --gap: 12px;
+    --card-w: 320px;   /* ⬅️ baja el tamaño para tablets */
+    --end-gap: 16px;
+  }
+
+  .pilares__media{
+    height: 300px;     /* ⬅️ baja altura (menos “bloque gigante”) xd*/
+  }
+  
+  .pilares__introTitle{
+    font-size: clamp(32px, 4.6vw, 46px); /* ⬅️ mantiene jerarquía sin reventar */
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px){
+  .pilares__track{
+    --gap: 10px;
+    --card-w: 78vw;    /* ⬅️ 1 card dominante por vista */
+    --end-gap: 14px;
+  }
+
+  .pilares__media{
+    /*Cards mas largas vertical en mobil:
+    Antes (Original): 220px, 36vw, 280px
+    Otra opción: 260px, 42vw, 340px */
+    height: clamp(300px, 56vw, 400px); /* ⬅️ proporcional en móviles */
+  }
+
+  .pilares__meta{
+    padding-top: 14px;
+    padding-right: 0;
+  }
+
+  .pilares__title{
+    font-size: 16px;
+  }
+
+  .pilares__desc{
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  .pilares__introTitle{
+    font-size: clamp(26px, 7vw, 38px);
+    line-height: 1.06;
+  }
+}
+
+/* ===== Mobile pequeño (por seguridad) ===== */
+@media (max-width: 420px){
+  .pilares__track{
+    --card-w: 86vw; /* ⬅️ evita que se sienta “apretado” */
+  }
+}

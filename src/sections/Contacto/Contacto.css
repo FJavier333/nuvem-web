@@ -1,0 +1,172 @@
+/* =========================
+   NUVEM — Contacto (Minimal / Editorial / Selected-like)
+   ========================= */
+
+.contacto{
+  width: 100%;
+  padding-top: clamp(72px, 10vw, 120px);
+  padding-bottom: clamp(72px, 10vw, 120px);
+}
+
+/* el ancla real */
+#contacto{
+  scroll-margin-top: 130px;
+}
+
+/* =========================
+   Head
+   ========================= */
+
+.contacto__head{
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 10px 0 18px;
+}
+
+.contacto__title{
+  margin: 0 0 12px;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  font-size: clamp(36px, 6vw, 78px);
+  color: #0b0b0c;
+}
+
+.contacto__desc{
+  margin: 0 auto;
+  max-width: 720px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text);
+  text-align: center;
+}
+
+/* =========================
+   Form
+   ========================= */
+
+.contacto__simple{
+  margin: 12px auto 0;   /* ⬆️ antes 18px (sube el bloque respecto al texto) */
+  max-width: 520px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;             /* un poco más cerrado */
+  justify-items: center; /* ✅ centra TODO lo de adentro (btn y link) */
+  text-align: center;    /* ✅ centra el texto del link */
+}
+
+/* =========================
+   Input (Selected-like)
+   ========================= */
+
+.contacto__input{
+  width: 100%;
+  height: auto;
+  text-align: center;
+
+  padding: 10px 0;
+
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 3vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  background: transparent;
+  color: #0b0b0c;
+
+  border: 0;
+  border-radius: 0;
+  padding-bottom: 1px;
+  border-bottom: 1px solid rgba(109, 111, 255, 0.28);
+
+  outline: none;
+  box-shadow: none;
+
+  transition: border-bottom-color .25s ease;
+}
+
+.contacto__input::placeholder{
+  font-size: clamp(24px, 3vw, 39px);
+  color: rgb(62, 62, 62);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+}
+
+.contacto__input:focus{
+  border-bottom-color: #29785f;
+}
+
+/* =========================
+   Button (centrado)
+   ========================= */
+
+.contacto__simple .btn{
+  display: block;
+  width: fit-content;
+  margin: 6px auto 0;
+  margin-top: 0;
+
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Link correo — separado y con línea inferior */
+.contacto__simple .btn-text{
+  margin-top: 18px;
+
+  display: inline-block;
+  width: fit-content;
+  justify-self: center;
+
+  font-size: 0.95rem;
+  color: rgba(0,0,0,0.7);
+
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(0,0,0,0.6);
+  text-underline-offset: 1px; /* 🔑 PEGADÍSIMA */
+
+  transition: color .25s ease, text-decoration-color .25s ease;
+}
+
+.contacto__simple .btn-text:hover{
+  color: rgba(0,0,0,0.95);
+  text-decoration-color: rgba(0,0,0,0.85);
+}
+
+
+/* =========================================================
+   NUVEM — Contacto Responsive (seguro mínimo)
+   No cambia el diseño, solo estabiliza en pantallas chicas
+   ========================================================= */
+
+@media (max-width: 768px){
+  /* ancla más precisa en mobile */
+  #contacto{
+    scroll-margin-top: 96px;
+  }
+
+  /* evita que el title se sienta enorme en móviles */
+  .contacto__title{
+    font-size: clamp(34px, 9vw, 54px);
+  }
+}
+
+/* =========================================================
+   NUVEM — Contacto: reducir aire vertical en responsive
+   ========================================================= */
+
+@media (max-width: 768px){
+  .contacto{
+    padding-top: clamp(44px, 8vw, 72px);
+    padding-bottom: clamp(44px, 8vw, 72px);
+  }
+}
+/*
+padding-top: clamp(52px, 8vw, 80px);
+padding-bottom: clamp(52px, 8vw, 80px);
+*/

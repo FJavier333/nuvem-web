@@ -1,0 +1,502 @@
+.header{
+  padding-top: clamp(16px, 6vw, 16px);
+  padding-bottom: clamp(16px, 6vw, 16px);
+
+  position: fixed;
+  top: 48px;
+  left: 0;
+  z-index: 20000;
+
+  width: 100%;
+  pointer-events: auto;
+
+  /* ✅ Estado base: negro sólido SIEMPRE */
+  background: #000;
+  border-bottom: 0;
+  box-shadow: none;
+
+  transition: background .6s var(--ease), box-shadow .6s var(--ease), border-color .6s var(--ease);
+}
+
+/* ✅ Al hacer scroll: negro sólido */
+.header.header--solid{
+  background: #000;
+}
+
+/* ✅ Al inicio: ahora también negro (se elimina transparencia) */
+.header.header--transparent{
+  background: #000;
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+.header__inner{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header__logo{
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.header__logoImg{
+  display: block;
+  height: 43px;      /* ajusta a gusto */
+  width: auto;
+}
+
+.header__brand{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__nav{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* =========
+   Menús
+   ========= */
+.menu{
+  position: relative;
+}
+
+.menu__trigger{
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  padding: 6px 8px;
+  border-radius: 10px;
+
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  line-height: 1;
+
+  transition: color .15s var(--ease), background .15s var(--ease);
+}
+
+/* ✅ hover sutil en oscuro (no claro) */
+.menu__trigger:hover{
+  color: var(--text);
+  background: rgba(255,255,255,.08);
+}
+
+.menu__chev{
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+
+  transform: rotate(45deg);
+  transition: transform .15s var(--ease), opacity .15s var(--ease);
+
+  opacity: .6;
+}
+
+.menu--open .menu__chev{
+  transform: rotate(-135deg);
+  opacity: .85;
+}
+
+.menu__trigger:hover .menu__chev{
+  opacity: .85;
+}
+
+/* 🔥 DROPDOWN NEGRO (Squarespace-style) */
+.menu__panel{
+  position: absolute;
+  top: calc(100% + 36px);
+  left: 0;
+  margin-top: 0;
+  padding: 18px 16px 16px;
+
+  min-width: 260px;     /* un poco más “folder” */
+  border-radius: 28px;  /* iOS */
+
+  /* iOS folder glass */
+  background: rgba(20,20,24,.78);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+
+  border: 1px solid rgba(255,255,255,.28);
+  box-shadow:
+    0 26px 70px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.22);
+
+  overflow: hidden; /* clave para el look */
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px) scale(.98);
+  transform-origin: top left;
+  transition: opacity .16s var(--ease), transform .16s var(--ease), visibility .16s var(--ease);
+}
+
+/* 🔻 Flechita que apunta al menú padre (Squarespace-style) 
+.menu__panel::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -44px;
+  height: 44px;
+  background: transparent;
+  pointer-events: auto;
+}
+*/
+
+/* Apertura controlada por React */
+.menu--open .menu__panel{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.menu__item{
+  display: block;
+  padding: 12px 14px;
+  border-radius: 16px;
+
+  color: rgba(255,255,255,.94);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+
+  position: relative;
+  z-index: 1;
+
+  transition: background .15s var(--ease), transform .15s var(--ease);
+}
+
+.menu__item:hover{
+  background: rgba(255,255,255,.12);
+  transform: translateY(-1px);
+}
+
+.menu__item + .menu__item{
+  border-top: 1px solid rgba(255,255,255,.16);
+}
+
+.menu__panel::marker{ content: ""; } /* ignora */
+.menu__panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+
+  /* ✅ tinta fija + brillo iOS */
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.26)),
+    radial-gradient(120% 90% at 30% 10%, rgba(255,255,255,.10), transparent 55%),
+    radial-gradient(120% 90% at 80% 120%, rgba(0,0,0,.18), transparent 55%);
+}
+
+/* =========
+   Acciones derecha
+   ========= */
+.header__actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__link{
+  color: var(--muted);
+  font-weight: 500;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: color .15s var(--ease), background .15s var(--ease);
+}
+
+.header__link:hover{
+  color: var(--text);
+  background: rgba(255,255,255,.08);
+}
+
+/* ✅ Como Squarespace: si estás arriba (transparente) y pasas el mouse, se vuelve negro 
+.header.header--transparent:hover{
+  background: #000;
+}*/
+
+/* ✅ Si cualquier dropdown está abierto, también forzamos header negro */
+.header:has(.menu--open){
+  background: #000;
+}
+
+/* ✅ Header negro al interactuar con el nav (aunque estés entre items) */
+.header.header--transparent:has(.header__nav:hover),
+.header.header--transparent:has(.menu--open){
+  background: #000;
+}
+
+/* =========================
+   Dropdown items — efecto cascada
+   No cambia comportamiento, solo animación visual
+   ========================= */
+
+/* Estado base: items “apagados” mientras el panel está cerrado */
+.menu__panel .menu__item{
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity .22s var(--ease),
+    transform .22s var(--ease);
+}
+
+/* Cuando abre: aparecen */
+.menu--open .menu__panel .menu__item{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cascada: delays por orden (hasta 12 items) */
+.menu--open .menu__panel .menu__item:nth-child(1){ transition-delay: 40ms; }
+.menu--open .menu__panel .menu__item:nth-child(2){ transition-delay: 80ms; }
+.menu--open .menu__panel .menu__item:nth-child(3){ transition-delay: 120ms; }
+.menu--open .menu__panel .menu__item:nth-child(4){ transition-delay: 160ms; }
+.menu--open .menu__panel .menu__item:nth-child(5){ transition-delay: 200ms; }
+.menu--open .menu__panel .menu__item:nth-child(6){ transition-delay: 240ms; }
+.menu--open .menu__panel .menu__item:nth-child(7){ transition-delay: 280ms; }
+.menu--open .menu__panel .menu__item:nth-child(8){ transition-delay: 320ms; }
+.menu--open .menu__panel .menu__item:nth-child(9){ transition-delay: 360ms; }
+.menu--open .menu__panel .menu__item:nth-child(10){ transition-delay: 400ms; }
+.menu--open .menu__panel .menu__item:nth-child(11){ transition-delay: 440ms; }
+.menu--open .menu__panel .menu__item:nth-child(12){ transition-delay: 480ms; }
+
+/* - = - = - = - = - = - = - = - = - - = - = - = - = -  - = - - = - = - = - = - = - = - = - = - - = - = - - = - = -TEMA RESPONSIVOxd = - = - = - - = - - - = - = - = - == - = - =- = - = - = - = - = - = - = - = - = - = - = - = - = - = - = */
+
+/* ===== Actions right ===== */
+.header__actions{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ===== Burger (hidden on desktop) ===== */
+.header__burger{
+  display: none;
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.92);
+  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  padding: 0;
+
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3 lines */
+.header__burgerLines{
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  position: relative;
+  display: block;
+}
+
+.header__burgerLines::before,
+.header__burgerLines::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+.header__burgerLines::before{ top: -5px; }
+.header__burgerLines::after{ top: 5px; }
+
+/* ===== Mobile overlay wrapper (CLOSED does NOT block desktop) ===== */
+.mobileNav{
+  position: fixed;
+  inset: 0;
+  z-index: 30000;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity .18s var(--ease), visibility .18s var(--ease);
+}
+
+.mobileNav--open{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Backdrop */
+.mobileNav__backdrop{
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: rgba(0,0,0,0);
+  cursor: pointer;
+  /*SOLO Z-INDEX. Esto era la causa de que no respondia el menu hamburguesa*/
+  z-index: 1;
+}
+
+/* Drawer panel */
+.mobileNav__panel{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  /*AQUI SE HACE MAS PEQUEÑO EL MENU HORIZONTALMENTE. VALOR ANTERIOR: (86vw, 340px)*/
+  width: min(78vw, 300px);
+
+  /* ✅ menos “apagado” */
+  background: rgba(18,18,22,.88);
+
+  /* ✅ glass más limpio */
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+  border-right: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 30px 90px rgba(0,0,0,.65);
+
+  padding: 14px 14px 14px;
+  overflow: auto;
+
+  transform: translateX(-12px);
+  transition: transform .22s var(--ease);
+  /*SOLO Z-INDEX. Esto era la causa de que no respondia el menu hamburguesa*/
+  z-index: 2;
+}
+
+.mobileNav--open .mobileNav__panel{
+  transform: translateX(0);
+}
+
+/* Top row */
+.mobileNav__top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.mobileNav__title{
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,.92);
+  padding-left: 10px;
+}
+
+.mobileNav__close{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.92);
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+
+/* Sections */
+.mobileNav__section{
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.mobileNav__label{
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.62);
+
+  /* ✅ mismo arranque que los links */
+  padding: 0 6px;
+
+  margin-bottom: 8px;
+}
+
+.mobileNav__link{
+  display: block;
+  padding: 8px 8px;
+  border-radius: 10px;
+  color: rgba(255,255,255,.92);
+  transition: background .15s var(--ease);
+}
+
+.mobileNav__link:hover{
+  background: rgba(255,255,255,.06);
+}
+
+.mobileNav__cta{
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.10);
+
+  /* ✅ para que el botón pueda expandir */
+  display: flex;
+  }
+
+  .mobileNav__cta .btnCotiza{
+    width: 100%;
+    justify-content: center;
+    height: 44px;
+}
+
+/* ===== Breakpoint ===== */
+@media (max-width: 640px){
+
+  /* Hide desktop nav */
+  .header__nav{
+    display: none;
+  }
+
+  /* Show burger */
+  .header__burger{
+    display: inline-flex;
+  }
+
+  /* Slightly tighter */
+  .header__inner{
+    height: 52px;
+    gap: 12px;
+  }
+
+  .header__logoImg{
+    height: 38px;
+  }
+
+  .btnCotiza{
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+}

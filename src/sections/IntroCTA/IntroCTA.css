@@ -1,0 +1,133 @@
+.introCta{
+  position: relative;
+  padding: clamp(64px, 10vw, 120px) 0;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* Fondo de partículas */
+.introCta__particles{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  /* ✅ Default (touch): NO capturar dedo */
+  pointer-events: none;
+  touch-action: pan-y;
+}
+
+/* Contenido */
+.introCta__inner{
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+
+  position: relative;
+  z-index: 2;
+
+  /* ✅ Default (touch): scroll normal sobre el contenido */
+  pointer-events: auto;
+}
+
+/* Texto pequeño superior */
+.introCta__kicker{
+  display: inline-block;
+  margin-bottom: 22px;
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+
+  color: var(--text);
+}
+
+/* Headline gigante */
+.introCta__title{
+  margin: 0 0 28px;
+
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+
+  font-size: clamp(42px, 6.5vw, 90px);
+  color: var(--text);
+}
+
+/* Texto descriptivo */
+.introCta__text{
+  max-width: 720px;
+  margin: 0 auto 42px;
+
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* Botones */
+.introCta__actions{
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  /* re-activamos clicks SOLO aquí */
+  pointer-events: auto;
+}
+
+.introCta__actions *{
+  pointer-events: auto;
+}
+
+/* ------------------------------------------------------------------- RESPONSIVO AQUI ------------------------------------------------------*/
+@media (max-width: 768px){
+  .introCta{
+    padding: clamp(56px, 10vw, 96px) 0;
+  }
+
+  .introCta__kicker{
+    margin-bottom: 18px;
+  }
+
+  .introCta__title{
+    font-size: clamp(36px, 9vw, 56px);
+    line-height: 1.03;
+    margin-bottom: 22px;
+  }
+
+  .introCta__text{
+    font-size: 15px;
+    line-height: 1.65;
+    margin: 0 auto 36px;
+    padding: 0 14px; /* solo evita que se pegue a la orilla */
+  }
+}
+
+@media (max-width: 420px){
+  .introCta__title{
+    font-size: clamp(34px, 10vw, 50px);
+  }
+
+  .introCta__text{
+    padding: 0 12px;
+  }
+}
+
+/* Desktop: AQUÍ DESACTIVA LA FUNCIÓN DE LAS PARTICULAS DEFORMADAS EN PANTALLAS TOUCH, DESKTOP NORMAL SIGUE IGUAL */
+@media (hover: hover) and (pointer: fine){
+  .introCta__particles{
+    pointer-events: auto;
+  }
+
+  /* deja pasar el mouse al canvas para el hover */
+  .introCta__inner{
+    pointer-events: none;
+  }
+
+  /* pero los botones siguen clicables */
+  .introCta__actions,
+  .introCta__actions *{
+    pointer-events: auto;
+  }
+}
