@@ -1,5 +1,4 @@
 import "./FinalCTA.css";
-import hero10 from "../../assets/hero11.mp4";
 import { useState } from "react";
 import WhatsAppQRModal from "../../components/Contact/WhatsAppQRModal";
 
@@ -8,15 +7,7 @@ export default function FinalCTA() {
   return (
     <section className="finalCta" aria-label="Final Call to Action">
       <div className="finalCta__media">
-        <video
-          className="finalCta__video"
-          src={hero10}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-        />
+        {/* Video temporalmente desactivado */}
         <div className="finalCta__overlay" aria-hidden="true"></div>
       </div>
 
