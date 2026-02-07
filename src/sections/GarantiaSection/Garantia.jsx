@@ -4,7 +4,7 @@ import "./PilaresCarousel.css";
 import img1 from "../../images/pilar1.1.jpg";
 import img2 from "../../images/pilar2.jpg";
 import img3 from "../../images/pilar3.jpg";
-import img4 from "../../images/Item2.jpg";
+import img4 from "../../images/item2.jpg";
 import img5 from "../../images/pilar5.3.jpg";
 
 export default function PilaresCarousel() {
