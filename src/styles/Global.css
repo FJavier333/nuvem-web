@@ -41,8 +41,8 @@
 /* Base reset */
 *{ box-sizing: border-box; }
 html, body{
-  height: 100%;          /* ✅ */
-  overflow-x: hidden;      /* ✅ el scroll debe ser del window */
+  height: auto;          /* ✅ */
+  overflow-x: visible;      /* ✅ el scroll debe ser del window */
   overflow-y: visible;
 }
 
