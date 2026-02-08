@@ -7,7 +7,15 @@ export default function FinalCTA() {
   return (
     <section className="finalCta" aria-label="Final Call to Action">
       <div className="finalCta__media">
-        {/* Video temporalmente desactivado */}
+        <video
+          className="finalCta__video"
+          src="https://jqfoelzu0sy400ry.public.blob.vercel-storage.com/hero11.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        />
         <div className="finalCta__overlay" aria-hidden="true"></div>
       </div>
 
