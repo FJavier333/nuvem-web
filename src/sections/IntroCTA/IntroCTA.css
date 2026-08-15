@@ -1,6 +1,6 @@
 .introCta{
   position: relative;
-  padding: clamp(64px, 10vw, 120px) 0;
+  padding: clamp(96px, 12vw, 168px) 0;
   background: var(--bg);
   overflow: hidden;
 }
@@ -47,11 +47,11 @@
   margin: 0 0 28px;
 
   font-family: var(--font-sans);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 0.98;
+  font-weight: 540;
+  letter-spacing: -0.055em;
+  line-height: .98;
 
-  font-size: clamp(42px, 6.5vw, 90px);
+  font-size: clamp(48px, 7vw, 96px);
   color: var(--text);
 }
 
