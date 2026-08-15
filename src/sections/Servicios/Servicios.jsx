@@ -43,9 +43,9 @@ export default function Servicios() {
     <section className="services" id="servicios">
       <div className="services__container">
         <header className="services__header">
-          <h2 className="services__title">Lo que hacemos</h2>
+          <h2 className="services__title">NUESTRO CATÁLOGO</h2>
           <p className="services__subtitle">
-            Soluciones construidas con criterio, claridad y una base técnica sólida.
+            OFRECEMOS SOLUCIONES CONSTRUIDAS CON CRITERIO, CLARIDAD Y BASE TÉCNICA SÓLIDA.
           </p>
         </header>
 

@@ -17,17 +17,20 @@ export default function IntroCTA() {
         <div className="introCta__inner">
 
           <span className="introCta__kicker">
-            Nuvem · Estudio digital
+            NUVEM · ESTUDIO DIGITAL
           </span>
 
           <h2 className="introCta__title">
-            Webs con intención,<br />sin ruido.
+            DESARROLLO WEB
+            <br />
+            PROFESIONAL
           </h2>
 
           <p className="introCta__text">
-            Convertimos ideas complejas en experiencias digitales claras,
-            cuidadas y preparadas para crecer. Cada decisión tiene una razón:
-            comunicar mejor, generar confianza y facilitar el siguiente paso.
+            Diseñamos y desarrollamos sitios web profesionales,
+            escalables y completamente personalizados.
+            Nada de plantillas. Nada de soluciones express.
+            Solo productos digitales pensados para crecer contigo.
           </p>
 
           <div className="introCta__actions">

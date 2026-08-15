@@ -8,7 +8,7 @@
   background: #151111;
   */
   scroll-margin-top: 130px;
-  background: #121311;
+  background: #000000;
   color: rgba(255,255,255,.92);
   padding: clamp(44px, 5vw, 70px) 0;
 }
@@ -32,7 +32,7 @@
   line-height: 1.05;
   letter-spacing: -0.03em;
 
-  font-weight: 540;
+  font-weight: 800; /* 👈 fuerte, profesional */
   color: rgba(255,255,255,.95);
 }
 

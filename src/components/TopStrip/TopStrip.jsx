@@ -2,10 +2,14 @@ import React from "react";
 import "./TopStrip.css";
 
 const SERVICES = [
-  "Estrategia digital",
-  "Diseño web",
-  "Desarrollo a medida",
-  "Experiencias claras",
+  "SITIOS WEB INFORMATIVOS",
+  "SITIOS WEB DINAMICOS",
+  "CMS",
+  "PORTAFOLIOS EN LINEA",
+  "TIENDAS EN LINEA",
+  "MICROSITIOS",
+  "BLOGS",
+  "AUTOMATIZACIONES CON IA",
 ];
 
 export default function TopStrip() {

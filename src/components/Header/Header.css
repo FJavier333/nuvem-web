@@ -3,7 +3,7 @@
   padding-bottom: clamp(16px, 6vw, 16px);
 
   position: fixed;
-  top: 36px;
+  top: 48px;
   left: 0;
   z-index: 20000;
 
@@ -11,10 +11,7 @@
   pointer-events: auto;
 
   /* ✅ Estado base: negro sólido SIEMPRE */
-  background: rgba(18,19,17,.82);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: #000;
   border-bottom: 0;
   box-shadow: none;
 
@@ -23,12 +20,12 @@
 
 /* ✅ Al hacer scroll: negro sólido */
 .header.header--solid{
-  background: rgba(18,19,17,.96);
+  background: #000;
 }
 
 /* ✅ Al inicio: ahora también negro (se elimina transparencia) */
 .header.header--transparent{
-  background: rgba(18,19,17,.74);
+  background: #000;
   border-bottom: 0;
   box-shadow: none;
 }
@@ -63,7 +60,7 @@
 .header__nav{
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 20px;
 }
 
 /* =========
@@ -127,13 +124,13 @@
 /* 🔥 DROPDOWN NEGRO (Squarespace-style) */
 .menu__panel{
   position: absolute;
-  top: calc(100% + 24px);
+  top: calc(100% + 36px);
   left: 0;
   margin-top: 0;
   padding: 18px 16px 16px;
 
   min-width: 260px;     /* un poco más “folder” */
-  border-radius: 16px;
+  border-radius: 28px;  /* iOS */
 
   /* iOS folder glass */
   background: rgba(20,20,24,.78);
