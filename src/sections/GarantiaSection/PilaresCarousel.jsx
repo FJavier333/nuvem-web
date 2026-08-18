@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./PilaresCarousel.css";
 
 import img1 from "../../images/pilar1.1.jpg";
@@ -10,6 +10,9 @@ import img5 from "../../images/Nuvem4.jpg";
 export default function PilaresCarousel() {
   const rootRef = useRef(null);
   const trackRef = useRef(null);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+  const [hasOverflow, setHasOverflow] = useState(false);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -55,9 +58,13 @@ export default function PilaresCarousel() {
 
       const atStart = sl <= 1;
       const atEnd = sl >= max - 1;
+      const overflows = max > 1;
 
       root.classList.toggle("is-scrolled", !atStart);
       root.classList.toggle("is-end", atEnd);
+      setHasOverflow(overflows);
+      setCanScrollPrev(overflows && !atStart);
+      setCanScrollNext(overflows && !atEnd);
     };
 
     update();
@@ -69,6 +76,20 @@ export default function PilaresCarousel() {
       window.removeEventListener("resize", update);
     };
   }, []);
+
+  const scrollByCard = (direction) => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const card = track.querySelector(".pilares__item");
+    if (!card) return;
+
+    const styles = getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+    const step = card.getBoundingClientRect().width + gap;
+
+    track.scrollBy({ left: direction * step, behavior: "smooth" });
+  };
 
   const items = useMemo(
     () => [
@@ -123,6 +144,32 @@ export default function PilaresCarousel() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="pilares__controls" hidden={!hasOverflow}>
+          <button
+            className="pilares__arrow pilares__arrow--prev"
+            type="button"
+            aria-label="Ver principio anterior"
+            disabled={!canScrollPrev}
+            onClick={() => scrollByCard(-1)}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          <button
+            className="pilares__arrow pilares__arrow--next"
+            type="button"
+            aria-label="Ver principio siguiente"
+            disabled={!canScrollNext}
+            onClick={() => scrollByCard(1)}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
         </div>
     </div>
   );

@@ -4,6 +4,7 @@
    ========================= */
 
 .pilares{
+  position: relative;
   width: 100%;
   background: #000; /* ✅ fondo negro */
   padding-top: clamp(16px, 1vw, 20px); /* ⬅️ reduce el gap */
@@ -83,6 +84,69 @@
 /* Ocultar scrollbar (sin romper scroll) */
 .pilares__track::-webkit-scrollbar{
   height: 0px;
+}
+
+.pilares__controls{
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine){
+  .pilares__controls{
+    position: absolute;
+    inset: 0;
+    display: block;
+    pointer-events: none;
+  }
+
+  .pilares__controls[hidden]{
+    display: none;
+  }
+
+  .pilares__arrow{
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 50%;
+    background: rgba(0,0,0,.72);
+    color: rgba(255,255,255,.95);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    pointer-events: auto;
+    transform: translateY(-50%);
+  }
+
+  .pilares__arrow--prev{
+    left: 18px;
+  }
+
+  .pilares__arrow--next{
+    right: 18px;
+  }
+
+  .pilares__arrow svg{
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .pilares__arrow:focus-visible{
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  .pilares__arrow:disabled{
+    opacity: .35;
+    cursor: default;
+  }
 }
 
 /* Cada card controla su ancho */

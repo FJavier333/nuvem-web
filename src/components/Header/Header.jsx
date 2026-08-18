@@ -183,7 +183,7 @@ export default function Header() {
                 Portafolio
               </a>
               <a className="menu__item" href="/#porque" onClick={() => setOpenMenu(null)}>
-                Garantía
+                Nuestro enfoque
               </a>
               <a className="menu__item" href="/#faq" onClick={() => setOpenMenu(null)}>
                 FAQ
@@ -206,7 +206,7 @@ export default function Header() {
               aria-expanded={openMenu === "paginas"}
               onClick={() => toggleMenu("paginas")}
             >
-              Páginas <span className="menu__chev" aria-hidden="true"></span>
+              Acerca <span className="menu__chev" aria-hidden="true"></span>
             </button>
 
             <div
