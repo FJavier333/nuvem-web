@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Servicios.css";
 
 // ✅ Ajusta estos nombres a tus archivos reales en src/images
@@ -78,13 +79,13 @@ export default function Servicios() {
         </div>
         <p className="services__notice">
           Todos los servicios están sujetos a los{" "}
-          <a href="terminos" className="services__noticeLink">
+          <Link to="/terminos" className="services__noticeLink">
             términos y condiciones
-          </a>{" "}
+          </Link>{" "}
           y a la{" "}
-          <a href="politica" className="services__noticeLink">
+          <Link to="/politica" className="services__noticeLink">
             política
-          </a>{" "}
+          </Link>{" "}
           de la empresa.
         </p>
       </div>
