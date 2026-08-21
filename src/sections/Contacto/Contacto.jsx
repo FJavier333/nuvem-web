@@ -2,27 +2,39 @@ import "./Contacto.css";
 import GrainSection from "../../components/GrainSection/GrainSection";
 import { useState } from "react";
 import WhatsAppQRModal from "../../components/Contact/WhatsAppQRModal";
+import useRevealCascade from "../../hooks/useRevealCascade";
 
 export default function Contacto() {
   const [openQR, setOpenQR] = useState(false);
+  const revealRootRef = useRevealCascade();
+
   return (
-    <GrainSection className="contacto" variant="dark">
-      <section id="contacto" aria-label="Contacto">
+    <GrainSection
+      ambient="green-balanced"
+      className="contacto"
+      variant="dark"
+    >
+      <section id="contacto" aria-label="Contacto" ref={revealRootRef}>
         <div className="container">
           <header className="contacto__head">
-            <h2 className="contacto__title">
+            <h2 className="contacto__title" data-reveal>
               CONTACTO
               <br />
               Y COTIZACIÓN
             </h2>
 
-            <p className="contacto__desc">
+            <p className="contacto__desc" data-reveal data-reveal-delay="1">
               Escríbenos directamente para cotizar tu proyecto o resolver cualquier
               duda. Atención rápida y personalizada.
             </p>
           </header>
 
-          <div className="contacto__simple" aria-label="Contacto directo">
+          <div
+            className="contacto__simple"
+            aria-label="Contacto directo"
+            data-reveal
+            data-reveal-delay="2"
+          >
             <button
               type="button"
               className="btnCotiza"

@@ -5,6 +5,219 @@
   isolation: isolate;
 }
 
+/* Ambient backgrounds sit below the noise and halo layers. */
+.grainSection--ambient-green{
+  background-image:
+    radial-gradient(
+      circle 320px at 12% 300px,
+      rgba(25, 165, 132, 0.15) 0%,
+      rgba(60, 170, 145, 0.083) 38%,
+      rgba(60, 170, 145, 0) 72%
+    ),
+    radial-gradient(
+      circle 170px at 58% 260px,
+      rgba(60, 170, 145, 0.06) 0%,
+      rgba(60, 170, 145, 0.03) 42%,
+      rgba(60, 170, 145, 0) 74%
+    ),
+    radial-gradient(
+      540px 360px at 96% 38%,
+      rgba(60, 170, 145, 0.098),
+      rgba(60, 170, 145, 0) 68%
+    ),
+    radial-gradient(
+      420px 300px at 30% 74%,
+      rgba(60, 170, 145, 0.068),
+      rgba(60, 170, 145, 0) 70%
+    ),
+    radial-gradient(
+      600px 400px at 78% 98%,
+      rgba(60, 170, 145, 0.083),
+      rgba(60, 170, 145, 0) 70%
+    ),
+    radial-gradient(
+      circle 320px at 88% 180px,
+      rgba(146, 59, 234, 0.15) 0%,
+      rgba(107, 69, 232, 0.083) 38%,
+      rgba(107, 69, 232, 0) 72%
+    ),
+    radial-gradient(
+      circle 170px at 42% 340px,
+      rgba(125, 63, 235, 0.06) 0%,
+      rgba(89, 75, 230, 0.03) 42%,
+      rgba(89, 75, 230, 0) 74%
+    ),
+    radial-gradient(
+      540px 360px at 4% 48%,
+      rgba(146, 59, 234, 0.098),
+      rgba(146, 59, 234, 0) 68%
+    ),
+    radial-gradient(
+      420px 300px at 70% 68%,
+      rgba(107, 69, 232, 0.068),
+      rgba(107, 69, 232, 0) 70%
+    ),
+    radial-gradient(
+      600px 400px at 22% 92%,
+      rgba(125, 63, 235, 0.083),
+      rgba(125, 63, 235, 0) 70%
+    );
+}
+
+.grainSection--ambient-green-left{
+  background-image:
+    radial-gradient(
+      520px 380px at 6% 16%,
+      rgba(25, 165, 132, 0.135) 0%,
+      rgba(60, 170, 145, 0.075) 40%,
+      rgba(60, 170, 145, 0) 72%
+    ),
+    radial-gradient(
+      280px 220px at 88% 34%,
+      rgba(60, 170, 145, 0.053),
+      rgba(60, 170, 145, 0) 70%
+    ),
+    radial-gradient(
+      460px 320px at 14% 62%,
+      rgba(60, 170, 145, 0.083),
+      rgba(60, 170, 145, 0) 70%
+    ),
+    radial-gradient(
+      320px 240px at 74% 81%,
+      rgba(60, 170, 145, 0.053),
+      rgba(60, 170, 145, 0) 70%
+    ),
+    radial-gradient(
+      520px 340px at 10% 80%,
+      rgba(60, 170, 145, 0.068),
+      rgba(60, 170, 145, 0) 70%
+    ),
+    radial-gradient(
+      520px 380px at 94% 22%,
+      rgba(146, 59, 234, 0.135) 0%,
+      rgba(107, 69, 232, 0.075) 40%,
+      rgba(107, 69, 232, 0) 72%
+    ),
+    radial-gradient(
+      280px 220px at 12% 40%,
+      rgba(89, 75, 230, 0.053),
+      rgba(89, 75, 230, 0) 70%
+    ),
+    radial-gradient(
+      460px 320px at 86% 56%,
+      rgba(125, 63, 235, 0.083),
+      rgba(125, 63, 235, 0) 70%
+    ),
+    radial-gradient(
+      320px 240px at 26% 88%,
+      rgba(107, 69, 232, 0.053),
+      rgba(107, 69, 232, 0) 70%
+    ),
+    radial-gradient(
+      520px 340px at 90% 76%,
+      rgba(146, 59, 234, 0.068),
+      rgba(146, 59, 234, 0) 70%
+    );
+}
+
+.grainSection--ambient-green-subtle{
+  background-image:
+    radial-gradient(
+      280px 210px at 14% 42%,
+      rgba(25, 165, 132, 0.075) 0%,
+      rgba(60, 170, 145, 0.043) 40%,
+      rgba(60, 170, 145, 0) 72%
+    ),
+    radial-gradient(
+      240px 180px at 86% 62%,
+      rgba(60, 170, 145, 0.06),
+      rgba(60, 170, 145, 0) 70%
+    ),
+    radial-gradient(
+      360px 220px at 50% 100%,
+      rgba(60, 170, 145, 0.038),
+      rgba(60, 170, 145, 0) 70%
+    ),
+    radial-gradient(
+      280px 210px at 86% 32%,
+      rgba(146, 59, 234, 0.075) 0%,
+      rgba(107, 69, 232, 0.043) 40%,
+      rgba(107, 69, 232, 0) 72%
+    ),
+    radial-gradient(
+      240px 180px at 18% 72%,
+      rgba(125, 63, 235, 0.06),
+      rgba(125, 63, 235, 0) 70%
+    ),
+    radial-gradient(
+      360px 220px at 62% 92%,
+      rgba(89, 75, 230, 0.038),
+      rgba(89, 75, 230, 0) 70%
+    );
+}
+
+.grainSection--ambient-green-balanced{
+  background-image:
+    radial-gradient(
+      340px 240px at 12% 30%,
+      rgba(25, 165, 132, 0.09) 0%,
+      rgba(60, 170, 145, 0.053) 40%,
+      rgba(60, 170, 145, 0) 72%
+    ),
+    radial-gradient(
+      340px 240px at 88% 70%,
+      rgba(60, 170, 145, 0.083),
+      rgba(60, 170, 145, 0) 70%
+    ),
+    radial-gradient(
+      400px 220px at 50% 100%,
+      rgba(60, 170, 145, 0.045),
+      rgba(60, 170, 145, 0) 70%
+    ),
+    radial-gradient(
+      340px 240px at 88% 24%,
+      rgba(146, 59, 234, 0.09) 0%,
+      rgba(107, 69, 232, 0.053) 40%,
+      rgba(107, 69, 232, 0) 72%
+    ),
+    radial-gradient(
+      340px 240px at 12% 78%,
+      rgba(125, 63, 235, 0.083),
+      rgba(125, 63, 235, 0) 70%
+    ),
+    radial-gradient(
+      400px 220px at 44% 94%,
+      rgba(89, 75, 230, 0.045),
+      rgba(89, 75, 230, 0) 70%
+    );
+}
+
+.grainSection--ambient-green-hero{
+  background-image:
+    radial-gradient(
+      420px 300px at 4% 28%,
+      rgba(25, 165, 132, 0.09) 0%,
+      rgba(60, 170, 145, 0.053) 40%,
+      rgba(60, 170, 145, 0) 72%
+    ),
+    radial-gradient(
+      300px 220px at 88% 82%,
+      rgba(60, 170, 145, 0.06),
+      rgba(60, 170, 145, 0) 70%
+    ),
+    radial-gradient(
+      420px 300px at 96% 22%,
+      rgba(146, 59, 234, 0.09) 0%,
+      rgba(107, 69, 232, 0.053) 40%,
+      rgba(107, 69, 232, 0) 72%
+    ),
+    radial-gradient(
+      320px 220px at 12% 84%,
+      rgba(125, 63, 235, 0.06),
+      rgba(125, 63, 235, 0) 70%
+    );
+}
+
 /* ✅ overlay de noise */
 .grainSection::before{
   content: "";
@@ -59,4 +272,24 @@
 .grainSection--light::before{
   opacity: 0.05;
   mix-blend-mode: overlay;
+}
+
+/* Pause only GrainSection's decorative paint while it is far offscreen. */
+.grainSection[data-grain-effects-paused].grainSection--ambient-green,
+.grainSection[data-grain-effects-paused].grainSection--ambient-green-left,
+.grainSection[data-grain-effects-paused].grainSection--ambient-green-subtle,
+.grainSection[data-grain-effects-paused].grainSection--ambient-green-balanced,
+.grainSection[data-grain-effects-paused].grainSection--ambient-green-hero{
+  background-image: none;
+}
+
+.grainSection[data-grain-effects-paused]::before{
+  content: none;
+  background-image: none;
+  mix-blend-mode: normal;
+}
+
+.grainSection[data-grain-effects-paused]::after{
+  content: none;
+  background: none;
 }

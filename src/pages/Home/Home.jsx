@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Reveal from "../../components/Reveal/Reveal";
 
 import Hero from "../../sections/Hero/Hero";
 import IntroCTA from "../../sections/IntroCTA/IntroCTA";
 import Servicios from "../../sections/Servicios/Servicios";
+import ProcesoSection from "../../sections/ProcesoSection/ProcesoSection";
 import Portafolio from "../../sections/Portafolio/Portafolio";
+import NuvemPrinciplesSection from "../../sections/NuvemPrinciplesSection/NuvemPrinciplesSection";
 import PorQueElegirNuvem from "../../sections/PorQueElegirNuvem/PorQueElegirNuvem";
 import PilaresCarousel from "../../sections/GarantiaSection/PilaresCarousel";
 import FAQ from "../../sections/FAQ/FAQ";
@@ -33,16 +34,18 @@ export default function Home() {
 
   return (
     <>
-      <Reveal as="section"><Hero /></Reveal>
-      <Reveal as="section"><IntroCTA /></Reveal>
-      <Reveal as="section"><Servicios /></Reveal>
-      <Reveal as="section"><Portafolio /></Reveal>
-      <Reveal as="section"><PorQueElegirNuvem /></Reveal>
-      <Reveal as="section"><PilaresCarousel /></Reveal>
-      <Reveal as="section"><FAQ /></Reveal>
-      <Reveal as="section"><ComentarioGlide /></Reveal>
-      <Reveal as="section"><FinalCTA /></Reveal>
-      <Reveal as="section"><Contacto /></Reveal>
+      <section><Hero /></section>
+      <section><IntroCTA /></section>
+      <section><Servicios /></section>
+      <section><Portafolio /></section>
+      <section><ProcesoSection /></section>
+      <section><NuvemPrinciplesSection /></section>
+      {/*<section><PorQueElegirNuvem /></section>*/}
+      {/*<section><PilaresCarousel /></section>*/}
+      <section><FAQ /></section>
+      <section><ComentarioGlide /></section>
+      <section><FinalCTA /></section>
+      <section><Contacto /></section>
     </>
   );
 }

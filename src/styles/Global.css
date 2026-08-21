@@ -44,6 +44,7 @@ html, body{
   height: auto;          /* ✅ */
   overflow-x: visible;      /* ✅ el scroll debe ser del window */
   overflow-y: visible;
+  scrollbar-gutter: stable;
 }
 
 #root{
@@ -201,6 +202,61 @@ button.btn-main::-moz-focus-inner,
 button.btn-header::-moz-focus-inner{
   border: 0;
   padding: 0;
+}
+
+/* =========================
+   Reveal editorial en cascada
+   Se activa solo cuando el hook ha preparado el contenedor.
+   ========================= */
+
+.reveal-cascade--ready [data-reveal]{
+  --reveal-delay: 0ms;
+  --reveal-distance: 16px;
+  --reveal-scale: 1;
+
+  opacity: 0;
+  transform:
+    translate3d(0, var(--reveal-distance), 0)
+    scale(var(--reveal-scale));
+
+  transition:
+    opacity 580ms var(--ease) var(--reveal-delay),
+    transform 580ms var(--ease) var(--reveal-delay);
+}
+
+.reveal-cascade--ready [data-reveal="media"]{
+  --reveal-distance: 18px;
+  --reveal-scale: .99;
+}
+
+.reveal-cascade--ready [data-reveal].is-visible{
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.reveal-cascade--ready [data-reveal][data-reveal-delay="1"]{ --reveal-delay: 60ms; }
+.reveal-cascade--ready [data-reveal][data-reveal-delay="2"]{ --reveal-delay: 120ms; }
+.reveal-cascade--ready [data-reveal][data-reveal-delay="3"]{ --reveal-delay: 180ms; }
+.reveal-cascade--ready [data-reveal][data-reveal-delay="4"]{ --reveal-delay: 240ms; }
+
+@media (max-width: 768px){
+  .reveal-cascade--ready [data-reveal]{
+    --reveal-distance: 12px;
+  }
+
+  .reveal-cascade--ready [data-reveal][data-reveal-delay="1"]{ --reveal-delay: 40ms; }
+  .reveal-cascade--ready [data-reveal][data-reveal-delay="2"]{ --reveal-delay: 80ms; }
+  .reveal-cascade--ready [data-reveal][data-reveal-delay="3"]{ --reveal-delay: 120ms; }
+  .reveal-cascade--ready [data-reveal][data-reveal-delay="4"]{ --reveal-delay: 160ms; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal-cascade--ready [data-reveal],
+  .reveal-cascade--ready [data-reveal].is-visible{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Header ancho completo */
@@ -468,32 +524,6 @@ button.btn-header::-moz-focus-inner{
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-
-/* - = - = - = - = - = - = - = - = - = - = - = - = - = - = - Animaciones de netrada = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = */
-/* 1) Page enter (para entrar a cada página / reload) */
-@keyframes pageEnter {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.page-enter{
-  animation: pageEnter .95s var(--ease) both;
-}
-
-/* 2) Reveal on scroll (para secciones) */
-.reveal{
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .9s var(--ease), transform .9s var(--ease);
-  will-change: opacity, transform;
-}
-
-.reveal.is-visible{
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* - = - = - = - = - = - = - = - = - = - = - = - = - = - = - Animaciones de netrada = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = */
 
 /* - = - = - = - = - = - = - = - = - - = - = - = - = -  - = - - = - = - = - = - = - = - = - = - - = - = - - = - = -TEMA RESPONSIVOxd = - = - = - - = - - - = - = - = - == - = - =- = - = - = - = - = - = - = - = - = - = - = - = - = - = - = */
 @media (max-width: 640px){

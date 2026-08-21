@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import useRevealCascade from "../../hooks/useRevealCascade";
 import "./Privacidad.css";
 
 const sections = [
@@ -16,6 +17,7 @@ const sections = [
 
 export default function Privacidad() {
   const [active, setActive] = useState(sections[0].id);
+  const revealRootRef = useRevealCascade();
 
   const navRef = useRef(null);
   const modalNavRef = useRef(null);
@@ -118,25 +120,33 @@ export default function Privacidad() {
   }, [tocOpen]);
 
   return (
-    <main className="privacidad" aria-label="Política oficial de Nuvem">
+    <main
+      className="privacidad"
+      aria-label="Política oficial de Nuvem"
+      ref={revealRootRef}
+    >
       <div className="privacidad__container">
         {/* CONTENIDO */}
         <article className="privacidad__content">
           <header className="privacidad__head">
-            <h1 className="privacidad__title">AVISO DE PRIVACIDAD</h1>
+            <h1 className="privacidad__title" data-reveal>
+              AVISO DE PRIVACIDAD
+            </h1>
 
-            <p className="privacidad__subtitle">
+            <p className="privacidad__subtitle" data-reveal data-reveal-delay="1">
               <em>© nuvemstudio.com - Desarrollo Web y Soluciones Digitales.</em>
             </p>
 
-            <p className="privacidad__meta">
+            <p className="privacidad__meta" data-reveal data-reveal-delay="2">
               Versión 1.0 — Aplicable a todos los servicios de desarrollo web y sistemas
               digitales.
             </p>
-            <p className="privacidad__meta">Última actualización: 23 de enero 2026</p>
+            <p className="privacidad__meta" data-reveal data-reveal-delay="3">
+              Última actualización: 23 de enero 2026
+            </p>
           </header>
 
-          <p className="privacidad__intro">
+          <p className="privacidad__intro" data-reveal data-reveal-delay="4">
             En cumplimiento con lo establecido por la Ley Federal de Protección de Datos
             Personales en Posesión de los Particulares, Nuvem pone a disposición de los
             usuarios el presente Aviso de Privacidad, con el fin de informar sobre el
@@ -144,7 +154,7 @@ export default function Privacidad() {
           </p>
 
           {/* 1 */}
-          <section id="responsable" className="privacidad__section">
+          <section id="responsable" className="privacidad__section" data-reveal>
             <h2>1. Responsable del tratamiento de los datos personales</h2>
             <p>
               Nuvem es responsable del uso y protección de los datos personales recabados
@@ -154,7 +164,12 @@ export default function Privacidad() {
           </section>
 
           {/* 2 */}
-          <section id="datos" className="privacidad__section">
+          <section
+            id="datos"
+            className="privacidad__section"
+            data-reveal
+            data-reveal-delay="1"
+          >
             <h2>2. Datos personales que se recaban</h2>
             <p>
               Los datos personales que Nuvem puede recabar incluyen, de manera enunciativa
@@ -170,7 +185,12 @@ export default function Privacidad() {
           </section>
 
           {/* 3 */}
-          <section id="finalidades" className="privacidad__section">
+          <section
+            id="finalidades"
+            className="privacidad__section"
+            data-reveal
+            data-reveal-delay="2"
+          >
             <h2>3. Finalidades del tratamiento de los datos</h2>
             <p>Los datos personales recabados serán utilizados exclusivamente para las siguientes finalidades:</p>
             <ul className="privacidad__list">
@@ -186,7 +206,12 @@ export default function Privacidad() {
           </section>
 
           {/* 4 */}
-          <section id="proteccion" className="privacidad__section">
+          <section
+            id="proteccion"
+            className="privacidad__section"
+            data-reveal
+            data-reveal-delay="3"
+          >
             <h2>4. Protección y confidencialidad de los datos</h2>
             <p>
               Nuvem se compromete a resguardar los datos personales mediante medidas
@@ -201,7 +226,12 @@ export default function Privacidad() {
           </section>
 
           {/* 5 */}
-          <section id="arco" className="privacidad__section">
+          <section
+            id="arco"
+            className="privacidad__section"
+            data-reveal
+            data-reveal-delay="4"
+          >
             <h2>5. Derechos ARCO</h2>
             <p>El titular de los datos personales tiene derecho a:</p>
             <ul className="privacidad__list">
@@ -217,7 +247,7 @@ export default function Privacidad() {
           </section>
 
           {/* 6 */}
-          <section id="medios" className="privacidad__section">
+          <section id="medios" className="privacidad__section" data-reveal>
             <h2>6. Uso de medios de contacto</h2>
             <p>
               Los datos proporcionados a través de formularios, correo electrónico,
@@ -228,7 +258,12 @@ export default function Privacidad() {
           </section>
 
           {/* 7 */}
-          <section id="cambios" className="privacidad__section">
+          <section
+            id="cambios"
+            className="privacidad__section"
+            data-reveal
+            data-reveal-delay="1"
+          >
             <h2>7. Cambios al aviso de privacidad</h2>
             <p>
               Nuvem se reserva el derecho de realizar modificaciones o actualizaciones al
@@ -239,7 +274,12 @@ export default function Privacidad() {
           </section>
 
           {/* 8 */}
-          <section id="consentimiento" className="privacidad__section">
+          <section
+            id="consentimiento"
+            className="privacidad__section"
+            data-reveal
+            data-reveal-delay="2"
+          >
             <h2>8. Consentimiento</h2>
             <p>
               Al proporcionar sus datos personales a través de este sitio web, el titular
@@ -248,7 +288,12 @@ export default function Privacidad() {
           </section>
 
           {/* 9 */}
-          <section id="contacto" className="privacidad__section">
+          <section
+            id="contacto"
+            className="privacidad__section"
+            data-reveal
+            data-reveal-delay="3"
+          >
             <h2>9. Medio de contacto</h2>
             <p>
               Para cualquier duda relacionada con este Aviso de Privacidad o con el
@@ -259,7 +304,12 @@ export default function Privacidad() {
         </article>
 
         {/* ÍNDICE DERECHO */}
-        <aside className="privacidad__index" aria-label="Índice">
+        <aside
+          className="privacidad__index"
+          aria-label="Índice"
+          data-reveal
+          data-reveal-delay="1"
+        >
           <nav
             className="privacidad__nav"
             ref={navRef}

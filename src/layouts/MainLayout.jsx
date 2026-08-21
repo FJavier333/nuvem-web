@@ -12,7 +12,7 @@ export default function MainLayout() {
       <Header />
 
       {/* 👇 aquí se renderizan las páginas */}
-      <div key={location.pathname} className="page-enter">
+      <div key={location.pathname}>
         <Outlet />
       </div>
 

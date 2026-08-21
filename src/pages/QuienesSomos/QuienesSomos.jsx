@@ -1,18 +1,26 @@
 import "./QuienesSomos.css";
 import logoWorld2 from "../../images/logoWorld5.png";
+import useRevealCascade from "../../hooks/useRevealCascade";
 
 export default function QuienesSomos() {
+  const revealRootRef = useRevealCascade();
+
   return (
-    <main className="quienes" aria-label="¿Quiénes somos?">
+    <main className="quienes" aria-label="¿Quiénes somos?" ref={revealRootRef}>
 
       <div className="quienes__container">
         {/* Logo */}
-        <header className="quienes__top">
+        <header className="quienes__top" data-reveal>
           <img className="quienes__logo" src={logoWorld2} alt="Nuvem" loading="lazy" />
         </header>
 
         {/* Título + Intro */}
-        <section className="quienes__hero" aria-label="Introducción">
+        <section
+          className="quienes__hero"
+          aria-label="Introducción"
+          data-reveal
+          data-reveal-delay="1"
+        >
           {/*
           <h1 className="quienes__title">¿QUIÉNES SOMOS?</h1>
           */}
@@ -32,7 +40,12 @@ export default function QuienesSomos() {
         </section>
 
         {/* Secciones (sin glass iOS) */}
-        <section className="quienes__sections" aria-label="Secciones">
+        <section
+          className="quienes__sections"
+          aria-label="Secciones"
+          data-reveal
+          data-reveal-delay="2"
+        >
           <article className="quienes__section">
             <h2 className="quienes__subtitle">NUESTRO ENFOQUE</h2>
 

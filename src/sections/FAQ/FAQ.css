@@ -9,7 +9,7 @@
   width: 100%;
   background: #000;
   color: rgba(255,255,255,.92);
-  padding-top: clamp(90px, 10vw, 140px);
+  padding-top: clamp(56px, 6vw, 88px);
   padding-bottom: clamp(74px, 8vw, 112px); /* ⬅️ reduce el espacio final */
 }
 
@@ -187,7 +187,7 @@
 @media (max-width: 900px){
 
   .faq{
-    padding-top: 84px;
+    padding-top: 56px;
     padding-bottom: 84px;
   }
 

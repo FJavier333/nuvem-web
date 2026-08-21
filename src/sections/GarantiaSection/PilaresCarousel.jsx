@@ -19,39 +19,6 @@ export default function PilaresCarousel() {
     const track = trackRef.current;
     if (!root || !track) return;
 
-    // Reveal: nunca dejes la sección invisible
-    const forceVisible = () => root.classList.add("is-visible");
-
-    if (typeof IntersectionObserver === "undefined") {
-      forceVisible();
-    } else {
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              forceVisible();
-              io.disconnect();
-            }
-          });
-        },
-        { threshold: 0.01 }
-      );
-
-      io.observe(root);
-
-      const t = setTimeout(forceVisible, 300);
-      return () => {
-        clearTimeout(t);
-        io.disconnect();
-      };
-    }
-  }, []);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    const track = trackRef.current;
-    if (!root || !track) return;
-
     const update = () => {
       const sl = track.scrollLeft;
       const max = track.scrollWidth - track.clientWidth;
@@ -123,7 +90,7 @@ export default function PilaresCarousel() {
   );
 
   return (
-    <div className="garantia pilares reveal" ref={rootRef}>
+    <div className="garantia pilares" ref={rootRef}>
 
       <div className="pilares__intro">
         <h2 className="pilares__introTitle">PRINCIPIOS QUE DEFINEN CADA PROYECTO</h2>

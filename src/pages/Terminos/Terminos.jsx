@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import useRevealCascade from "../../hooks/useRevealCascade";
 import "./Terminos.css";
 
 const sections = [
@@ -25,6 +26,7 @@ const sections = [
 
 export default function Terminos() {
   const [active, setActive] = useState(sections[0].id);
+  const revealRootRef = useRevealCascade();
 
   const navRef = useRef(null);
   const modalNavRef = useRef(null);
@@ -124,23 +126,33 @@ export default function Terminos() {
   }, [tocOpen]);
 
   return (
-    <main className="terminos" aria-label="Términos oficial de Nuvem">
+    <main
+      className="terminos"
+      aria-label="Términos oficial de Nuvem"
+      ref={revealRootRef}
+    >
       <div className="terminos__container">
         {/* CONTENIDO */}
         <article className="terminos__content">
           <header className="terminos__head">
-            <h1 className="terminos__title">TÉRMINOS Y CONDICIONES</h1>
+            <h1 className="terminos__title" data-reveal>
+              TÉRMINOS Y CONDICIONES
+            </h1>
 
-            <p className="terminos__subtitle">
+            <p className="terminos__subtitle" data-reveal data-reveal-delay="1">
               <em>© nuvemstudio.com - Desarrollo Web y Soluciones Digitales.</em>
             </p>
 
-            <p className="terminos__meta">Versión 1.0 - Documento Oficial</p>
-            <p className="terminos__meta">Última actualización: 23 de enero 2026</p>
+            <p className="terminos__meta" data-reveal data-reveal-delay="2">
+              Versión 1.0 - Documento Oficial
+            </p>
+            <p className="terminos__meta" data-reveal data-reveal-delay="3">
+              Última actualización: 23 de enero 2026
+            </p>
           </header>
 
           {/* 1 */}
-          <section id="aceptacion" className="terminos__section">
+          <section id="aceptacion" className="terminos__section" data-reveal>
             <h2>1. Aceptación de los términos</h2>
             <p>
               Al contratar los servicios de Nuvem, el cliente acepta íntegramente el presente
@@ -150,7 +162,12 @@ export default function Terminos() {
           </section>
 
           {/* 2 */}
-          <section id="alcance-servicio" className="terminos__section">
+          <section
+            id="alcance-servicio"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="1"
+          >
             <h2>2. Alcance del servicio</h2>
             <p>
               Nuvem desarrollará el sitio web, sistema o solución digital conforme al servicio
@@ -164,7 +181,12 @@ export default function Terminos() {
           </section>
 
           {/* 3 */}
-          <section id="obligaciones-cliente" className="terminos__section">
+          <section
+            id="obligaciones-cliente"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="2"
+          >
             <h2>3. Obligaciones del cliente</h2>
             <p>El cliente se compromete a:</p>
             <ul className="terminos__list">
@@ -180,7 +202,12 @@ export default function Terminos() {
           </section>
 
           {/* 4 */}
-          <section id="obligaciones-nuvem" className="terminos__section">
+          <section
+            id="obligaciones-nuvem"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="3"
+          >
             <h2>4. Obligaciones de Nuvem</h2>
             <p>Nuvem se compromete a:</p>
             <ul className="terminos__list">
@@ -196,7 +223,12 @@ export default function Terminos() {
           </section>
 
           {/* 5 */}
-          <section id="propiedad-intelectual" className="terminos__section">
+          <section
+            id="propiedad-intelectual"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="4"
+          >
             <h2>5. Propiedad intelectual</h2>
 
             <p>El cliente es propietario de:</p>
@@ -221,7 +253,7 @@ export default function Terminos() {
           </section>
 
           {/* 6 */}
-          <section id="uso-indebido" className="terminos__section">
+          <section id="uso-indebido" className="terminos__section" data-reveal>
             <h2>6. Uso indebido, reventa y explotación no autorizada</h2>
             <p>
               El cliente no podrá revender, sublicenciar, ceder, comercializar ni explotar con terceros, total o
@@ -248,7 +280,12 @@ export default function Terminos() {
           </section>
 
           {/* 7 */}
-          <section id="diseno-revisiones" className="terminos__section">
+          <section
+            id="diseno-revisiones"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="1"
+          >
             <h2>7. Diseño personalizado y revisiones</h2>
             <p>
               Todos los proyectos desarrollados por Nuvem incluyen diseño personalizado, adaptado a las necesidades
@@ -268,7 +305,12 @@ export default function Terminos() {
           </section>
 
           {/* 8 */}
-          <section id="pagos" className="terminos__section">
+          <section
+            id="pagos"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="2"
+          >
             <h2>8. Pagos y condiciones</h2>
             <p>Las modalidades de pago son:</p>
             <ul className="terminos__list">
@@ -281,7 +323,12 @@ export default function Terminos() {
           </section>
 
           {/* 9 */}
-          <section id="dominio-hosting" className="terminos__section">
+          <section
+            id="dominio-hosting"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="3"
+          >
             <h2>9. Dominio, hosting y servicios de terceros</h2>
             <ul className="terminos__list">
               <li>El dominio se adquiere siempre con los datos y métodos de pago del cliente.</li>
@@ -295,7 +342,12 @@ export default function Terminos() {
           </section>
 
           {/* 10 */}
-          <section id="soporte-garantia" className="terminos__section">
+          <section
+            id="soporte-garantia"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="4"
+          >
             <h2>10. Soporte y garantía</h2>
             <p>
               Todos los proyectos desarrollados por Nuvem incluyen un periodo de soporte de 30 días naturales posteriores
@@ -317,14 +369,23 @@ export default function Terminos() {
           </section>
 
           {/* 11 */}
-          <section id="mantenimiento-posterior" className="terminos__section">
+          <section
+            id="mantenimiento-posterior"
+            className="terminos__section"
+            data-reveal
+          >
             <h2>11. Mantenimiento posterior</h2>
             <p>El cliente podrá contratar planes de mantenimiento mensual o anual.</p>
             <p>Cualquier funcionalidad nueva será cotizada como trabajo adicional.</p>
           </section>
 
           {/* 12 */}
-          <section id="uso-contenido" className="terminos__section">
+          <section
+            id="uso-contenido"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="1"
+          >
             <h2>12. Uso de contenido</h2>
             <p>El cliente garantiza que posee los derechos de uso del contenido proporcionado.</p>
             <p>
@@ -333,14 +394,24 @@ export default function Terminos() {
           </section>
 
           {/* 13 */}
-          <section id="confidencialidad" className="terminos__section">
+          <section
+            id="confidencialidad"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="2"
+          >
             <h2>13. Confidencialidad</h2>
             <p>Toda la información proporcionada por el cliente será manejada de forma confidencial.</p>
             <p>Nuvem no divulgará información sensible salvo autorización expresa o requerimiento legal.</p>
           </section>
 
           {/* 14 */}
-          <section id="retrasos-suspensiones" className="terminos__section">
+          <section
+            id="retrasos-suspensiones"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="3"
+          >
             <h2>14. Retrasos, pausas y suspensiones</h2>
             <p>Nuvem podrá pausar o reprogramar el proyecto si el cliente:</p>
             <ul className="terminos__list">
@@ -356,7 +427,12 @@ export default function Terminos() {
           </section>
 
           {/* 15 */}
-          <section id="cancelaciones-reembolsos" className="terminos__section">
+          <section
+            id="cancelaciones-reembolsos"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="4"
+          >
             <h2>15. Cancelaciones y reembolsos</h2>
             <ul className="terminos__list">
               <li>El anticipo no es reembolsable en ninguna circunstancia.</li>
@@ -371,7 +447,11 @@ export default function Terminos() {
           </section>
 
           {/* 16 */}
-          <section id="limitacion-responsabilidad" className="terminos__section">
+          <section
+            id="limitacion-responsabilidad"
+            className="terminos__section"
+            data-reveal
+          >
             <h2>16. Limitación de responsabilidad</h2>
             <p>Nuvem no será responsable por:</p>
             <ul className="terminos__list">
@@ -387,7 +467,12 @@ export default function Terminos() {
           </section>
 
           {/* 17 */}
-          <section id="modificaciones-terminos" className="terminos__section">
+          <section
+            id="modificaciones-terminos"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="1"
+          >
             <h2>17. Modificaciones a los términos</h2>
             <p>Nuvem se reserva el derecho de modificar, actualizar o ajustar en cualquier momento los presentes Términos y Condiciones,
             con el fin de reflejar cambios en sus servicios, procesos internos, criterios operativos o disposiciones legales aplicables.</p>
@@ -397,7 +482,12 @@ export default function Terminos() {
           </section>
 
           {/* 18 */}
-          <section id="jurisdiccion" className="terminos__section">
+          <section
+            id="jurisdiccion"
+            className="terminos__section"
+            data-reveal
+            data-reveal-delay="2"
+          >
             <h2>18. Jurisdicción</h2>
             <p>Estos Términos y Condiciones se rigen bajo las leyes de los Estados Unidos Mexicanos.</p>
             <p>Cualquier controversia será atendida conforme a la legislación vigente.</p>
@@ -405,7 +495,12 @@ export default function Terminos() {
         </article>
 
         {/* ÍNDICE DERECHO (DESKTOP intacto) */}
-        <aside className="terminos__index" aria-label="Índice">
+        <aside
+          className="terminos__index"
+          aria-label="Índice"
+          data-reveal
+          data-reveal-delay="1"
+        >
           <nav
             className="terminos__nav"
             ref={navRef}

@@ -1,208 +1,244 @@
-/* eslint-disable */
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import * as THREE from "three";
-import React, { useMemo, useRef } from "react";
+import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
 import "./ParticlesBlob.css";
 
-/**
- * Esfera de partículas con deformación orgánica + interacción por cursor.
- * - Fondo transparente (para sección blanca)
- * - Partículas oscuras
- * - Hover: “empuja” y deforma
- * - Mouse out: vuelve suave a la forma original
- */
+const PRELOAD_MARGIN_MULTIPLIER = 0.5;
+const MOUNT_THRESHOLD = 0.05;
+const ACTIVE_THRESHOLD = 0.001;
+const SCROLL_INTENT_KEYS = new Set([
+  "ArrowDown",
+  "ArrowUp",
+  "PageDown",
+  "PageUp",
+  "Home",
+  "End",
+  " ",
+]);
 
-function ParticlesCore({
-  count = 5000,
-  radius = 0.9,
-  color = "#171a1f",
-  size = 0.012,
-  idleMorph = 0.20,
-  hoverForce = 0.95,     // 🔥 antes 0.45
-  returnSpeed = 0.12,    // 🔥 antes 0.08 (más respuesta)
-  spin = 0.22,
-}) {
-  const pointsRef = useRef(null);
-  const { camera, pointer } = useThree();
+let particlesBlobScenePromise;
 
-  const mouseNDC = useRef(new THREE.Vector2(0, 0)); // mouse en NDC (-1..1)
-  const hovered = useRef(false);
+const loadParticlesBlobScene = () => {
+  particlesBlobScenePromise ??= import("./ParticlesBlobScene");
+  return particlesBlobScenePromise;
+};
 
-  // Base positions (esfera) + posiciones actuales
-  const { base, pos, seeds, geom } = useMemo(() => {
-    const baseArr = new Float32Array(count * 3);
-    const posArr = new Float32Array(count * 3);
-    const seedArr = new Float32Array(count);
-
-    // Distribución casi uniforme sobre esfera (Fibonacci sphere)
-    const offset = 2 / count;
-    const increment = Math.PI * (3 - Math.sqrt(5));
-
-    for (let i = 0; i < count; i++) {
-      const y = i * offset - 1 + offset / 2;
-      const r = Math.sqrt(1 - y * y);
-      const phi = i * increment;
-
-      const x = Math.cos(phi) * r;
-      const z = Math.sin(phi) * r;
-
-      // Grosor leve (capa) para que parezca “nube” de partículas
-      const shell = radius * (0.84 + Math.random() * 0.20);
-
-      const ix = i * 3;
-      baseArr[ix + 0] = x * shell;
-      baseArr[ix + 1] = y * shell;
-      baseArr[ix + 2] = z * shell;
-
-      posArr[ix + 0] = baseArr[ix + 0];
-      posArr[ix + 1] = baseArr[ix + 1];
-      posArr[ix + 2] = baseArr[ix + 2];
-
-      seedArr[i] = Math.random() * 1000;
-    }
-
-    const g = new THREE.BufferGeometry();
-    g.setAttribute("position", new THREE.BufferAttribute(posArr, 3));
-    return { base: baseArr, pos: posArr, seeds: seedArr, geom: g };
-  }, [count, radius]);
-
-  // Proyección mouse -> world
-  const tmpVec = useMemo(() => new THREE.Vector3(), []);
-  const cursorWorld = useRef(new THREE.Vector3(0, 0, 0));
-  const raycaster = useMemo(() => new THREE.Raycaster(), []);
-  const planeZ = useMemo(() => new THREE.Plane(new THREE.Vector3(0, 0, 1), 0), []); // z = 0
-  const hit = useMemo(() => new THREE.Vector3(), []);
-
-
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime();
-
-    // ✅ Mouse -> rayo -> intersección con plano z=0 (centro del blob)
-    raycaster.setFromCamera(mouseNDC.current, camera);
-    raycaster.ray.intersectPlane(planeZ, hit);
-
-    // suaviza para que se vea orgánico
-    cursorWorld.current.lerp(hit, 0.35);
-
-    const cx = cursorWorld.current.x;
-    const cy = cursorWorld.current.y;
-    const cz = cursorWorld.current.z;
-
-
-    // ✅ NUEVO: morph continuo (respira: sube/baja la deformación)
-    const breathe = 0.5 + 0.5 * Math.sin(t * 0.7);         // 0..1
-    const morph = idleMorph * (0.65 + breathe * 0.85);     // sube/baja suave
-
-    for (let i = 0; i < count; i++) {
-      const ix = i * 3;
-
-      const bx = base[ix + 0];
-      const by = base[ix + 1];
-      const bz = base[ix + 2];
-
-      const seed = seeds[i];
-
-      // Noise orgánico (sin libs)
-      const n1 = Math.sin(t * 0.9 + seed + bx * 1.2) * Math.cos(t * 0.6 + seed + by * 1.1);
-      const n2 = Math.cos(t * 0.7 + seed + by * 1.3) * Math.sin(t * 0.5 + seed + bz * 1.2);
-      const n3 = Math.sin(t * 0.8 + seed + bz * 1.25) * Math.cos(t * 0.55 + seed + bx * 1.05);
-
-      // ✅ CAMBIO MÍNIMO: antes era idleMorph fijo, ahora morph variable
-      const ox = bx + n1 * morph;
-      const oy = by + n2 * morph;
-      const oz = bz + n3 * morph;
-
-      let tx = ox;
-      let ty = oy;
-      let tz = oz;
-
-      if (hovered.current) {
-        const dx = ox - cx;
-        const dy = oy - cy;
-        const dz = oz - cz;
-
-        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz) + 0.0001;
-
-        const influence = Math.max(0, 1 - dist / 1.25);
-        const push = hoverForce * influence;
-
-        tx = ox + (dx / dist) * push;
-        ty = oy + (dy / dist) * push;
-        tz = oz + (dz / dist) * push;
-      }
-
-      pos[ix + 0] += (tx - pos[ix + 0]) * returnSpeed;
-      pos[ix + 1] += (ty - pos[ix + 1]) * returnSpeed;
-      pos[ix + 2] += (tz - pos[ix + 2]) * returnSpeed;
-    }
-
-    if (pointsRef.current) {
-      pointsRef.current.geometry.attributes.position.needsUpdate = true;
-      pointsRef.current.rotation.y = t * spin;
-      pointsRef.current.rotation.x = t * (spin * 0.45);
-    }
-  });
-
-  return (
-    <group
-      onPointerMove={(e) => {
-        e.stopPropagation();
-        hovered.current = true;
-
-        if (e.pointer) {
-          mouseNDC.current.x = e.pointer.x;
-          mouseNDC.current.y = e.pointer.y;
-          return;
-        }
-
-        const rect = e.target.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-        const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-        mouseNDC.current.set(x, y);
-      }}
-      onPointerLeave={(e) => {
-        e.stopPropagation();
-        hovered.current = false;
-      }}
-    >
-
-      <points ref={pointsRef} geometry={geom}>
-        <pointsMaterial
-          color={color}
-          size={size}
-          sizeAttenuation
-          transparent
-          opacity={0.55}
-          depthWrite={false}
-          blending={THREE.NormalBlending}
-        />
-      </points>
-    </group>
-  );
-}
+const LazyParticlesBlobScene = lazy(loadParticlesBlobScene);
 
 export default function ParticlesBlob({
   className = "",
   variant = "light",
 }) {
-  const palette = useMemo(() => {
-    if (variant === "dark") {
-      return { color: "#9bbcff", opacity: 0.85 };
+  const supportsIntersectionObserver =
+    typeof window !== "undefined" && "IntersectionObserver" in window;
+  const containerRef = useRef(null);
+  const removeIntentListenersRef = useRef(null);
+  const [isInViewport, setIsInViewport] = useState(
+    !supportsIntersectionObserver
+  );
+  const [documentIsVisible, setDocumentIsVisible] = useState(
+    () => typeof document === "undefined" || document.visibilityState === "visible"
+  );
+  const [shouldMountScene, setShouldMountScene] = useState(
+    !supportsIntersectionObserver
+  );
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || !supportsIntersectionObserver) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsInViewport(
+          Boolean(
+            entry?.isIntersecting &&
+            entry.intersectionRatio >= ACTIVE_THRESHOLD
+          )
+        );
+      },
+      { threshold: [0, ACTIVE_THRESHOLD] }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [supportsIntersectionObserver]);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return undefined;
+
+    const handleVisibilityChange = () => {
+      setDocumentIsVisible(document.visibilityState === "visible");
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || !supportsIntersectionObserver) return undefined;
+
+    let preloadObserver;
+    let hashFrame;
+    let hashFrameAfterLayout;
+    let intentArmed = false;
+    const initialScrollY = window.scrollY;
+
+    const removeIntentListeners = () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", handleHashChange);
+
+      if (removeIntentListenersRef.current === removeIntentListeners) {
+        removeIntentListenersRef.current = null;
+      }
+    };
+
+    removeIntentListenersRef.current = removeIntentListeners;
+
+    const requestPreloadWhenNear = () => {
+      const preloadMargin = Math.round(
+        window.innerHeight * PRELOAD_MARGIN_MULTIPLIER
+      );
+      const bounds = container.getBoundingClientRect();
+      const isNearViewport =
+        bounds.bottom >= -preloadMargin &&
+        bounds.top <= window.innerHeight + preloadMargin;
+
+      if (isNearViewport) {
+        loadParticlesBlobScene();
+        return;
+      }
+
+      preloadObserver = new IntersectionObserver(
+        (entries) => {
+          if (!entries[0]?.isIntersecting) return;
+
+          loadParticlesBlobScene();
+          preloadObserver?.disconnect();
+          preloadObserver = undefined;
+        },
+        {
+          rootMargin: `${preloadMargin}px 0px`,
+          threshold: 0,
+        }
+      );
+
+      preloadObserver.observe(container);
+    };
+
+    function armPreload() {
+      if (intentArmed) return;
+
+      intentArmed = true;
+      removeIntentListeners();
+      requestPreloadWhenNear();
     }
-    return { color: "#171a1f", opacity: 0.62 };
-  }, [variant]);
+
+    function handleWheel(event) {
+      if (event.deltaX === 0 && event.deltaY === 0) return;
+      armPreload();
+    }
+
+    function handleTouchStart() {
+      armPreload();
+    }
+
+    function handleKeyDown(event) {
+      const target = event.target;
+      const targetIsEditable =
+        target instanceof HTMLElement &&
+        (target.isContentEditable ||
+          ["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(target.tagName));
+
+      if (
+        targetIsEditable ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.altKey ||
+        !SCROLL_INTENT_KEYS.has(event.key)
+      ) {
+        return;
+      }
+
+      armPreload();
+    }
+
+    function handleScroll() {
+      if (window.scrollY === initialScrollY) return;
+      armPreload();
+    }
+
+    function handleHashChange() {
+      armPreload();
+    }
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("hashchange", handleHashChange);
+
+    if (window.location.hash) {
+      hashFrame = window.requestAnimationFrame(() => {
+        hashFrameAfterLayout = window.requestAnimationFrame(armPreload);
+      });
+    }
+
+    return () => {
+      removeIntentListeners();
+      preloadObserver?.disconnect();
+
+      if (hashFrame !== undefined) {
+        window.cancelAnimationFrame(hashFrame);
+      }
+      if (hashFrameAfterLayout !== undefined) {
+        window.cancelAnimationFrame(hashFrameAfterLayout);
+      }
+    };
+  }, [supportsIntersectionObserver]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || !supportsIntersectionObserver) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (
+          !entry?.isIntersecting ||
+          entry.intersectionRatio < MOUNT_THRESHOLD
+        ) {
+          return;
+        }
+
+        removeIntentListenersRef.current?.();
+        loadParticlesBlobScene();
+        setShouldMountScene(true);
+        observer.disconnect();
+      },
+      {
+        rootMargin: "0px",
+        threshold: [0, MOUNT_THRESHOLD],
+      }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [supportsIntersectionObserver]);
+
+  const isActive = isInViewport && documentIsVisible;
 
   return (
-    <div className={`pblob ${className}`} aria-hidden="true">
-      <Canvas
-        className="pblob__canvas"
-        camera={{ position: [0, 0, 3.15], fov: 45, near: 0.1, far: 100 }}
-        dpr={[1, 2]}
-        gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
-      >
-        <ambientLight intensity={0.55} />
-        <ParticlesCore color={palette.color} />
-      </Canvas>
+    <div ref={containerRef} className={`pblob ${className}`} aria-hidden="true">
+      {shouldMountScene ? (
+        <Suspense fallback={null}>
+          <LazyParticlesBlobScene active={isActive} variant={variant} />
+        </Suspense>
+      ) : null}
     </div>
   );
 }

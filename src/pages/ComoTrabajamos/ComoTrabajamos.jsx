@@ -1,21 +1,36 @@
+import useRevealCascade from "../../hooks/useRevealCascade";
 import "./ComoTrabajamos.css";
 
 export default function ComoTrabajamos() {
+  const revealRootRef = useRevealCascade();
+
   return (
-    <main className="comoTrabajamos" aria-label="Cómo trabajamos — Nuvem">
+    <main
+      className="comoTrabajamos"
+      aria-label="Cómo trabajamos — Nuvem"
+      ref={revealRootRef}
+    >
       <div className="comoTrabajamos__container">
         <article className="comoTrabajamos__content">
           <header className="comoTrabajamos__head">
-            <h1 className="comoTrabajamos__title">¿CÓMO TRABAJAMOS?</h1>
+            <h1 className="comoTrabajamos__title" data-reveal>
+              ¿CÓMO TRABAJAMOS?
+            </h1>
             {/*
             <p className="comoTrabajamos__subtitle">
               <em>© nuvemstudio.com - Desarrollo Web y Soluciones Digitales.</em>
             </p>
              */} 
-            <p className="comoTrabajamos__meta">Documento informativo — Proceso de trabajo</p>
+            <p
+              className="comoTrabajamos__meta"
+              data-reveal
+              data-reveal-delay="1"
+            >
+              Documento informativo — Proceso de trabajo
+            </p>
           </header>
 
-          <p className="comoTrabajamos__intro">
+          <p className="comoTrabajamos__intro" data-reveal data-reveal-delay="2">
             En Nuvem, cada proyecto se desarrolla de forma personalizada y bajo un proceso
             claro. No utilizamos soluciones automáticas ni plantillas genéricas. El objetivo
             es construir sitios web bien pensados, funcionales y alineados a lo que cada
@@ -25,7 +40,7 @@ export default function ComoTrabajamos() {
           <div className="comoTrabajamos__divider" aria-hidden="true" />
 
           {/* 1 */}
-          <section className="comoTrabajamos__section">
+          <section className="comoTrabajamos__section" data-reveal>
             <h2>PRIMER CONTACTO</h2>
             <p>
               El proceso inicia cuando el cliente se pone en contacto con Nuvem y nos comparte
@@ -37,7 +52,11 @@ export default function ComoTrabajamos() {
           <div className="comoTrabajamos__divider" aria-hidden="true" />
 
           {/* 2 */}
-          <section className="comoTrabajamos__section">
+          <section
+            className="comoTrabajamos__section"
+            data-reveal
+            data-reveal-delay="1"
+          >
             <h2>DEFINICIÓN DEL ENFOQUE Y DISEÑO</h2>
             <p>
               Si el cliente cuenta con una idea clara de diseño, referencias, colores o estilo,
@@ -53,7 +72,11 @@ export default function ComoTrabajamos() {
           <div className="comoTrabajamos__divider" aria-hidden="true" />
 
           {/* 3 */}
-          <section className="comoTrabajamos__section">
+          <section
+            className="comoTrabajamos__section"
+            data-reveal
+            data-reveal-delay="2"
+          >
             <h2>DESARROLLO DEL PROYECTO</h2>
             <p>
               Una vez definido el enfoque, se inicia el desarrollo del sitio. Durante esta etapa
@@ -69,7 +92,11 @@ export default function ComoTrabajamos() {
           <div className="comoTrabajamos__divider" aria-hidden="true" />
 
           {/* 4 */}
-          <section className="comoTrabajamos__section">
+          <section
+            className="comoTrabajamos__section"
+            data-reveal
+            data-reveal-delay="3"
+          >
             <h2>REVISIÓN Y ENTREGA</h2>
             <p>
               Al finalizar el desarrollo, el sitio se revisa y se presenta al cliente para su
@@ -86,7 +113,11 @@ export default function ComoTrabajamos() {
           <div className="comoTrabajamos__divider" aria-hidden="true" />
 
           {/* 5 */}
-          <section className="comoTrabajamos__section">
+          <section
+            className="comoTrabajamos__section"
+            data-reveal
+            data-reveal-delay="4"
+          >
             <h2>DOMINIO Y PUBLICACIÓN</h2>
             <p>El dominio del sitio siempre pertenece al cliente.</p>
             <p>
@@ -103,7 +134,7 @@ export default function ComoTrabajamos() {
           <div className="comoTrabajamos__divider" aria-hidden="true" />
 
           {/* 6 */}
-          <section className="comoTrabajamos__section">
+          <section className="comoTrabajamos__section" data-reveal>
             <h2>ENTREGA FINAL Y ACCESOS</h2>
             <p>
               Al concluir el proyecto, el cliente recibe acceso completo a su sitio web y a la
@@ -122,7 +153,11 @@ export default function ComoTrabajamos() {
           <div className="comoTrabajamos__divider" aria-hidden="true" />
 
           {/* 7 */}
-          <section className="comoTrabajamos__section">
+          <section
+            className="comoTrabajamos__section"
+            data-reveal
+            data-reveal-delay="1"
+          >
             <h2>CONTINUIDAD</h2>
             <p>
               Una vez entregado el proyecto, el cliente puede decidir si requiere soporte,
@@ -134,7 +169,11 @@ export default function ComoTrabajamos() {
           <div className="comoTrabajamos__divider" aria-hidden="true" />
 
           {/* cierre */}
-          <section className="comoTrabajamos__section comoTrabajamos__section--closing">
+          <section
+            className="comoTrabajamos__section comoTrabajamos__section--closing"
+            data-reveal
+            data-reveal-delay="2"
+          >
             <h2>CIERRE</h2>
             <p>
               Nuvem trabaja con un enfoque humano, estructurado y responsable. Cada proyecto se

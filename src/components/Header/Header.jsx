@@ -4,6 +4,34 @@ import logoNuvem from "../../images/logoWorld5.png";
 import "./Header.css";
 import WhatsAppQRModal from "../../components/Contact/WhatsAppQRModal";
 
+const NAVIGATION = {
+  sections: {
+    label: "Secciones",
+    items: [
+      { label: "Servicios", href: "/#servicios" },
+      { label: "Portafolio", href: "/#portafolio" },
+      { label: "Proceso", href: "/#proceso" },
+      { label: "Por qué elegirnos", href: "/#nuvem-principles-title" },
+      { label: "FAQ", href: "/#faq" },
+      { label: "Contacto", href: "/#contacto" },
+    ],
+  },
+  about: {
+    label: "Acerca",
+    items: [
+      { label: "¿Quiénes somos?", to: "/quienes-somos" },
+      { label: "Como trabajamos", to: "/como-trabajamos" },
+    ],
+  },
+  legal: {
+    label: "Legal",
+    items: [
+      { label: "Terminos y condiciones", to: "/terminos" },
+      { label: "Aviso de privacidad", to: "/privacidad" },
+      { label: "Politica", to: "/politica" },
+    ],
+  },
+};
 
 export default function Header() {
   const { pathname } = useLocation();
@@ -167,7 +195,7 @@ export default function Header() {
               aria-expanded={openMenu === "secciones"}
               onClick={() => toggleMenu("secciones")}
             >
-              Secciones <span className="menu__chev" aria-hidden="true"></span>
+              {NAVIGATION.sections.label} <span className="menu__chev" aria-hidden="true"></span>
             </button>
 
             <div
@@ -176,21 +204,16 @@ export default function Header() {
               onMouseEnter={() => open("secciones")}
               onMouseLeave={close}
             >
-              <a className="menu__item" href="/#servicios" onClick={() => setOpenMenu(null)}>
-                Servicios
-              </a>
-              <a className="menu__item" href="/#portafolio" onClick={() => setOpenMenu(null)}>
-                Portafolio
-              </a>
-              <a className="menu__item" href="/#porque" onClick={() => setOpenMenu(null)}>
-                Nuestro enfoque
-              </a>
-              <a className="menu__item" href="/#faq" onClick={() => setOpenMenu(null)}>
-                FAQ
-              </a>
-              <a className="menu__item" href="/#contacto" onClick={() => setOpenMenu(null)}>
-                Contacto
-              </a>
+              {NAVIGATION.sections.items.map((item) => (
+                <a
+                  className="menu__item"
+                  href={item.href}
+                  key={item.href}
+                  onClick={() => setOpenMenu(null)}
+                >
+                  {item.label}
+                </a>
+              ))}
             </div>
           </div>
 
@@ -206,7 +229,7 @@ export default function Header() {
               aria-expanded={openMenu === "paginas"}
               onClick={() => toggleMenu("paginas")}
             >
-              Acerca <span className="menu__chev" aria-hidden="true"></span>
+              {NAVIGATION.about.label} <span className="menu__chev" aria-hidden="true"></span>
             </button>
 
             <div
@@ -215,20 +238,16 @@ export default function Header() {
               onMouseEnter={() => open("paginas")}
               onMouseLeave={close}
             >
-              <Link
-                className="menu__item"
-                to="/quienes-somos"
-                onClick={() => setOpenMenu(null)}
-              >
-                ¿Quiénes somos?
-              </Link>
-              <Link
-                className="menu__item"
-                to="/como-trabajamos"
-                onClick={() => setOpenMenu(null)}
-              >
-                Como trabajamos
-              </Link>
+              {NAVIGATION.about.items.map((item) => (
+                <Link
+                  className="menu__item"
+                  to={item.to}
+                  key={item.to}
+                  onClick={() => setOpenMenu(null)}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -244,7 +263,7 @@ export default function Header() {
               aria-expanded={openMenu === "legal"}
               onClick={() => toggleMenu("legal")}
             >
-              Legal <span className="menu__chev" aria-hidden="true"></span>
+              {NAVIGATION.legal.label} <span className="menu__chev" aria-hidden="true"></span>
             </button>
 
             <div
@@ -253,27 +272,16 @@ export default function Header() {
               onMouseEnter={() => open("legal")}
               onMouseLeave={close}
             >
-              <Link
-                className="menu__item"
-                to="/terminos"
-                onClick={() => setOpenMenu(null)}
-              >
-                Terminos y condiciones
-              </Link>
-              <Link
-                className="menu__item"
-                to="/privacidad"
-                onClick={() => setOpenMenu(null)}
-              >
-                Aviso de privacidad
-              </Link>
-              <Link
-                className="menu__item"
-                to="/politica"
-                onClick={() => setOpenMenu(null)}
-              >
-                Politica
-              </Link>
+              {NAVIGATION.legal.items.map((item) => (
+                <Link
+                  className="menu__item"
+                  to={item.to}
+                  key={item.to}
+                  onClick={() => setOpenMenu(null)}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
         </nav>
@@ -315,25 +323,45 @@ export default function Header() {
           </div>
 
           <div className="mobileNav__section">
-            <div className="mobileNav__label">Secciones</div>
-            <a className="mobileNav__link" href="/#servicios" onClick={() => setMobileOpen(false)}>Servicios</a>
-            <a className="mobileNav__link" href="/#portafolio" onClick={() => setMobileOpen(false)}>Portafolio</a>
-            <a className="mobileNav__link" href="/#porque" onClick={() => setMobileOpen(false)}>Garantía</a>
-            <a className="mobileNav__link" href="/#faq" onClick={() => setMobileOpen(false)}>FAQ</a>
-            <a className="mobileNav__link" href="/#contacto" onClick={() => setMobileOpen(false)}>Contacto</a>
+            <div className="mobileNav__label">{NAVIGATION.sections.label}</div>
+            {NAVIGATION.sections.items.map((item) => (
+              <a
+                className="mobileNav__link"
+                href={item.href}
+                key={item.href}
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
 
           <div className="mobileNav__section">
-            <div className="mobileNav__label">Páginas</div>
-            <Link className="mobileNav__link" to="/quienes-somos" onClick={() => setMobileOpen(false)}>¿Quiénes somos?</Link>
-            <Link className="mobileNav__link" to="/como-trabajamos" onClick={() => setMobileOpen(false)}>Como trabajamos</Link>
+            <div className="mobileNav__label">{NAVIGATION.about.label}</div>
+            {NAVIGATION.about.items.map((item) => (
+              <Link
+                className="mobileNav__link"
+                to={item.to}
+                key={item.to}
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
 
           <div className="mobileNav__section">
-            <div className="mobileNav__label">Legal</div>
-            <Link className="mobileNav__link" to="/terminos" onClick={() => setMobileOpen(false)}>Términos y condiciones</Link>
-            <Link className="mobileNav__link" to="/privacidad" onClick={() => setMobileOpen(false)}>Aviso de privacidad</Link>
-            <Link className="mobileNav__link" to="/politica" onClick={() => setMobileOpen(false)}>Política</Link>
+            <div className="mobileNav__label">{NAVIGATION.legal.label}</div>
+            {NAVIGATION.legal.items.map((item) => (
+              <Link
+                className="mobileNav__link"
+                to={item.to}
+                key={item.to}
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
 
           <div className="mobileNav__cta">

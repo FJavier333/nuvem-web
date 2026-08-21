@@ -1,7 +1,5 @@
 /* =========================
-   NUVEM — Portafolio (Squarespace-like)
-   Reglas: sin inline styles, hereda tipografía global, sin responsive todavía
-   + Hover slideshow con fade (1 loop por hover)
+   NUVEM — Portafolio editorial
    ========================= */
 
 .portafolio{
@@ -17,23 +15,11 @@
 
 /* Header (mismo estilo que IntroCTA) */
 .portafolio__head{
-  padding: 10px 0 12px;
+  padding: 10px 0 0;
 
   text-align: center;
   max-width: 980px;
   margin: 0 auto;
-}
-
-.portafolio__kicker{
-  display: inline-block;
-  margin-bottom: 22px;
-
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-
-  color: var(--muted);
 }
 
 .portafolio__title{
@@ -50,6 +36,7 @@
 
 .portafolio__desc{
   margin-top: 20px;
+  margin-bottom: 0;
   max-width: 720px;
 
   margin-left: auto;
@@ -62,136 +49,184 @@
   text-align: center;
 }
 
-/* Grid de previews */
+/* Casos de estudio */
 .portafolio__grid{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 26px;
-  align-items: start;
-
-  margin-top: 12px;
+  gap: clamp(56px, 6vw, 80px);
+  margin-top: clamp(56px, 6vw, 80px);
 }
 
-/* Card */
 .portafolio__item{
-  overflow: visible;
-}
-
-/* “Browser frame” sutil arriba (si lo usas en JSX) */
-.portafolio__frame{
-  height: 46px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+  grid-template-areas: "media content";
   align-items: center;
-  gap: 10px;
-  padding: 0 14px;
-
-  background: rgba(0,0,0,0.30);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  gap: clamp(44px, 6vw, 104px);
 }
 
-.portafolio__dots{
-  display: inline-flex;
-  gap: 7px;
-  align-items: center;
+.portafolio__item:nth-child(even){
+  grid-template-columns: minmax(280px, 1fr) minmax(0, 1.4fr);
+  grid-template-areas: "content media";
 }
 
-.portafolio__dot{
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.18);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
-}
-
-.portafolio__url{
-  height: 12px;
-  flex: 1;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-/* Media (hover slideshow target) */
 .portafolio__media{
+  grid-area: media;
   width: 100%;
   overflow: hidden;
-
-  /* tu separación de arriba (antes estaba en la img) */
-  padding-top: clamp(22px, 10vw, 22px);
-
-  cursor: pointer;
-
-  /* permite levantar el contenedor en hover sin “temblor” */
-  will-change: transform;
+  border-radius: var(--radius);
+  background: #141416;
+  box-shadow: 0 22px 64px rgba(10,10,14,.14);
+  transition:
+    transform 320ms var(--ease),
+    box-shadow 320ms var(--ease);
 }
 
-/* Imagen (swap + fade) */
 .portafolio__img{
   display: block;
   width: 100%;
-
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
-  border-radius: 0;
-
-  /* fade */
-  opacity: 1;
-
-  /* anti-parpadeo / anti-jitter */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-
-  transition:
-    opacity 650ms cubic-bezier(.4,0,.2,1),
-    transform 600ms var(--ease),
-    filter 400ms var(--ease);
+  transition: transform 320ms var(--ease);
 }
 
-.portafolio__img.is-fading{
-  opacity: 0.25; /* 🔑 evita el flash */
+.portafolio__content{
+  grid-area: content;
+  width: 100%;
+  max-width: 430px;
+  justify-self: start;
 }
 
-/* Hover feel */
+.portafolio__item:nth-child(even) .portafolio__content{
+  justify-self: end;
+}
+
+.portafolio__number{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .18em;
+
+  color: var(--accent);
+}
+
+.portafolio__number::after{
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: currentColor;
+  opacity: .6;
+}
+
+.portafolio__projectTitle{
+  margin: 0;
+
+  font-family: var(--font-sans);
+  font-size: clamp(32px, 3.2vw, 50px);
+  font-weight: 900;
+  letter-spacing: -.04em;
+  line-height: .98;
+
+  color: var(--text);
+  text-wrap: balance;
+}
+
+.portafolio__summary{
+  max-width: 36ch;
+  margin: 24px 0 0;
+
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  font-weight: 550;
+  line-height: 1.7;
+
+  color: var(--muted);
+}
+
 .portafolio__action{
   display: flex;
-  justify-content: flex-end;
-  margin-top: 12px;
+  justify-content: flex-start;
+  margin-top: 32px;
 }
 
-/* ------------------------------------------------------------------- RESPONSIVO AQUI ------------------------------------------------------*/
+.portafolio__section.reveal-cascade--ready .portafolio__item .portafolio__media{
+  opacity: 0;
+  transform: translateY(18px) scale(.99);
+  transition:
+    opacity 580ms var(--ease),
+    transform 580ms var(--ease),
+    box-shadow 320ms var(--ease);
+}
+
+.portafolio__section.reveal-cascade--ready .portafolio__item .portafolio__content{
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 580ms var(--ease) 100ms,
+    transform 580ms var(--ease) 100ms;
+}
+
+.portafolio__section.reveal-cascade--ready .portafolio__item.is-visible .portafolio__media,
+.portafolio__section.reveal-cascade--ready .portafolio__item.is-visible .portafolio__content{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (hover: hover) and (pointer: fine){
+  .portafolio__section.reveal-cascade--ready .portafolio__item.is-visible .portafolio__media:hover{
+    box-shadow: 0 30px 82px rgba(10,10,14,.2);
+  }
+
+  .portafolio__section.reveal-cascade--ready .portafolio__item.is-visible .portafolio__media:hover .portafolio__img{
+    transform: scale(1.008);
+  }
+}
+
 @media (max-width: 900px){
-
-  /* Grid a 1 columna */
   .portafolio__grid{
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin-top: 10px;
+    gap: clamp(52px, 9vw, 68px);
+    margin-top: clamp(52px, 9vw, 68px);
   }
 
-  /* Quita el “hueco” que en móvil se ve enorme */
+  .portafolio__item,
+  .portafolio__item:nth-child(even){
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "media"
+      "content";
+    gap: 28px;
+  }
+
+  .portafolio__content,
+  .portafolio__item:nth-child(even) .portafolio__content{
+    max-width: 640px;
+    justify-self: stretch;
+  }
+
   .portafolio__media{
-    padding-top: 0;
+    border-radius: 14px;
   }
 
-  /* Imagen: mantiene proporción y se ve “card pro” */
-  .portafolio__img{
-    aspect-ratio: 16 / 11;   /* un pelín más alto en móvil */
-    /*
-    object-fit: contain;
-    background: transparent;
-    */
+  .portafolio__projectTitle{
+    font-size: clamp(30px, 7vw, 42px);
   }
 
-  /* Botón: NO lo estiro, solo lo reposiciono */
+  .portafolio__summary{
+    margin-top: 18px;
+    font-size: 16px;
+  }
+
   .portafolio__action{
-    justify-content: center;
-    margin-top: 12px;
+    margin-top: 26px;
   }
 }
 
 @media (max-width: 420px){
-
   .portafolio{
     padding-top: clamp(56px, 10vw, 92px);
     padding-bottom: clamp(40px, 8vw, 72px);
@@ -201,12 +236,17 @@
     font-size: 1rem;
   }
 
-  .portafolio__grid{
-    gap: 18px;
+  .portafolio__item,
+  .portafolio__item:nth-child(even){
+    gap: 24px;
   }
 
-  .portafolio__img{
-    aspect-ratio: 16 / 12;
+  .portafolio__number{
+    margin-bottom: 18px;
+  }
+
+  .portafolio__summary{
+    font-size: 15.5px;
   }
 }
 
@@ -218,5 +258,24 @@
   .portafolio{
     padding-top: clamp(46px, 8vw, 74px);
     padding-bottom: clamp(46px, 8vw, 74px);
+  }
+
+  .portafolio__section.reveal-cascade--ready .portafolio__item .portafolio__media,
+  .portafolio__section.reveal-cascade--ready .portafolio__item .portafolio__content{
+    transform: translateY(12px) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .portafolio__section.reveal-cascade--ready .portafolio__item .portafolio__media,
+  .portafolio__section.reveal-cascade--ready .portafolio__item .portafolio__content,
+  .portafolio__img{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .portafolio__section.reveal-cascade--ready .portafolio__item.is-visible .portafolio__media:hover .portafolio__img{
+    transform: none;
   }
 }

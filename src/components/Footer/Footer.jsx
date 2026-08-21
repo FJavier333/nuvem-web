@@ -3,6 +3,51 @@ import "./Footer.css";
 import { useEffect, useState } from "react";
 import WhatsAppQRModal from "../Contact/WhatsAppQRModal";
 
+const CONTACT_INFO = {
+  label: "Contacto",
+  emailLabel: "Correo:",
+  email: "blacfjba3@gmail.com",
+  gmailUrl: "https://mail.google.com/mail/?view=cm&fs=1&to=blacfjba3@gmail.com",
+  phoneLabel: "Teléfono:",
+  phoneDisplay: "55 7071 3137",
+  phone: "5570713137",
+  message: "Hola, me gustaría cotizar un sitio web.",
+};
+
+const SECTION_NAVIGATION = {
+  label: "Navegación",
+  ariaLabel: "Navegación del sitio",
+  items: [
+    { label: "Servicios", id: "servicios" },
+    { label: "Portafolio", id: "portafolio" },
+    { label: "Proceso", id: "proceso" },
+    { label: "Por qué elegirnos", id: "nuvem-principles-title" },
+    { label: "FAQ", id: "faq" },
+    { label: "Contacto", id: "contacto" },
+  ],
+};
+
+const LEGAL_NAVIGATION = {
+  label: "About",
+  ariaLabel: "Enlaces legales",
+  items: [
+    { label: "Quiénes somos", to: "/quienes-somos" },
+    { label: "Cómo trabajamos", to: "/como-trabajamos" },
+    { label: "Términos y condiciones", to: "/terminos" },
+    { label: "Aviso de privacidad", to: "/privacidad" },
+    { label: "Política oficial", to: "/politica" },
+  ],
+};
+
+const SOCIAL_LINKS = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/prod.bypixitas_/",
+    className: "footer__icon footer__icon--ig",
+    path: "M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6a3 3 0 0 0 0-6Zm5.25-.75a.75.75 0 1 0 0 1.5a.75.75 0 0 0 0-1.5Z",
+  },
+];
+
 export default function Footer() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -84,27 +129,27 @@ export default function Footer() {
           {/* CONTACTO — Desktop normal */}
           {!isAccMode && (
             <>
-              <h3 className="footer__brandTitle">Contacto</h3>
+              <h3 className="footer__brandTitle">{CONTACT_INFO.label}</h3>
 
               <p className="footer__desc">
-                Correo:{" "}
+                {CONTACT_INFO.emailLabel}{" "}
                 <a
-                  href="mailto:blacfjba3@gmail.com"
+                  href={`mailto:${CONTACT_INFO.email}`}
                   className="footer__link-underline"
                   onClick={() => {
                     setTimeout(() => {
                       window.open(
-                        "https://mail.google.com/mail/?view=cm&fs=1&to=blacfjba3@gmail.com",
+                        CONTACT_INFO.gmailUrl,
                         "_blank",
                         "noopener,noreferrer"
                       );
                     }, 300);
                   }}
                 >
-                  blacfjba3@gmail.com
+                  {CONTACT_INFO.email}
                 </a>
                 <br />
-                Teléfono:{" "}
+                {CONTACT_INFO.phoneLabel}{" "}
                 <span
                   className="footer__link-underline"
                   role="button"
@@ -114,7 +159,7 @@ export default function Footer() {
                     if (e.key === "Enter" || e.key === " ") setOpenQR(true);
                   }}
                 >
-                  55 7071 3137
+                  {CONTACT_INFO.phoneDisplay}
                 </span>
               </p>
             </>
@@ -129,31 +174,31 @@ export default function Footer() {
                 aria-expanded={openAcc === "contacto"}
                 onClick={() => toggleAcc("contacto")}
               >
-                <span>Contacto</span>
+                <span>{CONTACT_INFO.label}</span>
                 <span className="footer__accChevron" aria-hidden="true" />
               </button>
 
               <div className={`footer__accPanel ${openAcc === "contacto" ? "is-open" : ""}`}>
                 <div className="footer__accInner">
                   <p className="footer__desc">
-                    Correo:{" "}
+                    {CONTACT_INFO.emailLabel}{" "}
                     <a
-                      href="mailto:blacfjba3@gmail.com"
+                      href={`mailto:${CONTACT_INFO.email}`}
                       className="footer__link-underline"
                       onClick={() => {
                         setTimeout(() => {
                           window.open(
-                            "https://mail.google.com/mail/?view=cm&fs=1&to=blacfjba3@gmail.com",
+                            CONTACT_INFO.gmailUrl,
                             "_blank",
                             "noopener,noreferrer"
                           );
                         }, 300);
                       }}
                     >
-                      blacfjba3@gmail.com
+                      {CONTACT_INFO.email}
                     </a>
                     <br />
-                    Teléfono:{" "}
+                    {CONTACT_INFO.phoneLabel}{" "}
                     <span
                       className="footer__link-underline"
                       role="button"
@@ -163,7 +208,7 @@ export default function Footer() {
                         if (e.key === "Enter" || e.key === " ") setOpenQR(true);
                       }}
                     >
-                      55 7071 3137
+                      {CONTACT_INFO.phoneDisplay}
                     </span>
                   </p>
                 </div>
@@ -177,28 +222,19 @@ export default function Footer() {
           {/* Desktop normal */}
           {!isAccMode && (
             <>
-              <h3 className="footer__brandTitle">Navegación</h3>
+              <h3 className="footer__brandTitle">{SECTION_NAVIGATION.label}</h3>
 
-              <nav className="footer__nav" aria-label="Navegación del sitio">
-                <button className="btn-text footer__link" type="button" onClick={() => goToSection("servicios")}>
-                  Servicios
-                </button>
-
-                <button className="btn-text footer__link" type="button" onClick={() => goToSection("portafolio")}>
-                  Portafolio
-                </button>
-
-                <button className="btn-text footer__link" type="button" onClick={() => goToSection("porque")}>
-                  Garantía
-                </button>
-
-                <button className="btn-text footer__link" type="button" onClick={() => goToSection("faq")}>
-                  FAQ
-                </button>
-
-                <button className="btn-text footer__link" type="button" onClick={() => goToSection("contacto")}>
-                  Contacto
-                </button>
+              <nav className="footer__nav" aria-label={SECTION_NAVIGATION.ariaLabel}>
+                {SECTION_NAVIGATION.items.map((item) => (
+                  <button
+                    className="btn-text footer__link"
+                    type="button"
+                    key={item.id}
+                    onClick={() => goToSection(item.id)}
+                  >
+                    {item.label}
+                  </button>
+                ))}
               </nav>
 
               <button
@@ -222,32 +258,23 @@ export default function Footer() {
                 aria-expanded={openAcc === "nav"}
                 onClick={() => toggleAcc("nav")}
               >
-                <span>Navegación</span>
+                <span>{SECTION_NAVIGATION.label}</span>
                 <span className="footer__accChevron" aria-hidden="true" />
               </button>
 
               <div className={`footer__accPanel ${openAcc === "nav" ? "is-open" : ""}`}>
                 <div className="footer__accInner">
-                  <nav className="footer__nav" aria-label="Navegación del sitio">
-                    <button className="btn-text footer__link" type="button" onClick={() => goToSection("servicios")}>
-                      Servicios
-                    </button>
-
-                    <button className="btn-text footer__link" type="button" onClick={() => goToSection("portafolio")}>
-                      Portafolio
-                    </button>
-
-                    <button className="btn-text footer__link" type="button" onClick={() => goToSection("porque")}>
-                      Garantía
-                    </button>
-
-                    <button className="btn-text footer__link" type="button" onClick={() => goToSection("faq")}>
-                      FAQ
-                    </button>
-
-                    <button className="btn-text footer__link" type="button" onClick={() => goToSection("contacto")}>
-                      Contacto
-                    </button>
+                  <nav className="footer__nav" aria-label={SECTION_NAVIGATION.ariaLabel}>
+                    {SECTION_NAVIGATION.items.map((item) => (
+                      <button
+                        className="btn-text footer__link"
+                        type="button"
+                        key={item.id}
+                        onClick={() => goToSection(item.id)}
+                      >
+                        {item.label}
+                      </button>
+                    ))}
                   </nav>
 
                   <button
@@ -270,44 +297,32 @@ export default function Footer() {
           {/* Desktop normal */}
           {!isAccMode && (
             <>
-              <h3 className="footer__brandTitle">About</h3>
+              <h3 className="footer__brandTitle">{LEGAL_NAVIGATION.label}</h3>
 
-              <nav className="footer__nav" aria-label="Enlaces legales">
-                <Link className="btn-text footer__link" to="/quienes-somos">
-                  Quiénes somos
-                </Link>
-                <Link className="btn-text footer__link" to="/como-trabajamos">
-                  Cómo trabajamos
-                </Link>
-                <Link className="btn-text footer__link" to="/terminos">
-                  Términos y condiciones
-                </Link>
-                <Link className="btn-text footer__link" to="/privacidad">
-                  Aviso de privacidad
-                </Link>
-                <Link className="btn-text footer__link" to="/politica">
-                  Política oficial
-                </Link>
+              <nav className="footer__nav" aria-label={LEGAL_NAVIGATION.ariaLabel}>
+                {LEGAL_NAVIGATION.items.map((item) => (
+                  <Link className="btn-text footer__link" to={item.to} key={item.to}>
+                    {item.label}
+                  </Link>
+                ))}
               </nav>
 
               <div className="footer__social" aria-label="Redes sociales">
-                <a
-                  className="footer__icon footer__icon--ig"
-                  href="https://instagram.com/"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label="Instagram"
-                  title="Instagram"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      fill="currentColor"
-                      d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 
-                      2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10a5 
-                      5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6a3 3 0 0 0 0-6Zm5.25-.75a.75.75 0 1 0 0 1.5a.75.75 0 0 0 0-1.5Z"
-                    />
-                  </svg>
-                </a>
+                {SOCIAL_LINKS.map((item) => (
+                  <a
+                    className={item.className}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={item.label}
+                    title={item.label}
+                    key={item.href}
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path fill="currentColor" d={item.path} />
+                    </svg>
+                  </a>
+                ))}
 
                 {/* WhatsApp icon comentado como lo tenías */}
               </div>
@@ -323,48 +338,36 @@ export default function Footer() {
                 aria-expanded={openAcc === "about"}
                 onClick={() => toggleAcc("about")}
               >
-                <span>About</span>
+                <span>{LEGAL_NAVIGATION.label}</span>
                 <span className="footer__accChevron" aria-hidden="true" />
               </button>
 
               <div className={`footer__accPanel ${openAcc === "about" ? "is-open" : ""}`}>
                 <div className="footer__accInner">
-                  <nav className="footer__nav" aria-label="Enlaces legales">
-                    <Link className="btn-text footer__link" to="/quienes-somos">
-                      Quiénes somos
-                    </Link>
-                    <Link className="btn-text footer__link" to="/como-trabajamos">
-                      Cómo trabajamos
-                    </Link>
-                    <Link className="btn-text footer__link" to="/terminos">
-                      Términos y condiciones
-                    </Link>
-                    <Link className="btn-text footer__link" to="/privacidad">
-                      Aviso de privacidad
-                    </Link>
-                    <Link className="btn-text footer__link" to="/politica">
-                      Política oficial
-                    </Link>
+                  <nav className="footer__nav" aria-label={LEGAL_NAVIGATION.ariaLabel}>
+                    {LEGAL_NAVIGATION.items.map((item) => (
+                      <Link className="btn-text footer__link" to={item.to} key={item.to}>
+                        {item.label}
+                      </Link>
+                    ))}
                   </nav>
 
                   <div className="footer__social" aria-label="Redes sociales">
-                    <a
-                      className="footer__icon footer__icon--ig"
-                      href="https://instagram.com/"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      aria-label="Instagram"
-                      title="Instagram"
-                    >
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                          fill="currentColor"
-                          d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 
-                          2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10a5 
-                          5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6a3 3 0 0 0 0-6Zm5.25-.75a.75.75 0 1 0 0 1.5a.75.75 0 0 0 0-1.5Z"
-                        />
-                      </svg>
-                    </a>
+                    {SOCIAL_LINKS.map((item) => (
+                      <a
+                        className={item.className}
+                        href={item.href}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label={item.label}
+                        title={item.label}
+                        key={item.href}
+                      >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path fill="currentColor" d={item.path} />
+                        </svg>
+                      </a>
+                    ))}
 
                     {/* WhatsApp icon comentado como lo tenías */}
                   </div>
@@ -384,8 +387,8 @@ export default function Footer() {
       <WhatsAppQRModal
         open={openQR}
         onClose={() => setOpenQR(false)}
-        phone="5570713137"
-        message="Hola, me gustaría cotizar un sitio web."
+        phone={CONTACT_INFO.phone}
+        message={CONTACT_INFO.message}
       />
     </footer>
   );

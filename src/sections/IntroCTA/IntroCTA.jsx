@@ -1,12 +1,21 @@
-import "./IntroCTA.css";
+import GrainSection from "../../components/GrainSection/GrainSection";
 import ParticlesBlob from "../../components/ParticlesBlob/ParticlesBlob";
 import { useState } from "react";
 import WhatsAppQRModal from "../../components/Contact/WhatsAppQRModal";
+import useRevealCascade from "../../hooks/useRevealCascade";
+import "./IntroCTA.css";
 
 export default function IntroCTA() {
   const [openQR, setOpenQR] = useState(false);
+  const revealRootRef = useRevealCascade();
+
   return (
-    <section className="introCta">
+    <GrainSection
+      ambient="green-hero"
+      as="section"
+      className="introCta"
+      variant="dark"
+    >
       {/* FONDO DE PARTÍCULAS */}
       <ParticlesBlob
         className="introCta__particles"
@@ -14,27 +23,26 @@ export default function IntroCTA() {
       />
 
       <div className="container">
-        <div className="introCta__inner">
+        <div className="introCta__inner" ref={revealRootRef}>
 
-          <span className="introCta__kicker">
+          <span className="introCta__kicker" data-reveal>
             NUVEM · ESTUDIO DIGITAL
           </span>
 
-          <h2 className="introCta__title">
+          <h2 className="introCta__title" data-reveal data-reveal-delay="1">
             DESARROLLO WEB
             <br />
             PROFESIONAL
           </h2>
 
-          <p className="introCta__text">
+          <p className="introCta__text" data-reveal data-reveal-delay="2">
             Diseñamos y desarrollamos sitios web profesionales,
             escalables y completamente personalizados.
             Nada de plantillas. Nada de soluciones express.
             Solo productos digitales pensados para crecer contigo.
           </p>
 
-          <div className="introCta__actions">
-            {/*
+          <div className="introCta__actions" data-reveal data-reveal-delay="3">
             <button
               type="button"
               className="btnCotiza"
@@ -42,9 +50,8 @@ export default function IntroCTA() {
             >
               Contactar
             </button>
-            */}
 
-            <a href="/#servicios" className="btn">
+            <a href="/#servicios" className="btnCotiza">
               Ver servicios
             </a>
           </div>
@@ -58,6 +65,6 @@ export default function IntroCTA() {
 
         </div>
       </div>
-    </section>
+    </GrainSection>
   );
 }

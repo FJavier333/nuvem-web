@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react";
 import "./FAQ.css";
 import WhatsAppQRModal from "../../components/Contact/WhatsAppQRModal";
+import useRevealCascade from "../../hooks/useRevealCascade";
 
 export default function FAQ() {
   const [openQR, setOpenQR] = useState(false);
+    const revealRootRef = useRevealCascade();
     const faqs = useMemo(
       () => [
         {
@@ -41,10 +43,10 @@ export default function FAQ() {
     };
 
     return (
-      <section className="faq" id="faq">
+      <section className="faq" id="faq" ref={revealRootRef}>
         <div className="faq__container">
           <header className="faq__head">
-            <h2 className="faq__title">PREGUNTAS FRECUENTES</h2>
+            <h2 className="faq__title" data-reveal>PREGUNTAS FRECUENTES</h2>
           </header>
 
           <div className="faq__list">
@@ -52,36 +54,42 @@ export default function FAQ() {
               const isOpen = openIndexes.includes(idx);
 
               return (
-                <div className={`faq__item ${isOpen ? "is-open" : ""}`} key={idx}>
-                  <button
-                    type="button"
-                    className="faq__question"
-                    onClick={() => toggle(idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <span className="faq__qText">{item.q}</span>
+                <div
+                  data-reveal
+                  data-reveal-delay={String(Math.min(idx, 4))}
+                  key={item.q}
+                >
+                  <div className={`faq__item ${isOpen ? "is-open" : ""}`}>
+                    <button
+                      type="button"
+                      className="faq__question"
+                      onClick={() => toggle(idx)}
+                      aria-expanded={isOpen}
+                    >
+                      <span className="faq__qText">{item.q}</span>
 
-                    <span
-                      className={`faq__icon ${isOpen ? "is-open" : ""}`}
-                      aria-hidden="true"
-                    />
+                      <span
+                        className={`faq__icon ${isOpen ? "is-open" : ""}`}
+                        aria-hidden="true"
+                      />
 
-                  </button>
+                    </button>
 
-                  <div className="faq__answerWrap" aria-hidden={!isOpen}>
-                    <div className="faq__answer">
-                      {item.a.split("\n\n").map((p, i) => (
-                        <p key={i}>{p}</p>
-                      ))}
+                    <div className="faq__answerWrap" aria-hidden={!isOpen}>
+                      <div className="faq__answer">
+                        {item.a.split("\n\n").map((p, i) => (
+                          <p key={i}>{p}</p>
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="faq__divider" />
+                    <div className="faq__divider" />
+                  </div>
                 </div>
               );
             })}
           </div>
-          <div className="faq__cta">
+          <div className="faq__cta" data-reveal data-reveal-delay="2">
             <button
               type="button"
               className="btnCotiza"
