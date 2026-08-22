@@ -235,10 +235,6 @@ export default function NuvemPrinciplesSection() {
                         decoding="async"
                         draggable="false"
                       />
-
-                      <span className="nuvemPrinciples__cardNumber">
-                        {formatIndex(index)}
-                      </span>
                     </span>
 
                     <span className="nuvemPrinciples__cardBody">

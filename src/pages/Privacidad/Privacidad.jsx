@@ -154,152 +154,156 @@ export default function Privacidad() {
           </p>
 
           {/* 1 */}
-          <section id="responsable" className="privacidad__section" data-reveal>
-            <h2>1. Responsable del tratamiento de los datos personales</h2>
-            <p>
-              Nuvem es responsable del uso y protección de los datos personales recabados
-              a través de este sitio web, y se compromete a tratarlos de forma confidencial
-              y conforme a la legislación aplicable.
-            </p>
+          <section id="responsable" className="privacidad__section">
+            <div className="privacidad__sectionReveal" data-reveal>
+              <h2>1. Responsable del tratamiento de los datos personales</h2>
+              <p>
+                Nuvem es responsable del uso y protección de los datos personales recabados
+                a través de este sitio web, y se compromete a tratarlos de forma confidencial
+                y conforme a la legislación aplicable.
+              </p>
+            </div>
           </section>
 
           {/* 2 */}
           <section
             id="datos"
             className="privacidad__section"
-            data-reveal
-            data-reveal-delay="1"
           >
-            <h2>2. Datos personales que se recaban</h2>
-            <p>
-              Los datos personales que Nuvem puede recabar incluyen, de manera enunciativa
-              mas no limitativa:
-            </p>
-            <ul className="privacidad__list">
-              <li>Nombre</li>
-              <li>Correo electrónico</li>
-              <li>Número telefónico</li>
-              <li>Información relacionada con el proyecto, negocio o solicitud del cliente</li>
-            </ul>
-            <p>Nuvem no recaba datos sensibles a través de este sitio web.</p>
+            <div className="privacidad__sectionReveal" data-reveal data-reveal-delay="1">
+              <h2>2. Datos personales que se recaban</h2>
+              <p>
+                Los datos personales que Nuvem puede recabar incluyen, de manera enunciativa
+                mas no limitativa:
+              </p>
+              <ul className="privacidad__list">
+                <li>Nombre</li>
+                <li>Correo electrónico</li>
+                <li>Número telefónico</li>
+                <li>Información relacionada con el proyecto, negocio o solicitud del cliente</li>
+              </ul>
+              <p>Nuvem no recaba datos sensibles a través de este sitio web.</p>
+            </div>
           </section>
 
           {/* 3 */}
           <section
             id="finalidades"
             className="privacidad__section"
-            data-reveal
-            data-reveal-delay="2"
           >
-            <h2>3. Finalidades del tratamiento de los datos</h2>
-            <p>Los datos personales recabados serán utilizados exclusivamente para las siguientes finalidades:</p>
-            <ul className="privacidad__list">
-              <li>Dar atención a solicitudes de contacto, cotización o información.</li>
-              <li>Establecer comunicación con el cliente o prospecto.</li>
-              <li>Analizar la viabilidad y alcance de proyectos solicitados.</li>
-              <li>Dar seguimiento a procesos relacionados con servicios contratados.</li>
-            </ul>
-            <p>
-              Los datos no serán utilizados para fines distintos a los aquí descritos sin el
-              consentimiento del titular.
-            </p>
+            <div className="privacidad__sectionReveal" data-reveal data-reveal-delay="2">
+              <h2>3. Finalidades del tratamiento de los datos</h2>
+              <p>Los datos personales recabados serán utilizados exclusivamente para las siguientes finalidades:</p>
+              <ul className="privacidad__list">
+                <li>Dar atención a solicitudes de contacto, cotización o información.</li>
+                <li>Establecer comunicación con el cliente o prospecto.</li>
+                <li>Analizar la viabilidad y alcance de proyectos solicitados.</li>
+                <li>Dar seguimiento a procesos relacionados con servicios contratados.</li>
+              </ul>
+              <p>
+                Los datos no serán utilizados para fines distintos a los aquí descritos sin el
+                consentimiento del titular.
+              </p>
+            </div>
           </section>
 
           {/* 4 */}
           <section
             id="proteccion"
             className="privacidad__section"
-            data-reveal
-            data-reveal-delay="3"
           >
-            <h2>4. Protección y confidencialidad de los datos</h2>
-            <p>
-              Nuvem se compromete a resguardar los datos personales mediante medidas
-              administrativas, técnicas y organizativas razonables, evitando su pérdida,
-              uso indebido, acceso no autorizado o divulgación.
-            </p>
-            <p>
-              Los datos personales no serán vendidos, cedidos ni compartidos con terceros,
-              salvo en los casos legalmente permitidos o por requerimiento de autoridad
-              competente.
-            </p>
+            <div className="privacidad__sectionReveal" data-reveal data-reveal-delay="3">
+              <h2>4. Protección y confidencialidad de los datos</h2>
+              <p>
+                Nuvem se compromete a resguardar los datos personales mediante medidas
+                administrativas, técnicas y organizativas razonables, evitando su pérdida,
+                uso indebido, acceso no autorizado o divulgación.
+              </p>
+              <p>
+                Los datos personales no serán vendidos, cedidos ni compartidos con terceros,
+                salvo en los casos legalmente permitidos o por requerimiento de autoridad
+                competente.
+              </p>
+            </div>
           </section>
 
           {/* 5 */}
           <section
             id="arco"
             className="privacidad__section"
-            data-reveal
-            data-reveal-delay="4"
           >
-            <h2>5. Derechos ARCO</h2>
-            <p>El titular de los datos personales tiene derecho a:</p>
-            <ul className="privacidad__list">
-              <li>Acceder a sus datos personales.</li>
-              <li>Rectificar sus datos cuando sean inexactos o incompletos.</li>
-              <li>Cancelar sus datos cuando considere que no se requieren para las finalidades señaladas.</li>
-              <li>Oponerse al tratamiento de sus datos para fines específicos.</li>
-            </ul>
-            <p>
-              Para ejercer estos derechos, el titular podrá enviar una solicitud al correo
-              electrónico de contacto indicado en este aviso.
-            </p>
+            <div className="privacidad__sectionReveal" data-reveal data-reveal-delay="4">
+              <h2>5. Derechos ARCO</h2>
+              <p>El titular de los datos personales tiene derecho a:</p>
+              <ul className="privacidad__list">
+                <li>Acceder a sus datos personales.</li>
+                <li>Rectificar sus datos cuando sean inexactos o incompletos.</li>
+                <li>Cancelar sus datos cuando considere que no se requieren para las finalidades señaladas.</li>
+                <li>Oponerse al tratamiento de sus datos para fines específicos.</li>
+              </ul>
+              <p>
+                Para ejercer estos derechos, el titular podrá enviar una solicitud al correo
+                electrónico de contacto indicado en este aviso.
+              </p>
+            </div>
           </section>
 
           {/* 6 */}
-          <section id="medios" className="privacidad__section" data-reveal>
-            <h2>6. Uso de medios de contacto</h2>
-            <p>
-              Los datos proporcionados a través de formularios, correo electrónico,
-              mensajería o cualquier medio de contacto disponible en este sitio web serán
-              utilizados únicamente para la atención de solicitudes relacionadas con los
-              servicios ofrecidos por Nuvem.
-            </p>
+          <section id="medios" className="privacidad__section">
+            <div className="privacidad__sectionReveal" data-reveal>
+              <h2>6. Uso de medios de contacto</h2>
+              <p>
+                Los datos proporcionados a través de formularios, correo electrónico,
+                mensajería o cualquier medio de contacto disponible en este sitio web serán
+                utilizados únicamente para la atención de solicitudes relacionadas con los
+                servicios ofrecidos por Nuvem.
+              </p>
+            </div>
           </section>
 
           {/* 7 */}
           <section
             id="cambios"
             className="privacidad__section"
-            data-reveal
-            data-reveal-delay="1"
           >
-            <h2>7. Cambios al aviso de privacidad</h2>
-            <p>
-              Nuvem se reserva el derecho de realizar modificaciones o actualizaciones al
-              presente Aviso de Privacidad cuando sea necesario. Dichas modificaciones
-              estarán disponibles en este mismo sitio web y entrarán en vigor a partir de
-              su publicación.
-            </p>
+            <div className="privacidad__sectionReveal" data-reveal data-reveal-delay="1">
+              <h2>7. Cambios al aviso de privacidad</h2>
+              <p>
+                Nuvem se reserva el derecho de realizar modificaciones o actualizaciones al
+                presente Aviso de Privacidad cuando sea necesario. Dichas modificaciones
+                estarán disponibles en este mismo sitio web y entrarán en vigor a partir de
+                su publicación.
+              </p>
+            </div>
           </section>
 
           {/* 8 */}
           <section
             id="consentimiento"
             className="privacidad__section"
-            data-reveal
-            data-reveal-delay="2"
           >
-            <h2>8. Consentimiento</h2>
-            <p>
-              Al proporcionar sus datos personales a través de este sitio web, el titular
-              reconoce haber leído y aceptado el presente Aviso de Privacidad.
-            </p>
+            <div className="privacidad__sectionReveal" data-reveal data-reveal-delay="2">
+              <h2>8. Consentimiento</h2>
+              <p>
+                Al proporcionar sus datos personales a través de este sitio web, el titular
+                reconoce haber leído y aceptado el presente Aviso de Privacidad.
+              </p>
+            </div>
           </section>
 
           {/* 9 */}
           <section
             id="contacto"
             className="privacidad__section"
-            data-reveal
-            data-reveal-delay="3"
           >
-            <h2>9. Medio de contacto</h2>
-            <p>
-              Para cualquier duda relacionada con este Aviso de Privacidad o con el
-              tratamiento de datos personales, el titular podrá comunicarse a través de
-              los medios de contacto disponibles en este sitio web.
-            </p>
+            <div className="privacidad__sectionReveal" data-reveal data-reveal-delay="3">
+              <h2>9. Medio de contacto</h2>
+              <p>
+                Para cualquier duda relacionada con este Aviso de Privacidad o con el
+                tratamiento de datos personales, el titular podrá comunicarse a través de
+                los medios de contacto disponibles en este sitio web.
+              </p>
+            </div>
           </section>
         </article>
 

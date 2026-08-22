@@ -152,345 +152,351 @@ export default function Terminos() {
           </header>
 
           {/* 1 */}
-          <section id="aceptacion" className="terminos__section" data-reveal>
-            <h2>1. Aceptación de los términos</h2>
-            <p>
-              Al contratar los servicios de Nuvem, el cliente acepta íntegramente el presente
-              documento de Términos y Condiciones, la Política Oficial y el alcance específico
-              del proyecto establecido en la cotización o contrato correspondiente.
-            </p>
+          <section id="aceptacion" className="terminos__section">
+            <div className="terminos__sectionReveal" data-reveal>
+              <h2>1. Aceptación de los términos</h2>
+              <p>
+                Al contratar los servicios de Nuvem, el cliente acepta íntegramente el presente
+                documento de Términos y Condiciones, la Política Oficial y el alcance específico
+                del proyecto establecido en la cotización o contrato correspondiente.
+              </p>
+            </div>
           </section>
 
           {/* 2 */}
           <section
             id="alcance-servicio"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="1"
           >
-            <h2>2. Alcance del servicio</h2>
-            <p>
-              Nuvem desarrollará el sitio web, sistema o solución digital conforme al servicio
-              contratado o a la cotización personalizada aceptada por el cliente.
-            </p>
-            <p>Únicamente se desarrollarán las funcionalidades especificadas por escrito.</p>
-            <p>
-              Cualquier solicitud adicional no contemplada será considerada trabajo fuera del alcance
-              y se cotizará como servicio adicional.
-            </p>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="1">
+              <h2>2. Alcance del servicio</h2>
+              <p>
+                Nuvem desarrollará el sitio web, sistema o solución digital conforme al servicio
+                contratado o a la cotización personalizada aceptada por el cliente.
+              </p>
+              <p>Únicamente se desarrollarán las funcionalidades especificadas por escrito.</p>
+              <p>
+                Cualquier solicitud adicional no contemplada será considerada trabajo fuera del alcance
+                y se cotizará como servicio adicional.
+              </p>
+            </div>
           </section>
 
           {/* 3 */}
           <section
             id="obligaciones-cliente"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="2"
           >
-            <h2>3. Obligaciones del cliente</h2>
-            <p>El cliente se compromete a:</p>
-            <ul className="terminos__list">
-              <li>Proporcionar información, accesos, textos, imágenes, logotipos y material relevante para el desarrollo del proyecto.</li>
-              <li>Entregar el contenido en tiempos razonables para evitar retrasos.</li>
-              <li>Revisar y aprobar avances conforme al flujo de trabajo establecido.</li>
-              <li>Efectuar los pagos acordados en tiempo y forma.</li>
-            </ul>
-            <p>
-              El incumplimiento de cualquiera de estos puntos podrá ocasionar retrasos en la fecha de entrega
-              del sitio o la suspensión del proyecto sin responsabilidad para Nuvem.
-            </p>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="2">
+              <h2>3. Obligaciones del cliente</h2>
+              <p>El cliente se compromete a:</p>
+              <ul className="terminos__list">
+                <li>Proporcionar información, accesos, textos, imágenes, logotipos y material relevante para el desarrollo del proyecto.</li>
+                <li>Entregar el contenido en tiempos razonables para evitar retrasos.</li>
+                <li>Revisar y aprobar avances conforme al flujo de trabajo establecido.</li>
+                <li>Efectuar los pagos acordados en tiempo y forma.</li>
+              </ul>
+              <p>
+                El incumplimiento de cualquiera de estos puntos podrá ocasionar retrasos en la fecha de entrega
+                del sitio o la suspensión del proyecto sin responsabilidad para Nuvem.
+              </p>
+            </div>
           </section>
 
           {/* 4 */}
           <section
             id="obligaciones-nuvem"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="3"
           >
-            <h2>4. Obligaciones de Nuvem</h2>
-            <p>Nuvem se compromete a:</p>
-            <ul className="terminos__list">
-              <li>Desarrollar el proyecto de acuerdo con lo contratado y el alcance definido.</li>
-              <li>Garantizar un diseño personalizado conforme a las necesidades del proyecto.</li>
-              <li>Mantener comunicación clara y profesional durante el proceso.</li>
-              <li>Corregir errores técnicos durante el periodo de soporte incluido.</li>
-            </ul>
-            <p>
-              Nuvem actuará con transparencia y criterio profesional, informando de manera clara
-              los costos reales del proyecto y evitando cargos innecesarios o prácticas que aprovechen el desconocimiento del cliente.
-            </p>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="3">
+              <h2>4. Obligaciones de Nuvem</h2>
+              <p>Nuvem se compromete a:</p>
+              <ul className="terminos__list">
+                <li>Desarrollar el proyecto de acuerdo con lo contratado y el alcance definido.</li>
+                <li>Garantizar un diseño personalizado conforme a las necesidades del proyecto.</li>
+                <li>Mantener comunicación clara y profesional durante el proceso.</li>
+                <li>Corregir errores técnicos durante el periodo de soporte incluido.</li>
+              </ul>
+              <p>
+                Nuvem actuará con transparencia y criterio profesional, informando de manera clara
+                los costos reales del proyecto y evitando cargos innecesarios o prácticas que aprovechen el desconocimiento del cliente.
+              </p>
+            </div>
           </section>
 
           {/* 5 */}
           <section
             id="propiedad-intelectual"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="4"
           >
-            <h2>5. Propiedad intelectual</h2>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="4">
+              <h2>5. Propiedad intelectual</h2>
 
-            <p>El cliente es propietario de:</p>
-            <ul className="terminos__list">
-              <li>Su dominio.</li>
-              <li>Su marca y logotipos.</li>
-              <li>Su contenido (textos, imágenes, productos, etc.).</li>
-              <li>El diseño final visible del sitio o sistema.</li>
-            </ul>
+              <p>El cliente es propietario de:</p>
+              <ul className="terminos__list">
+                <li>Su dominio.</li>
+                <li>Su marca y logotipos.</li>
+                <li>Su contenido (textos, imágenes, productos, etc.).</li>
+                <li>El diseño final visible del sitio o sistema.</li>
+              </ul>
 
-            <p>Nuvem conserva la propiedad de:</p>
-            <ul className="terminos__list">
-              <li>Código fuente interno reutilizable.</li>
-              <li>Componentes, módulos, estructuras técnicas y configuraciones internas.</li>
-              <li>Herramientas, automatizaciones y soluciones desarrolladas como propiedad intelectual.</li>
-            </ul>
+              <p>Nuvem conserva la propiedad de:</p>
+              <ul className="terminos__list">
+                <li>Código fuente interno reutilizable.</li>
+                <li>Componentes, módulos, estructuras técnicas y configuraciones internas.</li>
+                <li>Herramientas, automatizaciones y soluciones desarrolladas como propiedad intelectual.</li>
+              </ul>
 
-            <p>
-              El cliente recibe un sistema completamente funcional, pero no adquiere derechos para revender,
-              redistribuir o reutilizar el código para proyectos externos sin autorización previa o acuerdo adicional.
-            </p>
+              <p>
+                El cliente recibe un sistema completamente funcional, pero no adquiere derechos para revender,
+                redistribuir o reutilizar el código para proyectos externos sin autorización previa o acuerdo adicional.
+              </p>
+            </div>
           </section>
 
           {/* 6 */}
-          <section id="uso-indebido" className="terminos__section" data-reveal>
-            <h2>6. Uso indebido, reventa y explotación no autorizada</h2>
-            <p>
-              El cliente no podrá revender, sublicenciar, ceder, comercializar ni explotar con terceros, total o
-              parcialmente, el sitio web, sistema, código, estructura, automatizaciones o cualquier solución
-              desarrollada por Nuvem, sin autorización previa y expresa por escrito.
-            </p>
-            <p>
-              Cualquier uso con fines comerciales, reventa, redistribución o lucro con terceros sin dicha autorización
-              constituirá un incumplimiento grave de los presentes Términos y Condiciones.
-            </p>
+          <section id="uso-indebido" className="terminos__section">
+            <div className="terminos__sectionReveal" data-reveal>
+              <h2>6. Uso indebido, reventa y explotación no autorizada</h2>
+              <p>
+                El cliente no podrá revender, sublicenciar, ceder, comercializar ni explotar con terceros, total o
+                parcialmente, el sitio web, sistema, código, estructura, automatizaciones o cualquier solución
+                desarrollada por Nuvem, sin autorización previa y expresa por escrito.
+              </p>
+              <p>
+                Cualquier uso con fines comerciales, reventa, redistribución o lucro con terceros sin dicha autorización
+                constituirá un incumplimiento grave de los presentes Términos y Condiciones.
+              </p>
 
-            <p>En caso de incumplimiento, Nuvem se reserva el derecho de:</p>
-            <ul className="terminos__list">
-              <li>Exigir el cese inmediato del uso indebido.</li>
-              <li>Reclamar la indemnización correspondiente por daños y perjuicios.</li>
-              <li>Suspender el soporte, mantenimiento o cualquier servicio activo relacionado.</li>
-              <li>Iniciar las acciones legales necesarias para la protección de su propiedad intelectual.</li>
-            </ul>
+              <p>En caso de incumplimiento, Nuvem se reserva el derecho de:</p>
+              <ul className="terminos__list">
+                <li>Exigir el cese inmediato del uso indebido.</li>
+                <li>Reclamar la indemnización correspondiente por daños y perjuicios.</li>
+                <li>Suspender el soporte, mantenimiento o cualquier servicio activo relacionado.</li>
+                <li>Iniciar las acciones legales necesarias para la protección de su propiedad intelectual.</li>
+              </ul>
 
-            <p>
-              Esta restricción no aplica al uso normal del sitio por parte del cliente para sus propios fines
-              comerciales, operativos o institucionales.
-            </p>
+              <p>
+                Esta restricción no aplica al uso normal del sitio por parte del cliente para sus propios fines
+                comerciales, operativos o institucionales.
+              </p>
+            </div>
           </section>
 
           {/* 7 */}
           <section
             id="diseno-revisiones"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="1"
           >
-            <h2>7. Diseño personalizado y revisiones</h2>
-            <p>
-              Todos los proyectos desarrollados por Nuvem incluyen diseño personalizado, adaptado a las necesidades
-              y objetivos específicos de cada cliente.
-            </p>
-            <p>
-              El proceso contempla instancias de revisión previamente acordadas, durante las cuales el cliente podrá
-              solicitar ajustes razonables dentro del alcance definido del proyecto. Cada instancia de revisión
-              corresponde a un conjunto de modificaciones enviadas de forma consolidada, con el fin de mantener un
-              proceso ordenado y eficiente.
-            </p>
-            <p>
-              Las solicitudes de cambios adicionales, ajustes fuera del alcance acordado o rediseños sustanciales no
-              contemplados inicialmente podrán implicar un costo adicional, el cual será informado y aprobado previamente
-              por el cliente.
-            </p>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="1">
+              <h2>7. Diseño personalizado y revisiones</h2>
+              <p>
+                Todos los proyectos desarrollados por Nuvem incluyen diseño personalizado, adaptado a las necesidades
+                y objetivos específicos de cada cliente.
+              </p>
+              <p>
+                El proceso contempla instancias de revisión previamente acordadas, durante las cuales el cliente podrá
+                solicitar ajustes razonables dentro del alcance definido del proyecto. Cada instancia de revisión
+                corresponde a un conjunto de modificaciones enviadas de forma consolidada, con el fin de mantener un
+                proceso ordenado y eficiente.
+              </p>
+              <p>
+                Las solicitudes de cambios adicionales, ajustes fuera del alcance acordado o rediseños sustanciales no
+                contemplados inicialmente podrán implicar un costo adicional, el cual será informado y aprobado previamente
+                por el cliente.
+              </p>
+            </div>
           </section>
 
           {/* 8 */}
           <section
             id="pagos"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="2"
           >
-            <h2>8. Pagos y condiciones</h2>
-            <p>Las modalidades de pago son:</p>
-            <ul className="terminos__list">
-              <li>Pago del 100% al inicio, o</li>
-              <li>Esquema 50/50: 50% para iniciar y 50% al finalizar.</li>
-            </ul>
-            <p>No se iniciará ningún proyecto sin anticipo.</p>
-            <p>No se entregará el sitio, sistema o archivos sin la liquidación total del pago.</p>
-            <p>Todos los pagos por desarrollo son no reembolsables una vez iniciada la fase de trabajo.</p>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="2">
+              <h2>8. Pagos y condiciones</h2>
+              <p>Las modalidades de pago son:</p>
+              <ul className="terminos__list">
+                <li>Pago del 100% al inicio, o</li>
+                <li>Esquema 50/50: 50% para iniciar y 50% al finalizar.</li>
+              </ul>
+              <p>No se iniciará ningún proyecto sin anticipo.</p>
+              <p>No se entregará el sitio, sistema o archivos sin la liquidación total del pago.</p>
+              <p>Todos los pagos por desarrollo son no reembolsables una vez iniciada la fase de trabajo.</p>
+            </div>
           </section>
 
           {/* 9 */}
           <section
             id="dominio-hosting"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="3"
           >
-            <h2>9. Dominio, hosting y servicios de terceros</h2>
-            <ul className="terminos__list">
-              <li>El dominio se adquiere siempre con los datos y métodos de pago del cliente.</li>
-              <li>Nuvem gestiona la configuración técnica necesaria.</li>
-              <li>
-                Servicios externos como hosting, APIs, widgets o pasarelas de pago pueden generar cargos independientes
-                no incluidos en el desarrollo.
-              </li>
-              <li>Nuvem no se responsabiliza por fallos, interrupciones o cambios derivados de proveedores externos.</li>
-            </ul>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="3">
+              <h2>9. Dominio, hosting y servicios de terceros</h2>
+              <ul className="terminos__list">
+                <li>El dominio se adquiere siempre con los datos y métodos de pago del cliente.</li>
+                <li>Nuvem gestiona la configuración técnica necesaria.</li>
+                <li>
+                  Servicios externos como hosting, APIs, widgets o pasarelas de pago pueden generar cargos independientes
+                  no incluidos en el desarrollo.
+                </li>
+                <li>Nuvem no se responsabiliza por fallos, interrupciones o cambios derivados de proveedores externos.</li>
+              </ul>
+            </div>
           </section>
 
           {/* 10 */}
           <section
             id="soporte-garantia"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="4"
           >
-            <h2>10. Soporte y garantía</h2>
-            <p>
-              Todos los proyectos desarrollados por Nuvem incluyen un periodo de soporte de 30 días naturales posteriores
-              a la entrega, destinado a garantizar el correcto funcionamiento del sitio conforme a lo acordado.
-            </p>
-            <p>Durante este periodo, el soporte cubre exclusivamente:</p>
-            <ul className="terminos__list">
-              <li>Corrección de errores técnicos derivados del desarrollo.</li>
-              <li>Aclaraciones relacionadas con el funcionamiento del sitio.</li>
-            </ul>
-            <p>
-              El soporte no incluye cambios de diseño, nuevas funcionalidades, rediseños, modificaciones fuera del alcance
-              ni carga de contenido adicional.
-            </p>
-            <p>
-              Una vez finalizado el periodo de soporte incluido, cualquier requerimiento adicional se atenderá mediante
-              planes de soporte, servicios adicionales o solicitudes puntuales con costo, previa aprobación del cliente.
-            </p>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="4">
+              <h2>10. Soporte y garantía</h2>
+              <p>
+                Todos los proyectos desarrollados por Nuvem incluyen un periodo de soporte de 30 días naturales posteriores
+                a la entrega, destinado a garantizar el correcto funcionamiento del sitio conforme a lo acordado.
+              </p>
+              <p>Durante este periodo, el soporte cubre exclusivamente:</p>
+              <ul className="terminos__list">
+                <li>Corrección de errores técnicos derivados del desarrollo.</li>
+                <li>Aclaraciones relacionadas con el funcionamiento del sitio.</li>
+              </ul>
+              <p>
+                El soporte no incluye cambios de diseño, nuevas funcionalidades, rediseños, modificaciones fuera del alcance
+                ni carga de contenido adicional.
+              </p>
+              <p>
+                Una vez finalizado el periodo de soporte incluido, cualquier requerimiento adicional se atenderá mediante
+                planes de soporte, servicios adicionales o solicitudes puntuales con costo, previa aprobación del cliente.
+              </p>
+            </div>
           </section>
 
           {/* 11 */}
           <section
             id="mantenimiento-posterior"
             className="terminos__section"
-            data-reveal
           >
-            <h2>11. Mantenimiento posterior</h2>
-            <p>El cliente podrá contratar planes de mantenimiento mensual o anual.</p>
-            <p>Cualquier funcionalidad nueva será cotizada como trabajo adicional.</p>
+            <div className="terminos__sectionReveal" data-reveal>
+              <h2>11. Mantenimiento posterior</h2>
+              <p>El cliente podrá contratar planes de mantenimiento mensual o anual.</p>
+              <p>Cualquier funcionalidad nueva será cotizada como trabajo adicional.</p>
+            </div>
           </section>
 
           {/* 12 */}
           <section
             id="uso-contenido"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="1"
           >
-            <h2>12. Uso de contenido</h2>
-            <p>El cliente garantiza que posee los derechos de uso del contenido proporcionado.</p>
-            <p>
-              Nuvem no se responsabiliza por reclamaciones derivadas del uso de material que infrinja derechos de autor.
-            </p>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="1">
+              <h2>12. Uso de contenido</h2>
+              <p>El cliente garantiza que posee los derechos de uso del contenido proporcionado.</p>
+              <p>
+                Nuvem no se responsabiliza por reclamaciones derivadas del uso de material que infrinja derechos de autor.
+              </p>
+            </div>
           </section>
 
           {/* 13 */}
           <section
             id="confidencialidad"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="2"
           >
-            <h2>13. Confidencialidad</h2>
-            <p>Toda la información proporcionada por el cliente será manejada de forma confidencial.</p>
-            <p>Nuvem no divulgará información sensible salvo autorización expresa o requerimiento legal.</p>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="2">
+              <h2>13. Confidencialidad</h2>
+              <p>Toda la información proporcionada por el cliente será manejada de forma confidencial.</p>
+              <p>Nuvem no divulgará información sensible salvo autorización expresa o requerimiento legal.</p>
+            </div>
           </section>
 
           {/* 14 */}
           <section
             id="retrasos-suspensiones"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="3"
           >
-            <h2>14. Retrasos, pausas y suspensiones</h2>
-            <p>Nuvem podrá pausar o reprogramar el proyecto si el cliente:</p>
-            <ul className="terminos__list">
-              <li>No entrega contenido.</li>
-              <li>No responde revisiones o aprobaciones.</li>
-              <li>Incumple con pagos.</li>
-              <li>Solicita cambios fuera del alcance de forma reiterada.</li>
-            </ul>
-            <p>
-              En caso de suspensión prolongada, Nuvem podrá solicitar un ajuste de precio o dar por terminado el proyecto
-              conservando el anticipo.
-            </p>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="3">
+              <h2>14. Retrasos, pausas y suspensiones</h2>
+              <p>Nuvem podrá pausar o reprogramar el proyecto si el cliente:</p>
+              <ul className="terminos__list">
+                <li>No entrega contenido.</li>
+                <li>No responde revisiones o aprobaciones.</li>
+                <li>Incumple con pagos.</li>
+                <li>Solicita cambios fuera del alcance de forma reiterada.</li>
+              </ul>
+              <p>
+                En caso de suspensión prolongada, Nuvem podrá solicitar un ajuste de precio o dar por terminado el proyecto
+                conservando el anticipo.
+              </p>
+            </div>
           </section>
 
           {/* 15 */}
           <section
             id="cancelaciones-reembolsos"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="4"
           >
-            <h2>15. Cancelaciones y reembolsos</h2>
-            <ul className="terminos__list">
-              <li>El anticipo no es reembolsable en ninguna circunstancia.</li>
-              <li>
-                Si el cliente ha cubierto el total del servicio, se evaluará el porcentaje de avance para determinar un
-                posible reembolso parcial.
-              </li>
-              <li>
-                Nuvem podrá cancelar el proyecto en caso de abuso, falta de cooperación o incumplimiento del cliente.
-              </li>
-            </ul>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="4">
+              <h2>15. Cancelaciones y reembolsos</h2>
+              <ul className="terminos__list">
+                <li>El anticipo no es reembolsable en ninguna circunstancia.</li>
+                <li>
+                  Si el cliente ha cubierto el total del servicio, se evaluará el porcentaje de avance para determinar un
+                  posible reembolso parcial.
+                </li>
+                <li>
+                  Nuvem podrá cancelar el proyecto en caso de abuso, falta de cooperación o incumplimiento del cliente.
+                </li>
+              </ul>
+            </div>
           </section>
 
           {/* 16 */}
           <section
             id="limitacion-responsabilidad"
             className="terminos__section"
-            data-reveal
           >
-            <h2>16. Limitación de responsabilidad</h2>
-            <p>Nuvem no será responsable por:</p>
-            <ul className="terminos__list">
-              <li>Pérdida de ventas, ingresos o datos.</li>
-              <li>Fallos de hosting, APIs o servicios externos.</li>
-              <li>Uso indebido del sistema por parte del cliente.</li>
-              <li>Cambios realizados por el cliente o terceros.</li>
-            </ul>
-            <p>
-              La responsabilidad de Nuvem se limita exclusivamente a la corrección de errores técnicos dentro del periodo
-              de soporte.
-            </p>
+            <div className="terminos__sectionReveal" data-reveal>
+              <h2>16. Limitación de responsabilidad</h2>
+              <p>Nuvem no será responsable por:</p>
+              <ul className="terminos__list">
+                <li>Pérdida de ventas, ingresos o datos.</li>
+                <li>Fallos de hosting, APIs o servicios externos.</li>
+                <li>Uso indebido del sistema por parte del cliente.</li>
+                <li>Cambios realizados por el cliente o terceros.</li>
+              </ul>
+              <p>
+                La responsabilidad de Nuvem se limita exclusivamente a la corrección de errores técnicos dentro del periodo
+                de soporte.
+              </p>
+            </div>
           </section>
 
           {/* 17 */}
           <section
             id="modificaciones-terminos"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="1"
           >
-            <h2>17. Modificaciones a los términos</h2>
-            <p>Nuvem se reserva el derecho de modificar, actualizar o ajustar en cualquier momento los presentes Términos y Condiciones,
-            con el fin de reflejar cambios en sus servicios, procesos internos, criterios operativos o disposiciones legales aplicables.</p>
-            <p>Cualquier modificación será publicada a través de los medios oficiales de Nuvem y entrará en vigor a partir de su publicación.
-            Dichos cambios serán aplicables únicamente a proyectos nuevos o a proyectos vigentes, siempre que el cliente sea informado de manera previa y expresa.</p>
-            <p>El uso continuo de los servicios de Nuvem, posterior a la notificación de dichas modificaciones, implicará la aceptación de los términos actualizados.</p>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="1">
+              <h2>17. Modificaciones a los términos</h2>
+              <p>Nuvem se reserva el derecho de modificar, actualizar o ajustar en cualquier momento los presentes Términos y Condiciones,
+              con el fin de reflejar cambios en sus servicios, procesos internos, criterios operativos o disposiciones legales aplicables.</p>
+              <p>Cualquier modificación será publicada a través de los medios oficiales de Nuvem y entrará en vigor a partir de su publicación.
+              Dichos cambios serán aplicables únicamente a proyectos nuevos o a proyectos vigentes, siempre que el cliente sea informado de manera previa y expresa.</p>
+              <p>El uso continuo de los servicios de Nuvem, posterior a la notificación de dichas modificaciones, implicará la aceptación de los términos actualizados.</p>
+            </div>
           </section>
 
           {/* 18 */}
           <section
             id="jurisdiccion"
             className="terminos__section"
-            data-reveal
-            data-reveal-delay="2"
           >
-            <h2>18. Jurisdicción</h2>
-            <p>Estos Términos y Condiciones se rigen bajo las leyes de los Estados Unidos Mexicanos.</p>
-            <p>Cualquier controversia será atendida conforme a la legislación vigente.</p>
+            <div className="terminos__sectionReveal" data-reveal data-reveal-delay="2">
+              <h2>18. Jurisdicción</h2>
+              <p>Estos Términos y Condiciones se rigen bajo las leyes de los Estados Unidos Mexicanos.</p>
+              <p>Cualquier controversia será atendida conforme a la legislación vigente.</p>
+            </div>
           </section>
         </article>
 

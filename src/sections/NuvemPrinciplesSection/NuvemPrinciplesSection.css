@@ -214,28 +214,6 @@
   pointer-events: none;
 }
 
-.nuvemPrinciples__cardNumber{
-  position: absolute;
-  z-index: 1;
-  top: 12px;
-  left: 12px;
-  min-width: 34px;
-  padding: 7px 9px;
-  border: 1px solid rgba(255,255,255,.24);
-  border-radius: 999px;
-  background: rgba(0,0,0,.74);
-  color: rgba(255,255,255,.82);
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-variant-numeric: tabular-nums;
-  font-weight: 650;
-  letter-spacing: .08em;
-}
-
-.nuvemPrinciples__card.is-active .nuvemPrinciples__cardNumber{
-  color: var(--accent);
-}
-
 .nuvemPrinciples__cardBody{
   position: relative;
   z-index: 1;
@@ -372,8 +350,12 @@
 
   .nuvemPrinciples__track{
     display: flex;
+    width: max-content;
     gap: 12px;
-    transform: translateX(calc(var(--nuvem-principles-active) * -82vw));
+    transform: translateX(max(
+      calc(var(--nuvem-principles-active) * -82vw),
+      calc(-100% + 100vw - var(--container-pad) - var(--container-pad))
+    ));
     transition: transform 360ms var(--ease);
   }
 
@@ -417,7 +399,10 @@
   }
 
   .nuvemPrinciples__track{
-    transform: translateX(calc(var(--nuvem-principles-active) * -86vw));
+    transform: translateX(max(
+      calc(var(--nuvem-principles-active) * -86vw),
+      calc(-100% + 100vw - var(--container-pad) - var(--container-pad))
+    ));
   }
 
   .nuvemPrinciples__card,

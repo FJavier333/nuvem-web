@@ -48,31 +48,16 @@
 
 /* Footer */
 .comentario__footer{
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-}
-
-.comentario__avatarWrap{
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  overflow: hidden;
-  background: color-mix(in srgb, var(--bg) 92%, #ffffff 8%);
-  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
-}
-
-.comentario__avatar{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
 }
 
 .comentario__who{
   display: grid;
+  justify-items: center;
   gap: 2px;
+  text-align: center;
 }
 
 .comentario__name{
@@ -147,9 +132,6 @@
     font-size: clamp(32px, 10vw, 50px);
   }
 
-  .comentario__footer{
-    gap: 10px;
-  }
 }
 
 /* =========================================================

@@ -64,7 +64,7 @@
   /*espacio entre politicas/antes:80*/
   margin-top: 56px;
   /*espacio entre politicas/antes:80*/
-  scroll-margin-top: 180px;
+  scroll-margin-top: 150px;
 }
 
 .politica__section h2{
@@ -191,7 +191,7 @@
   /* 2) Compacta spacing entre secciones en mobile + offset de ancla */
   .politica__section{
     margin-top: 36px;
-    scroll-margin-top: 130px; /* ✅ el que te quedó perfecto */
+    scroll-margin-top: 150px;
   }
 
   .politica__section h2{
