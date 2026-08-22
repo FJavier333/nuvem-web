@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { X as XIcon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logoNuvem from "../../images/logoWorld5.png";
 import "./Header.css";
@@ -318,7 +319,7 @@ export default function Header() {
               aria-label="Cerrar menú"
               onClick={() => setMobileOpen(false)}
             >
-              ✕
+              <XIcon aria-hidden="true" strokeWidth={2.5} />
             </button>
           </div>
 
