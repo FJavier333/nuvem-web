@@ -472,6 +472,21 @@
     height: 44px;
 }
 
+@media (max-width: 768px){
+  .mobileNav{
+    overflow-x: hidden;
+  }
+
+  .mobileNav__panel{
+    width: min(78%, 300px);
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-x: none;
+    touch-action: pan-y;
+  }
+}
+
 /* ===== Breakpoint ===== */
 @media (max-width: 640px){
 

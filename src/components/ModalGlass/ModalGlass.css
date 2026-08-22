@@ -276,6 +276,10 @@
     font-size: 0.96rem;
     line-height: 1.7;
   }
+
+  .modalGlass__body p{
+    text-align: justify;
+  }
 }
 
 /* Mobile pequeño */
