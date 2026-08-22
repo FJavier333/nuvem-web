@@ -474,15 +474,21 @@
 
 @media (max-width: 768px){
   .mobileNav{
+    bottom: auto;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
     overflow-x: hidden;
   }
 
   .mobileNav__panel{
     width: min(78%, 300px);
     max-width: 100%;
+    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior-x: none;
+    scroll-padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
     touch-action: pan-y;
   }
 }
