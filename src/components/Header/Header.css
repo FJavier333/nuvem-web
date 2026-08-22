@@ -484,12 +484,36 @@
   .mobileNav__panel{
     width: min(78%, 300px);
     max-width: 100%;
-    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    padding-top: 10px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior-x: none;
-    scroll-padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    scroll-padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
     touch-action: pan-y;
+  }
+
+  .mobileNav__top{
+    margin-bottom: 6px;
+  }
+
+  .mobileNav__section{
+    margin-top: 6px;
+    padding-top: 6px;
+  }
+
+  .mobileNav__label{
+    margin-bottom: 4px;
+  }
+
+  .mobileNav__link{
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  .mobileNav__cta{
+    margin-top: 8px;
+    padding-top: 8px;
   }
 }
 
