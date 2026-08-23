@@ -71,6 +71,27 @@ export default function Header() {
     setOpenMenu((prev) => (prev === key ? null : key));
   };
 
+  const handleMobileSectionClick = (event, href) => {
+    setMobileOpen(false);
+
+    const isMobileMenu = window.matchMedia("(max-width: 640px)").matches;
+    if (pathname !== "/" || !isMobileMenu) return;
+
+    const targetUrl = new URL(href, window.location.origin);
+    const targetId = decodeURIComponent(targetUrl.hash.slice(1));
+    const target = document.getElementById(targetId);
+
+    if (!target) return;
+
+    event.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.replaceState(
+      window.history.state,
+      "",
+      `${targetUrl.pathname}${targetUrl.search}${targetUrl.hash}`,
+    );
+  };
+
   // Cerrar menús al click fuera / ESC
   useEffect(() => {
     const onClickOutside = (e) => {
@@ -330,7 +351,7 @@ export default function Header() {
                 className="mobileNav__link"
                 href={item.href}
                 key={item.href}
-                onClick={() => setMobileOpen(false)}
+                onClick={(event) => handleMobileSectionClick(event, item.href)}
               >
                 {item.label}
               </a>
