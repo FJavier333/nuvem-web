@@ -204,7 +204,9 @@ export default function NuvemPrinciplesSection() {
           }}
         >
           <div
-            className="nuvemPrinciples__track"
+            className={`nuvemPrinciples__track${
+              activeIndex === PRINCIPLES.length - 1 ? " is-last" : ""
+            }`}
             style={{ "--nuvem-principles-active": activeIndex }}
           >
             {PRINCIPLES.map((principle, index) => {

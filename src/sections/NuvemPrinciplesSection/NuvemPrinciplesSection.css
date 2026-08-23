@@ -352,11 +352,19 @@
     display: flex;
     width: max-content;
     gap: 12px;
-    transform: translateX(max(
-      calc(var(--nuvem-principles-active) * -82vw),
-      calc(-100% + 100vw - var(--container-pad) - var(--container-pad))
-    ));
+    transform: translateX(calc(var(--nuvem-principles-active) * -82vw));
     transition: transform 360ms var(--ease);
+  }
+
+  .nuvemPrinciples__track.is-last{
+    /* 5 cards de (82vw - pad), 4 gaps de 12px y margen final de un pad. */
+    transform: translateX(calc(
+      -310vw
+      + var(--container-pad)
+      + var(--container-pad)
+      + var(--container-pad)
+      - 48px
+    ));
   }
 
   .nuvemPrinciples__card,
@@ -399,9 +407,17 @@
   }
 
   .nuvemPrinciples__track{
-    transform: translateX(max(
-      calc(var(--nuvem-principles-active) * -86vw),
-      calc(-100% + 100vw - var(--container-pad) - var(--container-pad))
+    transform: translateX(calc(var(--nuvem-principles-active) * -86vw));
+  }
+
+  .nuvemPrinciples__track.is-last{
+    /* 5 cards de (86vw - pad), 4 gaps de 12px y margen final de un pad. */
+    transform: translateX(calc(
+      -330vw
+      + var(--container-pad)
+      + var(--container-pad)
+      + var(--container-pad)
+      - 48px
     ));
   }
 
