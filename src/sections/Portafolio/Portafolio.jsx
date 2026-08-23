@@ -63,10 +63,12 @@ export default function Portafolio() {
       >
         <div className="container">
           <header className="portafolio__head">
-            <h2 className="portafolio__title" data-reveal>
-              PORTAFOLIO
-              <br />
-              DE PROYECTOS
+            <h2 className="portafolio__title">
+              <span className="homeSectionTitle__reveal" data-reveal>
+                PORTAFOLIO
+                <br />
+                DE PROYECTOS
+              </span>
             </h2>
 
             <p className="portafolio__desc" data-reveal data-reveal-delay="1">

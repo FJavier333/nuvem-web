@@ -17,10 +17,12 @@ export default function Contacto() {
       <section id="contacto" aria-label="Contacto" ref={revealRootRef}>
         <div className="container">
           <header className="contacto__head">
-            <h2 className="contacto__title" data-reveal>
-              CONTACTO
-              <br />
-              Y COTIZACIÓN
+            <h2 className="contacto__title">
+              <span className="homeSectionTitle__reveal" data-reveal>
+                CONTACTO
+                <br />
+                Y COTIZACIÓN
+              </span>
             </h2>
 
             <p className="contacto__desc" data-reveal data-reveal-delay="1">

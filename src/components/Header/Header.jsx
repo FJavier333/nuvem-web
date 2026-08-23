@@ -79,12 +79,15 @@ export default function Header() {
 
     const targetUrl = new URL(href, window.location.origin);
     const targetId = decodeURIComponent(targetUrl.hash.slice(1));
-    const target = document.getElementById(targetId);
+    const anchorTarget = document.getElementById(targetId);
+    const scrollTarget = anchorTarget?.matches("h2")
+      ? anchorTarget
+      : anchorTarget?.querySelector("h2");
 
-    if (!target) return;
+    if (!scrollTarget) return;
 
     event.preventDefault();
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
     window.history.replaceState(
       window.history.state,
       "",

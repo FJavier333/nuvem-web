@@ -46,7 +46,11 @@ export default function FAQ() {
       <section className="faq" id="faq" ref={revealRootRef}>
         <div className="faq__container">
           <header className="faq__head">
-            <h2 className="faq__title" data-reveal>PREGUNTAS FRECUENTES</h2>
+            <h2 className="faq__title">
+              <span className="homeSectionTitle__reveal" data-reveal>
+                PREGUNTAS FRECUENTES
+              </span>
+            </h2>
           </header>
 
           <div className="faq__list">

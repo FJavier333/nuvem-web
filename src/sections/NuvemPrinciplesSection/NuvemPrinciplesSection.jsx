@@ -137,9 +137,10 @@ export default function NuvemPrinciplesSection() {
             <h2
               className="nuvemPrinciples__title"
               id="nuvem-principles-title"
-              data-reveal
             >
-              ¿POR QUÉ ELEGIR NUVEM?
+              <span className="homeSectionTitle__reveal" data-reveal>
+                ¿POR QUÉ ELEGIR NUVEM?
+              </span>
             </h2>
 
             <p className="nuvemPrinciples__intro" data-reveal data-reveal-delay="1">

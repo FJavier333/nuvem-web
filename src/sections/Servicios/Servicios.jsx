@@ -77,7 +77,11 @@ export default function Servicios() {
     <section className="services" id="servicios" ref={revealRootRef}>
       <div className="services__container">
         <header className="services__header">
-          <h2 className="services__title" data-reveal>NUESTRO CATÁLOGO</h2>
+          <h2 className="services__title">
+            <span className="homeSectionTitle__reveal" data-reveal>
+              NUESTRO CATÁLOGO
+            </span>
+          </h2>
           <p className="services__subtitle" data-reveal data-reveal-delay="1">
             OFRECEMOS SOLUCIONES CONSTRUIDAS CON CRITERIO, CLARIDAD Y BASE TÉCNICA SÓLIDA.
           </p>

@@ -239,6 +239,10 @@ button.btn-header::-moz-focus-inner{
 .reveal-cascade--ready [data-reveal][data-reveal-delay="3"]{ --reveal-delay: 180ms; }
 .reveal-cascade--ready [data-reveal][data-reveal-delay="4"]{ --reveal-delay: 240ms; }
 
+.homeSectionTitle__reveal{
+  display: block;
+}
+
 @media (max-width: 768px){
   .reveal-cascade--ready [data-reveal]{
     --reveal-distance: 12px;
@@ -527,6 +531,17 @@ button.btn-header::-moz-focus-inner{
 
 /* - = - = - = - = - = - = - = - = - - = - = - = - = -  - = - - = - = - = - = - = - = - = - = - - = - = - - = - = -TEMA RESPONSIVOxd = - = - = - - = - - - = - = - = - == - = - =- = - = - = - = - = - = - = - = - = - = - = - = - = - = - = */
 @media (max-width: 640px){
+
+  :is(
+    .services__title,
+    .portafolio__title,
+    .procesoSection__title,
+    .nuvemPrinciples__title,
+    .faq__title,
+    .contacto__title
+  ){
+    scroll-margin-top: 148px;
+  }
 
   :root{
     /* un poco más compacto en mobile */

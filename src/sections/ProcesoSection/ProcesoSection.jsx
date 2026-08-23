@@ -59,14 +59,18 @@ export default function ProcesoSection() {
               <h2
                 className="procesoSection__title"
                 id="proceso-section-title"
-                data-reveal
-                data-reveal-delay="1"
               >
-                DE LA PRIMERA
-                <br />
-                CONVERSACIÓN
-                <br />
-                A LA PUBLICACIÓN.
+                <span
+                  className="homeSectionTitle__reveal"
+                  data-reveal
+                  data-reveal-delay="1"
+                >
+                  DE LA PRIMERA
+                  <br />
+                  CONVERSACIÓN
+                  <br />
+                  A LA PUBLICACIÓN.
+                </span>
               </h2>
 
               <p className="procesoSection__lead" data-reveal data-reveal-delay="2">
