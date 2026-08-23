@@ -26,7 +26,7 @@ export default function Portafolio() {
         title: "Sitio web corporativo para empresa de tecnologías de la información",
         paragraphs: [
           "Sitio web desarrollado para una empresa del sector de Tecnologías de la Información, dedicada a la compra y venta de equipos de cómputo, mantenimiento preventivo y correctivo, seguridad electrónica, instalación de redes y servicios relacionados.",
-          "El sitio tiene como objetivo presentar de manera clara y profesional la información de la empresa, su historia, sus servicios y los trabajos realizados, fortaleciendo su presencia digital y su imagen corporativa. La estructura y el diseño están pensados para comunicar confianza, experiencia y orden, facilitando que clientes potenciales conozcan la empresa y su oferta de servicios.",
+          "El sitio tiene como objetivo presentar de manera clara y profesional la información de la empresa, su historia, sus servicios y los trabajos realizados, fortaleciendo su presencia digital y su imagen corporativa. La estructura y el diseño están pensados para comunicar confianza y experiencia, facilitando que clientes potenciales conozcan la empresa y sus servicios.",
         ],
       },
       {
