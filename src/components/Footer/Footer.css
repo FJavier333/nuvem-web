@@ -57,6 +57,12 @@
   justify-self: center;
 }
 
+@media (min-width: 1025px){
+  .footer__mid{
+    transform: translateX(calc(clamp(48px, 6vw, 96px) + 220px));
+  }
+}
+
 .footer__right{
   justify-self: end;
   max-width: 360px;
@@ -141,51 +147,53 @@
 }
 
 /* =========================
-   Social icons
+   Contact icons
    ========================= */
 
-.footer__social{
+.footer__contactIcons{
   display: flex;
+  align-items: center;
   gap: 16px;
-  justify-content: flex-start;
-  margin-top: 20px;
 }
 
-.footer__icon{
-  width: 32px;
-  height: 32px;
+.footer__contactIcon{
+  width: 24px;
+  height: 24px;
 
   display: grid;
   place-items: center;
 
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.603);
-
+  appearance: none;
+  border: 0;
+  padding: 0;
   background: transparent;
   color: rgba(255, 255, 255, 0.603);
+  cursor: pointer;
 
-  transition:
-    color .25s ease,
-    background-color .25s ease,
-    border-color .25s ease;
+  transition: color .25s ease;
 }
 
-.footer__icon svg{
+.footer__contactIcon svg{
   width: 18px;
   height: 18px;
   display: block;
 }
 
-.footer__icon--ig:hover{
-  color: #E1306C;
-  background-color: rgba(225, 48, 108, 0.12);
-  border-color: rgba(225, 48, 108, 0.35);
+.footer__contactIcon--email:hover{
+  color: rgba(255,255,255,0.95);
 }
 
-.footer__icon--wa:hover{
+.footer__contactIcon--ig:hover{
+  color: #E1306C;
+}
+
+.footer__contactIcon--wa:hover{
   color: #2DD36F;
-  background-color: rgba(45, 211, 111, 0.10);
-  border-color: rgba(45, 211, 111, 0.32);
+}
+
+.footer__contactIcon:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* =========================
@@ -234,17 +242,33 @@
    ========================= */
 
 .footer__copyright{
+  position: relative;
   margin-top: 48px;
   padding-top: 18px;
+  padding-inline: max(
+    var(--container-pad),
+    calc((100% - 1175px) / 2 + var(--container-pad))
+  );
 
-  border-top: 1px solid rgba(255,255,255,.08);
-
-  text-align: center;
+  text-align: left;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.6;
 
   color: rgba(255,255,255,.55);
+}
+
+.footer__copyright::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(
+    calc(100% - (2 * var(--container-pad))),
+    calc(1175px - (2 * var(--container-pad)))
+  );
+  border-top: 1px solid rgba(255,255,255,.14);
+  transform: translateX(-50%);
 }
 
 /* ============================================================================ RESPONSIVO ============================================================================= */

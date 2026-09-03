@@ -1,17 +1,20 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Mail } from "lucide-react";
 import "./Footer.css";
 import { useEffect, useState } from "react";
 import WhatsAppQRModal from "../Contact/WhatsAppQRModal";
 
 const CONTACT_INFO = {
   label: "Contacto",
-  emailLabel: "Correo:",
   email: "blacfjba3@gmail.com",
   gmailUrl: "https://mail.google.com/mail/?view=cm&fs=1&to=blacfjba3@gmail.com",
-  phoneLabel: "Teléfono:",
-  phoneDisplay: "55 7071 3137",
   phone: "5570713137",
-  message: "Hola, me gustaría cotizar un sitio web.",
+  message: "Hola, me gustaría cotizar un proyecto.",
+};
+
+const INSTAGRAM_LINK = {
+  href: "https://www.instagram.com/prod.bypixitas_/",
+  path: "M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6a3 3 0 0 0 0-6Zm5.25-.75a.75.75 0 1 0 0 1.5a.75.75 0 0 0 0-1.5Z",
 };
 
 const SECTION_NAVIGATION = {
@@ -35,18 +38,8 @@ const LEGAL_NAVIGATION = {
     { label: "Cómo trabajamos", to: "/como-trabajamos" },
     { label: "Términos y condiciones", to: "/terminos" },
     { label: "Aviso de privacidad", to: "/privacidad" },
-    { label: "Política oficial", to: "/politica" },
   ],
 };
-
-const SOCIAL_LINKS = [
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/prod.bypixitas_/",
-    className: "footer__icon footer__icon--ig",
-    path: "M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6a3 3 0 0 0 0-6Zm5.25-.75a.75.75 0 1 0 0 1.5a.75.75 0 0 0 0-1.5Z",
-  },
-];
 
 export default function Footer() {
   const { pathname } = useLocation();
@@ -57,6 +50,52 @@ export default function Footer() {
   const [isAccMode, setIsAccMode] = useState(false);
   const [openAcc, setOpenAcc] = useState(null); // "contacto" | "nav" | "about" | null
   const toggleAcc = (key) => setOpenAcc((prev) => (prev === key ? null : key));
+
+  const renderContactAccess = () => (
+    <div className="footer__contactIcons" aria-label="Opciones de contacto">
+      <a
+        href={`mailto:${CONTACT_INFO.email}`}
+        className="footer__contactIcon footer__contactIcon--email"
+        aria-label="Enviar correo a Nuvem"
+        title="Correo"
+        onClick={() => {
+          setTimeout(() => {
+            window.open(CONTACT_INFO.gmailUrl, "_blank", "noopener,noreferrer");
+          }, 300);
+        }}
+      >
+        <Mail aria-hidden="true" strokeWidth={1.7} />
+      </a>
+
+      <button
+        className="footer__contactIcon footer__contactIcon--wa"
+        type="button"
+        aria-label="Contactar a Nuvem por WhatsApp"
+        title="WhatsApp"
+        onClick={() => setOpenQR(true)}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.88 9.88 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.89-9.89a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.9 6.99c0 5.45-4.44 9.89-9.89 9.89m8.41-18.3A11.82 11.82 0 0 0 12.06 0C5.51 0 .18 5.33.18 11.88c0 2.09.55 4.13 1.6 5.92L.08 24l6.35-1.67a11.87 11.87 0 0 0 5.62 1.43h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.24-6.16-3.48-8.4"
+          />
+        </svg>
+      </button>
+
+      <a
+        className="footer__contactIcon footer__contactIcon--ig"
+        href={INSTAGRAM_LINK.href}
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-label="Visitar Instagram de Nuvem"
+        title="Instagram"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d={INSTAGRAM_LINK.path} />
+        </svg>
+      </a>
+    </div>
+  );
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 1024px)");
@@ -118,12 +157,11 @@ export default function Footer() {
       <div className="container footer__inner">
         {/* LEFT — Brand */}
         <div className="footer__brand">
-          <h3 className="footer__brandTitle">Qué es Nuvem</h3>
+          <h3 className="footer__brandTitle">¿Qué es Nuvem?</h3>
 
           <p className="footer__desc">
-            Nuvem es un estudio de desarrollo web enfocado en crear sitios
-            profesionales, bien estructurados y pensados para crecer a largo
-            plazo, sin plantillas ni soluciones express.
+            Estudio de desarrollo digital enfocado en crear sitios
+            profesionales, aplicaciones y soluciones a medida.
           </p>
 
           {/* CONTACTO — Desktop normal */}
@@ -131,37 +169,7 @@ export default function Footer() {
             <>
               <h3 className="footer__brandTitle">{CONTACT_INFO.label}</h3>
 
-              <p className="footer__desc">
-                {CONTACT_INFO.emailLabel}{" "}
-                <a
-                  href={`mailto:${CONTACT_INFO.email}`}
-                  className="footer__link-underline"
-                  onClick={() => {
-                    setTimeout(() => {
-                      window.open(
-                        CONTACT_INFO.gmailUrl,
-                        "_blank",
-                        "noopener,noreferrer"
-                      );
-                    }, 300);
-                  }}
-                >
-                  {CONTACT_INFO.email}
-                </a>
-                <br />
-                {CONTACT_INFO.phoneLabel}{" "}
-                <span
-                  className="footer__link-underline"
-                  role="button"
-                  tabIndex={0}
-                  onClick={() => setOpenQR(true)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") setOpenQR(true);
-                  }}
-                >
-                  {CONTACT_INFO.phoneDisplay}
-                </span>
-              </p>
+              {renderContactAccess()}
             </>
           )}
 
@@ -180,37 +188,7 @@ export default function Footer() {
 
               <div className={`footer__accPanel ${openAcc === "contacto" ? "is-open" : ""}`}>
                 <div className="footer__accInner">
-                  <p className="footer__desc">
-                    {CONTACT_INFO.emailLabel}{" "}
-                    <a
-                      href={`mailto:${CONTACT_INFO.email}`}
-                      className="footer__link-underline"
-                      onClick={() => {
-                        setTimeout(() => {
-                          window.open(
-                            CONTACT_INFO.gmailUrl,
-                            "_blank",
-                            "noopener,noreferrer"
-                          );
-                        }, 300);
-                      }}
-                    >
-                      {CONTACT_INFO.email}
-                    </a>
-                    <br />
-                    {CONTACT_INFO.phoneLabel}{" "}
-                    <span
-                      className="footer__link-underline"
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => setOpenQR(true)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") setOpenQR(true);
-                      }}
-                    >
-                      {CONTACT_INFO.phoneDisplay}
-                    </span>
-                  </p>
+                  {renderContactAccess()}
                 </div>
               </div>
             </>
@@ -307,25 +285,6 @@ export default function Footer() {
                 ))}
               </nav>
 
-              <div className="footer__social" aria-label="Redes sociales">
-                {SOCIAL_LINKS.map((item) => (
-                  <a
-                    className={item.className}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={item.label}
-                    title={item.label}
-                    key={item.href}
-                  >
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path fill="currentColor" d={item.path} />
-                    </svg>
-                  </a>
-                ))}
-
-                {/* WhatsApp icon comentado como lo tenías */}
-              </div>
             </>
           )}
 
@@ -352,25 +311,6 @@ export default function Footer() {
                     ))}
                   </nav>
 
-                  <div className="footer__social" aria-label="Redes sociales">
-                    {SOCIAL_LINKS.map((item) => (
-                      <a
-                        className={item.className}
-                        href={item.href}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        aria-label={item.label}
-                        title={item.label}
-                        key={item.href}
-                      >
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                          <path fill="currentColor" d={item.path} />
-                        </svg>
-                      </a>
-                    ))}
-
-                    {/* WhatsApp icon comentado como lo tenías */}
-                  </div>
                 </div>
               </div>
             </>
@@ -380,8 +320,6 @@ export default function Footer() {
 
       <div className="footer__copyright">
         © {new Date().getFullYear()} Nuvem. Todos los derechos reservados.
-        <br />
-        v1.0.0 · Enero 2026
       </div>
 
       <WhatsAppQRModal

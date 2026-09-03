@@ -78,7 +78,7 @@
   box-shadow: 0 22px 64px rgba(10,10,14,.14);
   transition:
     transform 320ms var(--ease),
-    box-shadow 320ms var(--ease);
+    translate 220ms var(--ease);
 }
 
 .portafolio__img{
@@ -86,7 +86,6 @@
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
-  transition: transform 320ms var(--ease);
 }
 
 .portafolio__content{
@@ -160,7 +159,7 @@
   transition:
     opacity 580ms var(--ease),
     transform 580ms var(--ease),
-    box-shadow 320ms var(--ease);
+    translate 220ms var(--ease);
 }
 
 .portafolio__section.reveal-cascade--ready .portafolio__item .portafolio__content{
@@ -179,11 +178,7 @@
 
 @media (hover: hover) and (pointer: fine){
   .portafolio__section.reveal-cascade--ready .portafolio__item.is-visible .portafolio__media:hover{
-    box-shadow: 0 30px 82px rgba(10,10,14,.2);
-  }
-
-  .portafolio__section.reveal-cascade--ready .portafolio__item.is-visible .portafolio__media:hover .portafolio__img{
-    transform: scale(1.008);
+    translate: 0 -4px;
   }
 }
 
@@ -268,14 +263,13 @@
 
 @media (prefers-reduced-motion: reduce){
   .portafolio__section.reveal-cascade--ready .portafolio__item .portafolio__media,
-  .portafolio__section.reveal-cascade--ready .portafolio__item .portafolio__content,
-  .portafolio__img{
+  .portafolio__section.reveal-cascade--ready .portafolio__item .portafolio__content{
     opacity: 1;
     transform: none;
     transition: none;
   }
 
-  .portafolio__section.reveal-cascade--ready .portafolio__item.is-visible .portafolio__media:hover .portafolio__img{
-    transform: none;
+  .portafolio__section.reveal-cascade--ready .portafolio__item.is-visible .portafolio__media:hover{
+    translate: none;
   }
 }
