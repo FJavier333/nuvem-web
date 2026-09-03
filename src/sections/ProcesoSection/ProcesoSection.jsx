@@ -13,7 +13,7 @@ const STEPS = [
   {
     number: "02",
     title: "DEFINIMOS LA SOLUCIÓN",
-    text: "Definimos el alcance, la estructura y la dirección visual. Podemos trabajar a partir de tus referencias o proponer una dirección alineada con tu negocio y tus objetivos.",
+    text: "Definimos el alcance, las funcionalidades, la estructura y la dirección del proyecto. Podemos trabajar a partir de tus referencias o proponer una solución alineada con tus necesidades y objetivos.",
   },
   {
     number: "03",
@@ -27,7 +27,7 @@ const STEPS = [
   },
   {
     number: "05",
-    title: "PUBLICAMOS Y ENTREGAMOS",
+    title: "IMPLEMENTAMOS Y ENTREGAMOS",
     text: "Ponemos el proyecto en funcionamiento, entregamos los accesos correspondientes y dejamos abierta la posibilidad de soporte, mantenimiento o evolución.",
   },
 ];
@@ -69,7 +69,7 @@ export default function ProcesoSection() {
                   <br />
                   CONVERSACIÓN
                   <br />
-                  A LA PUBLICACIÓN.
+                  A LA ENTREGA.
                 </span>
               </h2>
 

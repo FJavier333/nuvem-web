@@ -102,8 +102,8 @@ export default function FinalCTA() {
           <h2 className="finalCta__title" data-reveal>HABLEMOS DE TU PROYECTO</h2>
 
           <p className="finalCta__desc" data-reveal data-reveal-delay="1">
-            Si buscas un sitio web profesional, bien estructurado y desarrollado con criterio,
-            en Nuvem podemos ayudarte a construir una solución alineada a tus objetivos.
+            Si tienes una idea, una necesidad o un proyecto digital en mente, en Nuvem
+            podemos ayudarte a convertirlo en una solución bien diseñada, funcional y alineada a tus objetivos.
           </p>
 
           <div className="finalCta__actions" data-reveal data-reveal-delay="2">
@@ -122,7 +122,7 @@ export default function FinalCTA() {
         open={openQR}
         onClose={() => setOpenQR(false)}
         phone="5570713137"
-        message="Hola, me gustaría cotizar un sitio web."
+        message="Hola, me gustaría cotizar un proyecto."
       />
     </section>
   );

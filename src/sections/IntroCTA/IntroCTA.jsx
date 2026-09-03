@@ -32,13 +32,12 @@ export default function IntroCTA() {
           <h2 className="introCta__title" data-reveal data-reveal-delay="1">
             DESARROLLO WEB
             <br />
-            PROFESIONAL
+            Y SOFTWARE A MEDIDA
           </h2>
 
           <p className="introCta__text" data-reveal data-reveal-delay="2">
-            Diseñamos y desarrollamos sitios web profesionales,
-            escalables y completamente personalizados.
-            Nada de plantillas. Nada de soluciones express.
+            Diseñamos y desarrollamos sitios web, aplicaciones y soluciones digitales
+            completamente personalizadas. Nada de plantillas. Nada de soluciones express.
             Solo productos digitales pensados para crecer contigo.
           </p>
 
@@ -51,9 +50,9 @@ export default function IntroCTA() {
               Contactar
             </button>
 
-            <a href="/#servicios" className="btnCotiza">
+            {/*<a href="/#servicios" className="btnCotiza">
               Ver servicios
-            </a>
+            </a>*/}
           </div>
 
           <WhatsAppQRModal

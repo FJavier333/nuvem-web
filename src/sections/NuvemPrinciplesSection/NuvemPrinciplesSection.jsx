@@ -35,7 +35,7 @@ const PRINCIPLES = [
     imageSizes: PORTRAIT_IMAGE_SIZES,
     imageAlt: "Estación de trabajo con herramientas de desarrollo",
     description:
-      "Cada proyecto se desarrolla desde cero. No usamos plantillas, estructuras prefabricadas ni soluciones genéricas descargadas de internet. Tu sitio es único, como tu negocio.",
+      "Cada proyecto se desarrolla desde cero. No usamos plantillas, estructuras prefabricadas ni soluciones genéricas. Cada producto se construye de acuerdo con las necesidades reales de tu proyecto.",
   },
   {
     id: "estandares-profesionales",
@@ -55,7 +55,7 @@ const PRINCIPLES = [
     imageSizes: LANDSCAPE_IMAGE_SIZES,
     imageAlt: "Sitio web personalizado abierto en una computadora portátil",
     description:
-      "El sitio se diseña y desarrolla según tus necesidades reales. Ni funciones innecesarias, ni limitaciones artificiales. Exactamente lo que tu proyecto requiere.",
+      "Cada proyecto se diseña y desarrolla según tus necesidades reales. Ni funciones innecesarias, ni limitaciones artificiales. Exactamente lo que tu proyecto requiere.",
   },
   {
     id: "escalabilidad-real",
@@ -65,7 +65,7 @@ const PRINCIPLES = [
     imageSizes: LANDSCAPE_IMAGE_SIZES,
     imageAlt: "Espacio de trabajo digital con computadora y teléfono",
     description:
-      "Tu sitio no se queda estático. La estructura está pensada para crecer, adaptarse y evolucionar conforme tu negocio lo necesite, sin tener que rehacer todo desde cero.",
+      "Tu proyecto no se queda estático. Su estructura está pensada para crecer, adaptarse y evolucionar conforme tus necesidades cambien, sin tener que rehacer todo desde cero.",
   },
   {
     id: "enfoque-empresarial",
@@ -75,7 +75,7 @@ const PRINCIPLES = [
     imageSizes: LANDSCAPE_IMAGE_SIZES,
     imageAlt: "Profesional trabajando en una estrategia digital",
     description:
-      "Más que un sitio visualmente atractivo, construimos un activo digital. Un espacio pensado para representar tu marca, generar confianza y apoyar tus objetivos comerciales.",
+      "Más que desarrollar algo visualmente atractivo, construimos productos digitales pensados para resolver necesidades reales, optimizar procesos y aportar valor a tu negocio.",
   },
 ];
 
@@ -146,8 +146,8 @@ export default function NuvemPrinciplesSection() {
             <p className="nuvemPrinciples__intro" data-reveal data-reveal-delay="1">
               Sin plantillas ni soluciones express. Cada
               proyecto es cuidadosamente planificado y desarrollado con
-              estándares profesionales y herramientas adecuadas para empresas 
-              que se toman en serio su presencia digital
+              estándares profesionales, utilizando herramientas adecuadas para construir 
+              productos digitales sólidos y pensados para cada necesidad.
             </p>
           </div>
         </header>

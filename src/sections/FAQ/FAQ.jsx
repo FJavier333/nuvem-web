@@ -10,7 +10,7 @@ export default function FAQ() {
       () => [
         {
           q: "¿Existen paquetes predefinidos o los proyectos son personalizados?",
-          a: "Cada sitio web se desarrolla de forma personalizada, adaptándose a las necesidades, objetivos y alcance específico de cada proyecto. El desarrollo se ajusta a lo que el cliente realmente necesita, ni más ni menos, asegurando una solución adecuada y bien estructurada.",
+          a: "Cada proyecto se desarrolla de forma personalizada, adaptándose a las necesidades, objetivos y alcance específico de cada cliente. El desarrollo se ajusta a lo que realmente necesita, ni más ni menos, asegurando una solución adecuada y bien estructurada.",
         },
         {
           q: "¿Cuánto cuesta un proyecto?",

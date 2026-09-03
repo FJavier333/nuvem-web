@@ -66,7 +66,7 @@ export default function Contacto() {
           open={openQR}
           onClose={() => setOpenQR(false)}
           phone="5570713137"
-          message="Hola, me gustaría cotizar un sitio web."
+          message="Hola, me gustaría cotizar un proyecto."
         />
       </section>
     </GrainSection>

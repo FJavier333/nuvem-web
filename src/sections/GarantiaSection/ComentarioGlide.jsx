@@ -20,7 +20,7 @@ export default function ComentarioGlide() {
             </h2>
 
           <p className="comentario__text" data-reveal data-reveal-delay="1">
-            “Las herramientas automatizadas de Inteligencia Artificial pueden generar sitios rápidamente, pero{" "}
+            “Las herramientas automatizadas de Inteligencia Artificial pueden generar soluciones digitales rápidamente, pero{" "}
             <span className="hand-underline">
               un proyecto profesional requiere criterio, acompañamiento y visión a largo plazo.
             </span> En Nuvem, la IA no reemplaza el criterio profesional, lo complementa.”

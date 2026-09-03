@@ -48,17 +48,17 @@ export default function Servicios() {
       alt: "Sitios web profesionales",
     },
     {
-      title: "DESARROLLO WEB A MEDIDA",
+      title: "SOFTWARE A MEDIDA",
       text:
-        "Creamos soluciones personalizadas cuando un proyecto requiere una estructura específica, funcionalidades particulares o una base sólida para crecer a largo plazo. Ideal para proyectos que buscan escalabilidad y control total.",
+        "Desarrollamos soluciones digitales adaptadas a las necesidades específicas de cada negocio: sistemas administrativos, inventarios, catálogos, cotizaciones, consultas, dashboards y otras herramientas que ayudan a organizar, automatizar y mejorar procesos.",
       image: imgCustom2560,
       imageSrcSet: `${imgCustom480} 480w, ${imgCustom768} 768w, ${imgCustom1024} 1024w, ${imgCustom1440} 1440w, ${imgCustom1920} 1920w, ${imgCustom2560} 2560w`,
       alt: "Desarrollo web a medida",
     },
     {
-      title: "REDISEÑO Y OPTIMIZACIÓN",
+      title: "APLICACIONES WEB",
       text:
-        "Mejoramos sitios existentes que no reflejan correctamente la marca, presentan problemas de claridad, rendimiento o conversión, o simplemente se han quedado atrás. El enfoque es tanto visual como estratégico y técnico.",
+        "Creamos aplicaciones web para proyectos que necesitan ir más allá de un sitio informativo, incorporando funcionalidades, gestión de información, usuarios, consultas, procesos y experiencias interactivas según las necesidades del proyecto.",
       image: imgRedesign2560,
       imageSrcSet: `${imgRedesign480} 480w, ${imgRedesign768} 768w, ${imgRedesign1024} 1024w, ${imgRedesign1440} 1440w, ${imgRedesign1920} 1920w, ${imgRedesign2560} 2560w`,
       alt: "Rediseño y optimización",
@@ -66,7 +66,7 @@ export default function Servicios() {
     {
       title: "SOPORTE Y EVOLUCIÓN",
       text:
-        "Acompañamos proyectos que requieren ajustes, mejoras continuas o crecimiento progresivo, manteniendo siempre coherencia, estabilidad y calidad.",
+        "Acompañamos productos digitales que requieren ajustes, mantenimiento, nuevas funcionalidades o crecimiento progresivo, manteniendo su estabilidad, coherencia y calidad a medida que evolucionan.",
       image: imgSupport2000,
       imageSrcSet: `${imgSupport480} 480w, ${imgSupport768} 768w, ${imgSupport1024} 1024w, ${imgSupport1440} 1440w, ${imgSupport1920} 1920w, ${imgSupport2000} 2000w`,
       alt: "Soporte y evolución",
@@ -79,11 +79,11 @@ export default function Servicios() {
         <header className="services__header">
           <h2 className="services__title">
             <span className="homeSectionTitle__reveal" data-reveal>
-              NUESTRO CATÁLOGO
+              NUESTRO CATALOGO
             </span>
           </h2>
           <p className="services__subtitle" data-reveal data-reveal-delay="1">
-            OFRECEMOS SOLUCIONES CONSTRUIDAS CON CRITERIO, CLARIDAD Y BASE TÉCNICA SÓLIDA.
+            Desarrollamos soluciones digitales con criterio, claridad y base técnica sólida.
           </p>
         </header>
 
@@ -125,11 +125,11 @@ export default function Servicios() {
           <Link to="/terminos" className="services__noticeLink">
             términos y condiciones
           </Link>{" "}
-          y a la{" "}
-          <Link to="/politica" className="services__noticeLink">
-            política
+          y al{" "}
+          <Link to="/privacidad" className="services__noticeLink">
+            aviso de privacidad
           </Link>{" "}
-          de la empresa.
+          de Nuvem.
         </p>
       </div>
     </section>
