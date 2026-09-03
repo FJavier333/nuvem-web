@@ -29,7 +29,6 @@ const NAVIGATION = {
     items: [
       { label: "Terminos y condiciones", to: "/terminos" },
       { label: "Aviso de privacidad", to: "/privacidad" },
-      { label: "Politica", to: "/politica" },
     ],
   },
 };
