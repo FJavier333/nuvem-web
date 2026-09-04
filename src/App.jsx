@@ -9,6 +9,7 @@ import QuienesSomos from "./pages/QuienesSomos/QuienesSomos";
 import ComoTrabajamos from "./pages/ComoTrabajamos/ComoTrabajamos";
 import Terminos from "./pages/Terminos/Terminos";
 import Privacidad from "./pages/Privacidad/Privacidad";
+import NotFound from "./pages/NotFound/NotFound";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/politica" element={<Navigate to="/como-trabajamos" replace />} />
           <Route path="/terminos" element={<Terminos />} />
           <Route path="/privacidad" element={<Privacidad />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

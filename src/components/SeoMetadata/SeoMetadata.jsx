@@ -4,6 +4,10 @@ import { useLocation } from "react-router-dom";
 const SITE_URL = "https://nuvemdev.com";
 const SOCIAL_IMAGE_URL = `${SITE_URL}/nuvem-og.png`;
 const SOCIAL_IMAGE_ALT = "Nuvem — Desarrollo web y soluciones digitales";
+const NOT_FOUND_METADATA = {
+  title: "Página no encontrada | Nuvem",
+  description: "La página que buscas no existe o ya no está disponible.",
+};
 
 const ROUTE_METADATA = {
   "/": {
@@ -20,6 +24,12 @@ const ROUTE_METADATA = {
     title: "Cómo trabajamos | Nuvem",
     description:
       "Conoce el proceso de trabajo claro y personalizado con el que Nuvem define, diseña, desarrolla e implementa cada proyecto digital.",
+  },
+  "/politica": {
+    title: "Cómo trabajamos | Nuvem",
+    description:
+      "Conoce el proceso de trabajo claro y personalizado con el que Nuvem define, diseña, desarrolla e implementa cada proyecto digital.",
+    canonicalPath: "/como-trabajamos",
   },
   "/terminos": {
     title: "Términos y Condiciones | Nuvem",
@@ -57,20 +67,36 @@ function setCanonicalUrl(url) {
   canonical.setAttribute("href", url);
 }
 
+function removeCanonicalUrl() {
+  document.head.querySelector('link[rel="canonical"]')?.remove();
+}
+
+function removeMeta(attribute, key) {
+  document.head.querySelector(`meta[${attribute}="${key}"]`)?.remove();
+}
+
 export default function SeoMetadata() {
   const { pathname } = useLocation();
 
   useEffect(() => {
     const normalizedPath = pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
-    const metadata = ROUTE_METADATA[normalizedPath];
-
-    if (!metadata) return;
+    const routeMetadata = ROUTE_METADATA[normalizedPath];
+    const isNotFound = !routeMetadata;
+    const metadata = routeMetadata ?? NOT_FOUND_METADATA;
+    const canonicalPath = metadata.canonicalPath ?? normalizedPath;
 
     const canonicalUrl =
-      normalizedPath === "/" ? `${SITE_URL}/` : `${SITE_URL}${normalizedPath}`;
+      canonicalPath === "/" ? `${SITE_URL}/` : `${SITE_URL}${canonicalPath}`;
 
     document.title = metadata.title;
-    setCanonicalUrl(canonicalUrl);
+
+    if (isNotFound) {
+      removeCanonicalUrl();
+      setMetaContent("name", "robots", "noindex, nofollow");
+    } else {
+      setCanonicalUrl(canonicalUrl);
+      removeMeta("name", "robots");
+    }
 
     setMetaContent("name", "description", metadata.description);
 
