@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 
+import SeoMetadata from "./components/SeoMetadata/SeoMetadata";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 import MainLayout from "./layouts/MainLayout";
@@ -12,6 +13,7 @@ import Privacidad from "./pages/Privacidad/Privacidad";
 export default function App() {
   return (
     <BrowserRouter>
+      <SeoMetadata />
       {/* 👇 AQUÍ */}
       <ScrollToTop />
 

@@ -29,11 +29,11 @@ export default function IntroCTA() {
             NUVEM · ESTUDIO DIGITAL
           </span>
 
-          <h2 className="introCta__title" data-reveal data-reveal-delay="1">
+          <h1 className="introCta__title" data-reveal data-reveal-delay="1">
             DESARROLLO WEB
             <br />
             Y SOFTWARE A MEDIDA
-          </h2>
+          </h1>
 
           <p className="introCta__text" data-reveal data-reveal-delay="2">
             Diseñamos y desarrollamos sitios web, aplicaciones y soluciones digitales

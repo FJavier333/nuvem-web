@@ -57,6 +57,19 @@
   color: rgba(255,255,255,.96);
 }
 
+.quienes__title--visuallyHidden{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Párrafos intro */
 .quienes__lead{
   margin: clamp(14px, 2vw, 18px) auto 0;

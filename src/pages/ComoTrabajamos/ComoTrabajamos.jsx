@@ -16,11 +16,6 @@ export default function ComoTrabajamos() {
             <h1 className="comoTrabajamos__title" data-reveal>
               ¿CÓMO TRABAJAMOS?
             </h1>
-            {/*
-            <p className="comoTrabajamos__subtitle">
-              <em>© nuvemstudio.com - Desarrollo Web y Soluciones Digitales.</em>
-            </p>
-             */} 
             <p
               className="comoTrabajamos__meta"
               data-reveal

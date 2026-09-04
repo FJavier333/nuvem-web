@@ -21,9 +21,9 @@ export default function QuienesSomos() {
           data-reveal
           data-reveal-delay="1"
         >
-          {/*
-          <h1 className="quienes__title">¿QUIÉNES SOMOS?</h1>
-          */}
+          <h1 className="quienes__title quienes__title--visuallyHidden">
+            ¿QUIÉNES SOMOS?
+          </h1>
 
           <p className="quienes__lead">
             ©Nuvem es un estudio de desarrollo digital fundado en 2024. Diseñamos y desarrollamos proyectos
