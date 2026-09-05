@@ -4,8 +4,10 @@
   color: rgba(255, 255, 255, 0.92);
   border-bottom: 0;
 
-  position: relative;
-  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000; /* por encima del header */
 }
 
 .topStrip__viewport {
