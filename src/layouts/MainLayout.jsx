@@ -8,8 +8,10 @@ export default function MainLayout() {
 
   return (
     <>
-      <TopStrip />
-      <Header />
+      <div className="siteHeaderStack">
+        <TopStrip />
+        <Header />
+      </div>
 
       {/* 👇 aquí se renderizan las páginas */}
       <div key={location.pathname}>
