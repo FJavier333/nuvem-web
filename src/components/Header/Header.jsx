@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { X as XIcon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logoNuvem from "../../images/logoWorld5.png";
@@ -38,10 +38,14 @@ export default function Header() {
   const [openMenu, setOpenMenu] = useState(null); // "secciones" | "paginas" | "legal" | null
   const [scrolled, setScrolled] = useState(false);
   const [openWa, setOpenWa] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileMenuState, setMobileMenuState] = useState("closed");
   const headerRef = useRef(null);
   const mobileNavRef = useRef(null);
   const scrollerRef = useRef(null);
+
+  const mobilePreparing = mobileMenuState === "preparing";
+  const mobileOpen = mobileMenuState === "open";
+  const mobileActive = mobileMenuState !== "closed";
 
   // ✅ Anti-parpadeo (close con delay, open cancela)
   const closeTimerRef = useRef(null);
@@ -71,8 +75,16 @@ export default function Header() {
     setOpenMenu((prev) => (prev === key ? null : key));
   };
 
+  const closeMobileMenu = () => setMobileMenuState("closed");
+
+  const toggleMobileMenu = () => {
+    setMobileMenuState((current) =>
+      current === "closed" ? "preparing" : "closed",
+    );
+  };
+
   const handleMobileSectionClick = (event, href) => {
-    setMobileOpen(false);
+    closeMobileMenu();
 
     const isMobileMenu = window.matchMedia("(max-width: 640px)").matches;
     if (pathname !== "/" || !isMobileMenu) return;
@@ -101,14 +113,14 @@ export default function Header() {
       if (!headerRef.current) return;
       if (!headerRef.current.contains(e.target)) {
         setOpenMenu(null);
-        setMobileOpen(false);
+        setMobileMenuState("closed");
       }
     };
 
     const onKeyDown = (e) => {
       if (e.key === "Escape") {
         setOpenMenu(null);
-        setMobileOpen(false);
+        setMobileMenuState("closed");
       }
     };
 
@@ -178,8 +190,8 @@ export default function Header() {
     };
   }, []);
 
-  useEffect(() => {
-    if (!mobileOpen || !mobileNavRef.current) return;
+  useLayoutEffect(() => {
+    if (!mobileActive || !mobileNavRef.current) return;
 
     const viewport = window.visualViewport;
     const mobileNav = mobileNavRef.current;
@@ -205,7 +217,19 @@ export default function Header() {
       viewport?.removeEventListener("scroll", syncMobileViewport);
       window.removeEventListener("resize", syncMobileViewport);
     };
-  }, [mobileOpen]);
+  }, [mobileActive]);
+
+  useEffect(() => {
+    if (!mobilePreparing) return;
+
+    const openFrame = window.requestAnimationFrame(() => {
+      setMobileMenuState((current) =>
+        current === "preparing" ? "open" : current,
+      );
+    });
+
+    return () => window.cancelAnimationFrame(openFrame);
+  }, [mobilePreparing]);
 
   return (
     <header
@@ -353,8 +377,8 @@ export default function Header() {
             type="button"
             className="header__burger"
             aria-label="Abrir menú"
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen(v => !v)}
+            aria-expanded={mobileActive}
+            onClick={toggleMobileMenu}
           >
             <span className="header__burgerLines" aria-hidden="true"></span>
           </button>
@@ -362,7 +386,7 @@ export default function Header() {
       </div>
  
       <div
-        className={`mobileNav ${mobileOpen ? "mobileNav--open" : ""}`}
+        className={`mobileNav${mobilePreparing ? " mobileNav--preparing" : ""}${mobileOpen ? " mobileNav--open" : ""}`}
         aria-hidden={!mobileOpen}
         ref={mobileNavRef}
       >
@@ -374,7 +398,7 @@ export default function Header() {
               type="button"
               className="mobileNav__close"
               aria-label="Cerrar menú"
-              onClick={() => setMobileOpen(false)}
+              onClick={closeMobileMenu}
             >
               <XIcon aria-hidden="true" strokeWidth={2.5} />
             </button>
@@ -401,7 +425,7 @@ export default function Header() {
                 className="mobileNav__link"
                 to={item.to}
                 key={item.to}
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMobileMenu}
               >
                 {item.label}
               </Link>
@@ -415,7 +439,7 @@ export default function Header() {
                 className="mobileNav__link"
                 to={item.to}
                 key={item.to}
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMobileMenu}
               >
                 {item.label}
               </Link>
@@ -427,7 +451,7 @@ export default function Header() {
               type="button"
               className="btnCotiza"
               onClick={() => {
-                setMobileOpen(false);
+                closeMobileMenu();
                 setOpenWa(true);
               }}
             >
@@ -439,7 +463,7 @@ export default function Header() {
         <button
           className="mobileNav__backdrop"
           aria-label="Cerrar menú"
-          onClick={() => setMobileOpen(false)}
+          onClick={closeMobileMenu}
         />
       </div>
 
