@@ -10,15 +10,15 @@ export default function FAQ() {
       () => [
         {
           q: "¿Existen paquetes predefinidos o los proyectos son personalizados?",
-          a: "Cada proyecto se desarrolla de forma personalizada, adaptándose a las necesidades, objetivos y alcance específico de cada cliente. El desarrollo se ajusta a lo que realmente necesita, ni más ni menos, asegurando una solución adecuada y bien estructurada.",
+          a: "No existen paquetes predefinidos como tal. Cada proyecto se desarrolla de forma personalizada, adaptándose a las necesidades, objetivos y alcance específico de cada cliente. El desarrollo se ajusta a lo que realmente necesita, evitando pagos por funciones innecesarias o no deseadas o tener que contratar un paquete superior únicamente para acceder a determinadas características.",
         },
         {
           q: "¿Cuánto cuesta un proyecto?",
-          a: "El costo depende del alcance, la complejidad y los objetivos del proyecto. Cada propuesta se define de forma clara y personalizada antes de iniciar.",
+          a: "El costo depende del alcance, la complejidad y las necesidades específicas de cada proyecto. Como referencia, Nuvem realiza servicios puntuales desde $500 MXN, los proyectos completos comienzan aproximadamente desde $6,000 MXN y los desarrollos a medida, como aplicaciones web o sistemas, desde $15,000 MXN. Proyectos de mayor alcance pueden superar estas referencias y siempre se cotizan de forma personalizada. Antes de iniciar, se define claramente el alcance y costo del trabajo.",
         },
         {
           q: "¿Cuánto tiempo toma el desarrollo?",
-          a: "Los tiempos varían según el proyecto. Desde el inicio se establecen plazos realistas y se respetan durante todo el proceso.",
+          a: "El tiempo de desarrollo depende del alcance y la complejidad de cada proyecto. Como referencia, un servicio puntual puede resolverse en horas o pocos días, un proyecto completo de menor alcance puede tomar aproximadamente de 1 a 2 semanas y los desarrollos a medida, como aplicaciones web o sistemas, suelen requerir entre 4 y 8 semanas. Proyectos de mayor alcance pueden extenderse durante varios meses. Antes de iniciar, se establece un tiempo estimado de acuerdo con los requerimientos y alcance definidos.",
         },
         {
           q: "¿Puedo solicitar cambios durante el proceso?",

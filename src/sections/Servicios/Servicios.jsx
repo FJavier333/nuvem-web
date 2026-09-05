@@ -15,12 +15,7 @@ import imgCustom1024 from "../../images/services-responsive/shot-10-1024w.webp";
 import imgCustom1440 from "../../images/services-responsive/shot-10-1440w.webp";
 import imgCustom1920 from "../../images/services-responsive/shot-10-1920w.webp";
 import imgCustom2560 from "../../images/services-responsive/shot-10-2560w.webp";
-import imgRedesign480 from "../../images/services-responsive/servicios-redesign-480w.webp";
-import imgRedesign768 from "../../images/services-responsive/servicios-redesign-768w.webp";
-import imgRedesign1024 from "../../images/services-responsive/servicios-redesign-1024w.webp";
-import imgRedesign1440 from "../../images/services-responsive/servicios-redesign-1440w.webp";
-import imgRedesign1920 from "../../images/services-responsive/servicios-redesign-1920w.webp";
-import imgRedesign2560 from "../../images/services-responsive/servicios-redesign-2560w.webp";
+import imgApp1 from "../../images/app1.jpg";
 import imgSupport480 from "../../images/services-responsive/pilar5-3-480w.webp";
 import imgSupport768 from "../../images/services-responsive/pilar5-3-768w.webp";
 import imgSupport1024 from "../../images/services-responsive/pilar5-3-1024w.webp";
@@ -50,7 +45,7 @@ export default function Servicios() {
     {
       title: "SOFTWARE A MEDIDA",
       text:
-        "Desarrollamos soluciones digitales adaptadas a las necesidades específicas de cada negocio: sistemas administrativos, inventarios, catálogos, cotizaciones, consultas, dashboards y otras herramientas que ayudan a organizar, automatizar y mejorar procesos.",
+        "Desarrollamos soluciones digitales adaptadas a las necesidades específicas de cada negocio: desde servicios puntuales, ajustes e implementaciones específicas, hasta sistemas administrativos, inventarios, catálogos, cotizaciones, consultas, dashboards y otras herramientas que ayudan a organizar, automatizar y mejorar procesos.",
       image: imgCustom2560,
       imageSrcSet: `${imgCustom480} 480w, ${imgCustom768} 768w, ${imgCustom1024} 1024w, ${imgCustom1440} 1440w, ${imgCustom1920} 1920w, ${imgCustom2560} 2560w`,
       alt: "Desarrollo web a medida",
@@ -59,8 +54,8 @@ export default function Servicios() {
       title: "APLICACIONES WEB",
       text:
         "Creamos aplicaciones web para proyectos que necesitan ir más allá de un sitio informativo, incorporando funcionalidades, gestión de información, usuarios, consultas, procesos y experiencias interactivas según las necesidades del proyecto.",
-      image: imgRedesign2560,
-      imageSrcSet: `${imgRedesign480} 480w, ${imgRedesign768} 768w, ${imgRedesign1024} 1024w, ${imgRedesign1440} 1440w, ${imgRedesign1920} 1920w, ${imgRedesign2560} 2560w`,
+      image: imgApp1,
+      imageSrcSet: imgApp1,
       alt: "Rediseño y optimización",
     },
     {
