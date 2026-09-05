@@ -354,13 +354,6 @@
   pointer-events: auto;
 }
 
-.mobileNav--preparing{
-  opacity: 0;
-  visibility: visible;
-  pointer-events: none;
-  transition: none;
-}
-
 /* Backdrop */
 .mobileNav__backdrop{
   position: absolute;
@@ -404,11 +397,6 @@
 
 .mobileNav--open .mobileNav__panel{
   transform: translateX(0);
-}
-
-.mobileNav--preparing .mobileNav__panel{
-  transform: translateX(-12px);
-  transition: none;
 }
 
 /* Top row */
