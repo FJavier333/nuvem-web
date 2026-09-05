@@ -474,10 +474,11 @@
 
 @media (max-width: 768px){
   .mobileNav{
+    top: var(--mobile-nav-top, 0px);
     bottom: auto;
     height: 100vh;
     height: 100svh;
-    height: 100dvh;
+    height: var(--mobile-nav-height, 100dvh);
     overflow-x: hidden;
   }
 

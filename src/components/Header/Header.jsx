@@ -40,6 +40,7 @@ export default function Header() {
   const [openWa, setOpenWa] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const headerRef = useRef(null);
+  const mobileNavRef = useRef(null);
   const scrollerRef = useRef(null);
 
   // ✅ Anti-parpadeo (close con delay, open cancela)
@@ -176,6 +177,35 @@ export default function Header() {
       window.removeEventListener("touchmove", onIntent, true);
     };
   }, []);
+
+  useEffect(() => {
+    if (!mobileOpen || !mobileNavRef.current) return;
+
+    const viewport = window.visualViewport;
+    const mobileNav = mobileNavRef.current;
+
+    const syncMobileViewport = () => {
+      mobileNav.style.setProperty(
+        "--mobile-nav-height",
+        `${viewport?.height ?? window.innerHeight}px`,
+      );
+      mobileNav.style.setProperty(
+        "--mobile-nav-top",
+        `${viewport?.offsetTop ?? 0}px`,
+      );
+    };
+
+    syncMobileViewport();
+    viewport?.addEventListener("resize", syncMobileViewport);
+    viewport?.addEventListener("scroll", syncMobileViewport);
+    window.addEventListener("resize", syncMobileViewport);
+
+    return () => {
+      viewport?.removeEventListener("resize", syncMobileViewport);
+      viewport?.removeEventListener("scroll", syncMobileViewport);
+      window.removeEventListener("resize", syncMobileViewport);
+    };
+  }, [mobileOpen]);
 
   return (
     <header
@@ -331,7 +361,11 @@ export default function Header() {
         </div>
       </div>
  
-      <div className={`mobileNav ${mobileOpen ? "mobileNav--open" : ""}`} aria-hidden={!mobileOpen}>
+      <div
+        className={`mobileNav ${mobileOpen ? "mobileNav--open" : ""}`}
+        aria-hidden={!mobileOpen}
+        ref={mobileNavRef}
+      >
         <div className="mobileNav__panel" role="dialog" aria-label="Menú">
           <div className="mobileNav__top">
             <span className="mobileNav__title">Menú</span>
